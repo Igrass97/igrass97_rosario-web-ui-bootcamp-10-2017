@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sign up</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      .formgroup{
+        display: block;
+        margin-bottom: 10px;
+      }
+        .formgroup label{
+          display: block;
+          margin-bottom: 5px;
+        }
+        .formfield{
+          width: 300px;
+          resize: none;
+        }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Sign up now and get a free green apple!</h1>
+    </header>
+    <form>
+      <div class="formgroup">
+        <label for="first">First name</label>
+        <input type="text" id="first" name="fname" placeholder="First Name" class="formfield" required>
+      </div>
+      <div class="formgroup">
+        <label for="last">Last name</label>
+        <input type="text" id="last" name="lname" placeholder="Last Name" class="formfield" required>
+      </div>
+      <div class="formgroup">
+        Gender <br>
+        <input type="radio" name="gender" value="male" id="m" required>
+        <label for="m" style="display: inline;">Male</label>
+        <input type="radio" name="gender" value="female" id="f" required>
+        <label for="f" style="display: inline;">Female</label>
+      </div>
+      <div class="formgroup">
+          <label for="em">E-mail</label>
+          <input type="email" id="em" name="email" placeholder="something@some.com" class="formfield" required>
+      </div>
+      <div class="formgroup">
+          <label for="bd">Birthday</label>
+          <input type="date" id="bd" name="birthday" class="formfield" required>
+      </div>
+      <div class="formgroup">
+          <label for="sp">Favorite sport</label>
+          <select name="fsport" id="sp" class="formfield" required>
+            <option value="" selected disabled hidden>Choose sport</option>              
+            <option value="football">Football</option>
+            <option value="basketball">Basketball</option>
+            <option value="water-polo">Water polo</option>
+            <option value="handball">Handball</option>
+            <option value="csgo">CS: GO (this is not a sport dude)</option>            
+          </select>
+      </div>
+      <div class="formgroup">
+        <label for="moreabout">Tell us more about you</label>
+        <textarea name="bio" id="moreabout" rows="10" class="formfield" placeholder="Write here" required></textarea>          
+      </div>
+      <input type="submit" value="Sign up">
+      <input type="reset" value="Reset">      
+    </form>
+  </body>
+</html>
