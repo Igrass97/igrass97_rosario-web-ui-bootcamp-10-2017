@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Media</title>
     <meta charset="utf-8">
@@ -7,22 +7,27 @@
   </head>
   <body>
     <header>
-      <h1>Media</h1>
+      <h1>Media in HTML5!</h1>
     </header>
-    <h3>The ancient pyramid</h3>
-    <!-- trying to make responsive design, in devices with < 640px width,  the img will fill the whole screen and the heigh will be automatic-->
-    <img src="./img/1.jpg" alt="Photo of an ancient pyramid" style="max-width:640px; width: 100%; height:auto">
-    <h3>Some music! (all rights to Ghost)</h3>
-    <audio controls style="display: block;">
-      <source src="./sound/1.mp3" type="audio/mpeg">
-      Oh jeez! Your browser doesn't seem to support this audio :(
-    </audio>
-    <small>Ghost - Monstrance Clock</small>    
-    <h3>A random cool video (all rights to Post Modern Jukebox)</h3>
-    <!-- trying to make responsive design, in devices with < 640px width,  the video will fill the whole screen and the heigh will be automatic-->
-    <video controls style="max-width:640px; height: auto; width: 100%;">
-      <source src="./video/1.mp4" type="video/mp4">
-      Your browser doesn't support this video, try with another browser!
-    </video>
+    <section id="mainsection">
+      <header>
+        <h2>Check out this stuff!</h2>
+      </header>
+      <h3>The ancient pyramid</h3>
+      <!-- trying to make responsive design, in devices with < 640px width,  the img will fill the whole screen and the heigh will be automatic-->
+      <img src="./img/1.jpg" alt="Photo of an ancient pyramid" style="max-width:640px; width: 100%; height:auto">
+      <h3>Some music! (all rights to Ghost)</h3>
+      <audio controls style="display: block;">
+        <source src="./sound/1.mp3" type="audio/mpeg">
+        Oh jeez! Your browser doesn't seem to support this audio :(
+      </audio>
+      <small>Ghost - Monstrance Clock</small>    
+      <h3>A random cool video (all rights to Post Modern Jukebox)</h3>
+      <!-- trying to make responsive design, in devices with < 640px width,  the video will fill the whole screen and the heigh will be automatic-->
+      <video controls style="max-width:640px; height: auto; width: 100%;">
+        <source src="./video/1.mp4" type="video/mp4">
+        Your browser doesn't support this video, try with another browser!
+      </video>
+    </section>
   </body>
 </html>
