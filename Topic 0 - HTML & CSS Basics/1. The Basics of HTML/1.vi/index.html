@@ -1,4 +1,4 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Sign up</title>
@@ -19,10 +19,10 @@
         }
     </style>
   </head>
-  <header>
-    <h1>Sign up now and get a free green apple!</h1>
-  </header>
   <body>
+    <header>
+      <h1>Sign up now and get a free green apple!</h1>
+    </header>
     <form>
       <div class="formgroup">
         <label for="first">First name</label>
@@ -34,8 +34,10 @@
       </div>
       <div class="formgroup">
         Gender <br>
-        <input type="radio" name="gender" value="male" required> Male
-        <input type="radio" name="gender" value="female" required> Female
+        <input type="radio" name="gender" value="male" id="m" required>
+        <label for="m" style="display: inline;">Male</label>
+        <input type="radio" name="gender" value="female" id="f" required>
+        <label for="f" style="display: inline;">Female</label>
       </div>
       <div class="formgroup">
           <label for="em">E-mail</label>

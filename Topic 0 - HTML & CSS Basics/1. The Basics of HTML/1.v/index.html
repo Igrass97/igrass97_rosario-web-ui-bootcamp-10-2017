@@ -5,13 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>    
   </head>
-  <header>
-    <h1>Media</h1>
-  </header>
   <body>
+    <header>
+      <h1>Media</h1>
+    </header>
     <h3>The ancient pyramid</h3>
     <!-- trying to make responsive design, in devices with < 640px width,  the img will fill the whole screen and the heigh will be automatic-->
-    <img src="./img/1.jpg" alt="Photo of an ancient pyramid" width="100%" height="auto" style="max-width:640px">
+    <img src="./img/1.jpg" alt="Photo of an ancient pyramid" style="max-width:640px; width: 100%; height:auto">
     <h3>Some music! (all rights to Ghost)</h3>
     <audio controls style="display: block;">
       <source src="./sound/1.mp3" type="audio/mpeg">
@@ -20,7 +20,7 @@
     <small>Ghost - Monstrance Clock</small>    
     <h3>A random cool video (all rights to Post Modern Jukebox)</h3>
     <!-- trying to make responsive design, in devices with < 640px width,  the video will fill the whole screen and the heigh will be automatic-->
-    <video controls height="auto" width="100%" style="max-width:640px">
+    <video controls style="max-width:640px; height: auto; width: 100%;">
       <source src="./video/1.mp4" type="video/mp4">
       Your browser doesn't support this video, try with another browser!
     </video>
