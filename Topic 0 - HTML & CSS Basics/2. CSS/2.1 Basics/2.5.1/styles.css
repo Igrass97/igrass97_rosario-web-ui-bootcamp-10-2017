@@ -1,0 +1,76 @@
+*{
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+
+/*Excercices*/
+html{
+  font-size: 14px;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+.header{
+  font-size: 46px;
+}
+
+.footer{
+  font-size: 10px;
+} 
+
+.footerex{
+  font-size: 10px !important;
+}
+
+.content {
+  font-size: 14px;
+  background: lightblue;
+}
+
+.navigation{
+  font-size: 12px;
+}
+
+.sidebar {
+  font-size: 10px;
+}
+
+[class$="r"]{
+  background: magenta;
+}
+
+[class*="a"]:not([class$="r"]){
+  background: blue;
+}
+
+/* 2.3.6 You can add more weight to the global font size definition by adding an id to the html tag, or you can put an inline style in the html tag*/
+/* 2.3.7 You can use !important in the CSS rule, next to the value to overwrite all other rules (example given in the footer font-size*/
+
+/*Layout excercices (I really liked flexbox, so I'm using that*/
+
+.middle{
+  display: flex;
+}
+
+.middle .navigation{
+  flex: 1;
+  order: 1;
+}
+
+.middle .sidebar{
+  flex: 1;
+  order: 3;
+}
+
+.middle .content{
+  flex: 3;
+  order: 2;
+}
+
+.spding{
+  padding: 10px !important;
+}
+
+.center{
+  text-align: center;
+}
