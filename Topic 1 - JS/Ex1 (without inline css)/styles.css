@@ -1,0 +1,20 @@
+section{
+  text-align: center;
+}
+
+.fadeIn{
+  transition: all 10s;
+  font-size: 55px;
+}
+
+.hidden{
+  opacity: 0;
+  font-size: 0;
+}
+
+/*If two rules have the same specificity, the one that comes later in your CSS will be applied*/
+/*source: https://stackoverflow.com/questions/15670631/does-the-order-of-classes-listed-on-an-item-affect-the-css*/
+
+/*So, first, the element will be with 0 opacity and with a font size of 0 (thanks to the .hidden class). When removing the class .hidden with the JS function, the .fadeIn class it's applied.*/
+
+/*I don't know if this is the best way to do it, but It's working, and I really don't like using inline styles*/
