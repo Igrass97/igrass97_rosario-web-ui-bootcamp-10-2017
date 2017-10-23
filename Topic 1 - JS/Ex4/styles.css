@@ -1,0 +1,64 @@
+*{
+	box-sizing: border-box;
+}
+
+header {
+	height: 70px;
+	padding: 15px;
+	text-align: center;
+	background: lightgrey;
+	font-family: Georgia;
+}
+
+#main{
+	float: left;
+}
+
+ #main h2{
+ 	color: white;
+ }
+
+ #main input{
+ 	display: block;
+ 	width: 50%;
+ 	height: 20px;
+ 	font-size: 15px;
+ }
+
+ #main button{
+ 	margin-top: 10px; 
+ 	background: white;
+ 	font-size: 15px;
+ }
+
+ #searchresults{
+ 	float: right;
+ }
+
+ #repolist{
+ 	list-style: none;
+ }
+
+ #repolist li a {
+ 	text-decoration: none;
+ 	color: white;
+ }
+
+ .box{
+ 	width: 30%;
+  	background: black;
+ 	margin: 10px;
+	padding: 10px;	
+	border-radius: 5px;
+ }
+
+ .clearfix{
+ 	clear: both;
+ }
+
+ img{
+ 	float: left;
+ 	width: 30%;
+ 	box-sizing: border-box;
+ 	margin: 0 auto;
+ }
