@@ -1,3 +1,10 @@
+//Request Config Object
+const gitHubApi = {
+	method: "GET",
+	url: "https://api.github.com/search/repositories",
+	boolean: true
+};
+
 function makePromise(config){
 	return new Promise(function(resolve,reject){
 		let xhr = new XMLHttpRequest();
@@ -17,31 +24,30 @@ function makePromise(config){
 	});
 }
 
-let gitHubApi = {
-	method: "GET",
-	url: "https://api.github.com/search/repositories",
-	boolean: true
-};
-
-
 function search(){
 	let promise = makePromise(gitHubApi);
 	let list = document.getElementById("repolist");
+
+	//Removing older search (if exists)
 		while (list.hasChildNodes()) {
   			list.removeChild(list.lastChild);
 		}
-	promise.then(function(response){
-		response.items.forEach(function(repo){
-			let repourl = repo.html_url;
-			console.log(repourl);
-			let fullname = repo.full_name;
+	
+	//Promise fullfiled
+	promise.then((response) => {
+		response.items.forEach((repo) => {
+			console.log(repo);
 			let item = document.createElement("LI");
 			let link = document.createElement("A");
-			link.setAttribute("href", repourl);
-			let text = document.createTextNode(fullname);
+			link.setAttribute("href", repo.html_url);
+			let text = document.createTextNode(repo.full_name);
 			link.appendChild(text);
 			item.appendChild(link);
 			list.appendChild(item);
 		});
+	})
+	//Error handling
+	.catch((err) => {
+		console.log(err);
 	});
 }
