@@ -7,6 +7,8 @@ let matrix = [
   [06, "Ricardo Fort", "maiameee@felfort.com"],
 ];
 
+const tabletitles = ["ID", "Full Name", "E-mail"];
+
 function createTable(matrix){
   let table = document.createElement("TABLE");
   table.appendChild(createTableHead());
@@ -17,15 +19,11 @@ function createTable(matrix){
 
 function createTableHead(){
   let tablehead = document.createElement("THEAD");
-  let head1 = document.createElement("TH");
-  let head2 = document.createElement("TH");
-  let head3 = document.createElement("TH");
-  head1.innerHTML = "ID";
-  head2.innerHTML = "Full Name";
-  head3.innerHTML = "E-mail";
-  tablehead.appendChild(head1);
-  tablehead.appendChild(head2);
-  tablehead.appendChild(head3);
+  tabletitles.forEach((title) => {
+    let head = document.createElement("TH");
+    head.innerHTML = title;
+    tablehead.appendChild(head);
+  });
   tablehead.setAttribute("class","tablerow");
   return tablehead;
 }
