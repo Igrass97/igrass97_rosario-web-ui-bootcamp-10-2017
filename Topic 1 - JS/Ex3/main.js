@@ -1,3 +1,9 @@
+const chuckApi = {
+  method: "GET",
+  url: "http://api.icndb.com/jokes/random",
+  async: true
+}
+
 function callApi(){
   let promise = makePromise(chuckApi);
   promise.then(function(response){
@@ -12,12 +18,6 @@ function callApi(){
     let section = document.querySelector("#main");
     section.style.background = "red";
   });
-}
-
-const chuckApi = {
-  method: "GET",
-  url: "http://api.icndb.com/jokes/random",
-  async: true
 }
 
 function makePromise(config){
