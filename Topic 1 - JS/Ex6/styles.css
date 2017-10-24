@@ -1,0 +1,13 @@
+#main-body table{
+  border: 1px solid black;
+  width: 500px;
+  border-collapse: collapse;
+}
+
+#main-body table tbody tr td{
+  text-align: center;
+}
+
+.tablerow{
+  border-bottom: 1px solid black;
+}
