@@ -5,6 +5,7 @@ const chuckApi = {
 }
 
 function callApi(){
+
   let promise = makePromise(chuckApi);
   promise.then(function(response){
     let joke = response.value.joke;
