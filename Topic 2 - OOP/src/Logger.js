@@ -3,8 +3,12 @@ export class Logger {
 
   };
 
+
+  //Log each of the msg
   log(info){
-    console.log(info);
+    info.forEach( msg => {
+      console.log(msg);
+    });
   }
 }
 

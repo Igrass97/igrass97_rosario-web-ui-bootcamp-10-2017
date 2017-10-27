@@ -12,7 +12,7 @@ export class Movie extends EventEmitter{
 
   play() {
     //The first argument is the name of the event, and the second is the argument for the logger.
-    this.emit("play", "The event 'play' has been emmited");
+    this.emit("play", "The event 'play' has been emmited", "Message #2");
   }
 
   pause() {

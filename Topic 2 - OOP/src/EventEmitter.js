@@ -17,7 +17,7 @@ export class EventEmitter {
   emit(eventName, ...rest) {
     if (this._events[eventName]) {
       this._events[eventName].forEach((callback) => {
-        callback(...rest);
+        callback(rest);
       });
     } else {
       console.log("The event doesn't exists.");

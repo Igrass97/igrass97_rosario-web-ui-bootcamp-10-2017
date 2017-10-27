@@ -55,7 +55,7 @@ var EventEmitter = exports.EventEmitter = function () {
 
       if (this._events[eventName]) {
         this._events[eventName].forEach(function (callback) {
-          callback.apply(undefined, rest);
+          callback(rest);
         });
       } else {
         console.log("The event doesn't exists.");
@@ -99,8 +99,13 @@ var Logger = exports.Logger = function () {
 
   _createClass(Logger, [{
     key: "log",
+
+
+    //Log each of the msg
     value: function log(info) {
-      console.log(info);
+      info.forEach(function (msg) {
+        console.log(msg);
+      });
     }
   }]);
 
@@ -146,7 +151,7 @@ var Movie = exports.Movie = function (_EventEmitter) {
     key: "play",
     value: function play() {
       //The first argument is the name of the event, and the second is the argument for the logger.
-      this.emit("play", "The event 'play' has been emmited");
+      this.emit("play", "The event 'play' has been emmited", "Message #2");
     }
   }, {
     key: "pause",
