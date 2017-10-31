@@ -11,10 +11,10 @@ export class MoviesDataService{
     } else {
 
       const arrayList: Movie[] = [
-        new Movie(1, "Star Wars", 999, 1999),
-        new Movie(2, "Pulp Fiction", 999, 1999),
-        new Movie(3, "Fear and Loathing in Las Vegas", 999, 1999),
-        new Movie(4, "The Wall", 999, 1999),
+        new Movie(1, "Star Wars: A new Hope", 121, 1977),
+        new Movie(2, "Pulp Fiction", 152, 1994),
+        new Movie(3, "Fear and Loathing in Las Vegas", 118, 1998),
+        new Movie(4, "The Wall", 95, 1982),
       ];
 
       const stringList = JSON.stringify(arrayList);
