@@ -9,14 +9,8 @@
     </ul>
   </div>
 
-  <div class="details" *ngIf = "selectedMovie">
-    <h3>{{selectedMovie.title}} details:</h3>
-    <ul>
-      <li>ID: {{selectedMovie.id}}</li>
-      <li>YEAR: {{selectedMovie.year}}</li>
-      <li>DURATION: {{selectedMovie.duration}}</li>
-    </ul>
-  </div>
+  <app-moviedetails [movie]="selectedMovie"></app-moviedetails>
+
   <div class="clearfix"></div>
 
 </div>
