@@ -1,5 +1,22 @@
 <div class="container">
-  <p>
-    Movie list
-  </p>
+
+  <div class="list">
+    <h2>List of movies</h2>
+    <ul>
+      <li *ngFor = "let movie of movies" (click)="onSelect(movie)">
+        {{movie.title}}
+      </li>
+    </ul>
+  </div>
+
+  <div class="details" *ngIf = "selectedMovie">
+    <h3>{{selectedMovie.title}} details:</h3>
+    <ul>
+      <li>ID: {{selectedMovie.id}}</li>
+      <li>YEAR: {{selectedMovie.year}}</li>
+      <li>DURATION: {{selectedMovie.duration}}</li>
+    </ul>
+  </div>
+  <div class="clearfix"></div>
+
 </div>
