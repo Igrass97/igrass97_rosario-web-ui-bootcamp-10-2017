@@ -13,6 +13,6 @@
   <app-movie-editor *ngIf="selectedMovie" [movie]="selectedMovie" [movies]="movies"></app-movie-editor>
   <div class="clearfix"></div>
   
-  <app-movie-adder (onAdd)="onAdd($event)" [movies] = "movies"></app-movie-adder>
+  <app-movie-adder (onAdd)="onAdd()" [movies] = "movies"></app-movie-adder>
 </div>
 

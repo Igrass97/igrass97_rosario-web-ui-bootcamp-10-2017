@@ -11,7 +11,7 @@ import { MoviesDataService } from '../services/movies-data.services'
 export class MovieAdderComponent implements OnInit {
 
   @Input() movies: Movie[];
-  @Output() onAdd = new EventEmitter<boolean>();
+  @Output() onAdd = new EventEmitter<any>();
 
   viewAdder: boolean = false;
   newMovie: Movie = {
@@ -42,7 +42,7 @@ export class MovieAdderComponent implements OnInit {
     year: null,  
     duration: null, 
     };
-    this.onAdd.emit(true);
+    this.onAdd.emit();
   }
 
 }
