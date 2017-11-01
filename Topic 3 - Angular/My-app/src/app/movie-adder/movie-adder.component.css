@@ -1,0 +1,12 @@
+.adder {
+  margin: 0 auto;
+  width: 50%;
+  text-align: center;
+  float: left;
+}
+
+.adder table {
+  margin: 0 auto;
+  width: 20%;
+  text-align: left;
+}

@@ -5,18 +5,23 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { MoviesComponent } from './movies/movies.component';
 import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
-
+import { MovieEditorComponent } from './movie-editor/movie-editor.component';
+import { FormsModule } from '@angular/forms';
+import { MovieAdderComponent } from './movie-adder/movie-adder.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MoviesComponent,
-    MoviedetailsComponent
+    MoviedetailsComponent,
+    MovieEditorComponent,
+    MovieAdderComponent,
   ],
   imports: [
     BrowserModule,
-    routes
+    routes,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

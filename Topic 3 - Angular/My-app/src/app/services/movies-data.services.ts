@@ -30,6 +30,13 @@ export class MoviesDataService{
   }
 
   writeMovies(movies: Movie[]){
-    
+    let textList = JSON.stringify(movies);
+    localStorage.setItem("movieList", textList);
+  }
+
+  addNew(newMovie: Movie): void {
+    let movies = this.getMovies();
+    movies.push(newMovie);
+    this.writeMovies(movies);
   }
 }

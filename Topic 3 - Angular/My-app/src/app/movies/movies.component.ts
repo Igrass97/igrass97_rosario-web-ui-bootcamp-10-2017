@@ -13,6 +13,7 @@ export class MoviesComponent implements OnInit {
 
   movies: Movie[];
   selectedMovie: Movie;
+  viewAdder: boolean = false;
 
   constructor(private _moviesDataService: MoviesDataService) { }
 
@@ -25,4 +26,15 @@ export class MoviesComponent implements OnInit {
     this.selectedMovie = movie;
   }
 
+  toggleAdder(){
+    if (this.viewAdder){
+      this.viewAdder = false;
+    } else {
+      this.viewAdder = true;
+    }
+  }
+
+  onAdd(){
+    this.movies = this._moviesDataService.getMovies();    
+  }
 }

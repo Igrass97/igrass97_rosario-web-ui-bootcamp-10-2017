@@ -10,7 +10,9 @@
   </div>
 
   <app-moviedetails [movie]="selectedMovie"></app-moviedetails>
-
+  <app-movie-editor *ngIf="selectedMovie" [movie]="selectedMovie" [movies]="movies"></app-movie-editor>
   <div class="clearfix"></div>
-
+  
+  <app-movie-adder (onAdd)="onAdd($event)" [movies] = "movies"></app-movie-adder>
 </div>
+

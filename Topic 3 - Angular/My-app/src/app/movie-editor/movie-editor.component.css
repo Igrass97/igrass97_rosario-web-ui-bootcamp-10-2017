@@ -1,0 +1,12 @@
+.editor {
+  text-align: center;
+}
+
+.editor table{
+  margin: 0 auto;
+  text-align: left;
+}
+
+label {
+  color: rgba(7, 127, 197, 0.822);
+}

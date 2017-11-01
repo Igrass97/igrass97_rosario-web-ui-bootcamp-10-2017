@@ -18,3 +18,16 @@
 .container h2 {
   text-align: center;
 }
+
+button {
+  background: rgba(5, 137, 189, 0.822);
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+}
+
+button:hover {
+  background: rgba(4, 151, 204, 0.986);
+}

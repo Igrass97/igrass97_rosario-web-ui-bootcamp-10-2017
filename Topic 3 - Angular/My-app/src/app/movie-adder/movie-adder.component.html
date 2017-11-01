@@ -1,0 +1,26 @@
+<div class="adder">
+  <button *ngIf="!viewAdder" (click)="toggleAdder()">ADD NEW</button>
+
+  <div *ngIf="viewAdder" id="addForm">
+    <table>
+      <tr>
+        <td><label>Id:</label></td>
+        <td><input type="number" [(ngModel)] = "newMovie.id"></td>
+      </tr>
+      <tr>
+        <td><label>Title:</label></td>
+        <td><input type="text" [(ngModel)] = "newMovie.title"></td>
+      </tr>
+      <tr>
+        <td><label>Year:</label></td>
+        <td><input type="number" [(ngModel)] = "newMovie.year"></td>
+      </tr>
+      <tr>
+        <td><label>Duration:</label></td>
+        <td><input type="number" [(ngModel)] = "newMovie.duration"></td>
+      </tr>
+    </table>    
+    <button (click) = "toggleAdder()" (click) = "submitAdd()">SUBMIT</button>
+  </div>
+</div>
+<div class="clearfix"></div>
