@@ -1,0 +1,35 @@
+.pagebody {
+  background: rgb(0, 0, 0);
+  height: 100%;
+}
+
+nav {
+  background: rgba(7, 149, 192, 0.603);
+  padding: 15px;
+  ul {
+    list-style: none;
+    li {
+      display: inline;
+      margin: 10px;
+      background: rgba(7, 79, 233, 0.801);
+      border-radius: 5px;
+      font-family: sans-serif;
+      font-size: 20px;
+      padding: 5px;
+      cursor: pointer;
+      a{
+        text-decoration: none;
+        color: black;
+      }
+    }
+  }
+}
+
+nav ul li:hover{
+  background: black;
+}
+
+nav ul li:hover a{
+  color: white;
+}
+

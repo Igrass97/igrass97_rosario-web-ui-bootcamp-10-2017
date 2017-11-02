@@ -6,7 +6,7 @@ import { MoviesDataStorageService } from '../services/movies-data-storage.servic
 @Component({
   selector: 'app-movie-editor',
   templateUrl: './movie-editor.component.html',
-  styleUrls: ['./movie-editor.component.css'],
+  styleUrls: ['./movie-editor.component.scss'],
 
 })
 

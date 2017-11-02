@@ -6,7 +6,7 @@ import { MoviesDataStorageService } from '../services/movies-data-storage.servic
 @Component({
   selector: 'app-movie-adder',
   templateUrl: './movie-adder.component.html',
-  styleUrls: ['./movie-adder.component.css']
+  styleUrls: ['./movie-adder.component.scss']
 })
 
 export class MovieAdderComponent implements OnInit {
