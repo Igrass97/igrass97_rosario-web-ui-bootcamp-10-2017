@@ -3,7 +3,7 @@ import { Movie } from '../classes/movie';
 
 @Injectable()
 
-export class MoviesDataService{
+export class MoviesDataStorageService{
 
   writeMoviesOnce(){
     if (localStorage.getItem("movieList")){

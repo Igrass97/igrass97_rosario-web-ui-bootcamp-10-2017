@@ -8,6 +8,8 @@ import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
 import { MovieEditorComponent } from './movie-editor/movie-editor.component';
 import { FormsModule } from '@angular/forms';
 import { MovieAdderComponent } from './movie-adder/movie-adder.component';
+import { MoviesDataStorageService } from './services/movies-data-storage.services';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,7 @@ import { MovieAdderComponent } from './movie-adder/movie-adder.component';
     routes,
     FormsModule
   ],
-  providers: [],
+  providers: [MoviesDataStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

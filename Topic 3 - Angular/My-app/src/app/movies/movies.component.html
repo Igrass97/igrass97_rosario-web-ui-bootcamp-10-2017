@@ -3,7 +3,7 @@
   <div class="list">
     <h2>List of movies</h2>
     <ul>
-      <li *ngFor = "let movie of movies" (click)="onSelect(movie)">
+      <li *ngFor="let movie of movies" (click)="onSelect(movie)">
         {{movie.title}}
       </li>
     </ul>
@@ -13,6 +13,6 @@
   <app-movie-editor *ngIf="selectedMovie" [movie]="selectedMovie" [movies]="movies"></app-movie-editor>
   <div class="clearfix"></div>
   
-  <app-movie-adder (onAdd)="onAdd()" [movies] = "movies"></app-movie-adder>
+  <app-movie-adder (onAdd)="onAdd()" [movies]="movies"></app-movie-adder>
 </div>
 

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Movie } from '../classes/movie';
-import { MoviesDataService } from '../services/movies-data.services'
+import { MoviesDataStorageService } from '../services/movies-data-storage.services';
+
 
 @Component({
   selector: 'app-movie-adder',
@@ -21,7 +22,7 @@ export class MovieAdderComponent implements OnInit {
     duration: null, 
   };
 
-  constructor(private _dataService: MoviesDataService) { }
+  constructor(private _dataService: MoviesDataStorageService) { }
 
   ngOnInit() {
   }

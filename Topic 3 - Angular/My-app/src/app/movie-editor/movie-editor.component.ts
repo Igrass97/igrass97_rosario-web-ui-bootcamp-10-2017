@@ -1,12 +1,13 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { Movie } from '../classes/movie';
-import { MoviesDataService } from '../services/movies-data.services';
+import { MoviesDataStorageService } from '../services/movies-data-storage.services';
+
 
 @Component({
   selector: 'app-movie-editor',
   templateUrl: './movie-editor.component.html',
   styleUrls: ['./movie-editor.component.css'],
-  providers: [MoviesDataService]
+
 })
 
 export class MovieEditorComponent implements OnInit {
@@ -16,7 +17,7 @@ export class MovieEditorComponent implements OnInit {
   
   viewEditor: boolean = false;
 
-  constructor(private _dataService: MoviesDataService) { }
+  constructor(private _dataService: MoviesDataStorageService) { }
 
   ngOnInit() {
   }

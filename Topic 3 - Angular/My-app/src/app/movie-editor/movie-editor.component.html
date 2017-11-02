@@ -1,25 +1,25 @@
 <div class="editor">
   <button (click)="toggleEditor()">EDIT</button>
 
-  <div *ngIf = "viewEditor">
+  <div *ngIf="viewEditor">
     <table>
       <tr>
         <td><label>Id:</label></td>
-        <td><input type="number" [(ngModel)] = "movie.id"></td>
+        <td><input type="number" [(ngModel)]="movie.id"></td>
       </tr>
       <tr>
         <td><label>Title:</label></td>
-        <td><input type="text" [(ngModel)] = "movie.title"></td>
+        <td><input type="text" [(ngModel)]="movie.title"></td>
       </tr>
       <tr>
         <td><label>Year:</label></td>
-        <td><input type="number" [(ngModel)] = "movie.year"></td>
+        <td><input type="number" [(ngModel)]="movie.year"></td>
       </tr>
       <tr>
         <td><label>Duration:</label></td>
-        <td><input type="number" [(ngModel)] = "movie.duration"></td>
+        <td><input type="number" [(ngModel)]="movie.duration"></td>
       </tr>
     </table>
-    <button (click) = "_dataService.writeMovies(movies)" (click) = "toggleEditor()">SUBMIT</button>
+    <button (click)="_dataService.writeMovies(movies)" (click)="toggleEditor()">SUBMIT</button>
   </div>
 </div>
