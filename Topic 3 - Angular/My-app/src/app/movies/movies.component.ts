@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../classes/movie';
-import { MoviesDataService } from '../services/movies-data.services';
+import { MoviesDataStorageService } from '../services/movies-data-storage.services';
 
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.css'],
-  providers: [MoviesDataService]
 })
 
 export class MoviesComponent implements OnInit {
@@ -14,7 +13,7 @@ export class MoviesComponent implements OnInit {
   movies: Movie[];
   selectedMovie: Movie;
 
-  constructor(private _moviesDataService: MoviesDataService) { }
+  constructor(private _moviesDataService: MoviesDataStorageService) { }
 
   ngOnInit() {
     this._moviesDataService.writeMoviesOnce();
