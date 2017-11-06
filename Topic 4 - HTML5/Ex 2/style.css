@@ -1,0 +1,10 @@
+#drop-zone{
+  border: 2px dotted blue;
+  border-radius: 15px;
+  width: 300px;
+  height: 100px;
+}
+
+#drop-zone h1{
+  text-align: center;
+}
