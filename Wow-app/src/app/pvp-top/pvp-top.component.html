@@ -1,0 +1,17 @@
+<div class="pvp-top" *ngIf="fetched">
+  <table>
+    <thead>
+      <th>Rating</th>
+      <th>Name</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of pvpLeaderboard" (click)="selectCharacter(row)">
+        <td>{{row.rating}}</td>
+        <td>{{row.name}}</td>
+        <td>{{row.realmName}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-character-info [manualSearch]="manualSearch"></app-character-info>

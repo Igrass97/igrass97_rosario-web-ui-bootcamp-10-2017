@@ -1,0 +1,24 @@
+<div class="container">
+  <header>
+    <h1>Realm status</h1>
+  </header>
+  <div class="realm-list" *ngIf="fetched==1">
+    <table>
+      <thead>
+        <th>Realm name</th>
+        <th>Realm status</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let realm of realmList">
+          <td>{{realm.name}}</td>
+          <td>
+            <span *ngIf="realm.status==true" class="online">Online</span>
+            <span *ngIf="realm.status==false" class="offline">Offline</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h1 *ngIf="fetched==2">Server Error</h1>
+</div>
+

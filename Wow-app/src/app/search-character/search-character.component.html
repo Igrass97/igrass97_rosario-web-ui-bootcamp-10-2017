@@ -1,0 +1,18 @@
+<div class="container">
+  <header>
+    <h1>Character Search</h1>
+  </header>
+  <div class="input-fields">
+    <!-- <label>Realm:</label>
+    <input type="text" [(ngModel)]="realm"> -->
+
+    <label>Select realm</label>
+    <select *ngIf="fetched==1" [(ngModel)]="realm">
+      <option *ngFor="let realm of realmNames" [value]="realm">{{realm}}</option>
+    </select>
+    <label>Character name:</label>
+    <input type="text" [(ngModel)]="name">
+  </div>
+
+  <app-character-info [manualSearch]="manualSearch" [realm]="realm" [name]="name">Searching..</app-character-info>
+</div>
