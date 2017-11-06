@@ -3,9 +3,6 @@
     <h1>Character Search</h1>
   </header>
   <div class="input-fields">
-    <!-- <label>Realm:</label>
-    <input type="text" [(ngModel)]="realm"> -->
-
     <label>Select realm</label>
     <select *ngIf="fetched==1" [(ngModel)]="realm">
       <option *ngFor="let realm of realmNames" [value]="realm">{{realm}}</option>
