@@ -1,7 +1,7 @@
-export class Realm {
+export interface Realm {
   type: string;
   population: string;
-  queque: boolean;
+  queue: boolean;
   status: boolean;
   name: string;
   slug: string;

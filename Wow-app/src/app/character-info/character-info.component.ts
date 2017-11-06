@@ -1,6 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FetchDataService } from '../fetch-data.service';
-import { Character } from '../classes/character';
+import { Character } from '../character';
+import { Race } from '../race';
+import { ClassType } from '../class-type';
+import { Item } from '../item';
+
 
 @Component({
   selector: 'app-character-info',
@@ -13,10 +17,10 @@ export class CharacterInfoComponent implements OnInit {
   @Input() realm: string;
   @Input() manualSearch: string;
   
-  character = {};
-  itemValues = [];
-  races = {};
-  classes = {};
+  character: Character;
+  races: Race[];
+  classes: ClassType[];
+  itemValues: Array<any> = [];
   found: boolean = false;
 
   constructor(private _fetchData: FetchDataService) { }
@@ -31,7 +35,7 @@ export class CharacterInfoComponent implements OnInit {
       //Storing the classes
       this._fetchData.getClasses()
       .subscribe(classesResp => {
-        this.classes = classesResp;
+        this.classes = classesResp;  
       });
   }
 

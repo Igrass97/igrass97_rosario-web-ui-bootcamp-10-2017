@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchDataService } from '../fetch-data.service';
-import { Realm } from '../classes/realm';
+import { Realm } from '../realm';
 
 @Component({
   selector: 'app-realm',

@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FetchDataService } from '../fetch-data.service';
 import { CharacterInfoComponent } from '../character-info/character-info.component';
-import { Character } from '../classes/character';
 
 
 @Component({

@@ -19,13 +19,13 @@
       <td>{{member.character.name}}</td>
 
       <td>
-        <div *ngFor="let class of classes.classes">
+        <div *ngFor="let class of classes">
             <span *ngIf="class.id==member.character.class">{{class.name}}</span>
         </div>
       </td>
 
       <td>
-        <div *ngFor="let race of races.races">
+        <div *ngFor="let race of races">
             <span *ngIf="race.id==member.character.race">{{race.name}}</span>
         </div>
       </td>

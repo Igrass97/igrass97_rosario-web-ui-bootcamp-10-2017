@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Realm } from './classes/realm';
+import { Realm } from './realm';
+import { Character } from './character';
+import { ClassType } from './class-type';
+import { Race } from './race';
+import { Guild } from './guild';
+import {Observable} from 'rxjs/Observable';
+
 
 @Injectable()
 export class FetchDataService {
@@ -10,14 +16,14 @@ export class FetchDataService {
 
 
   //Get realm list (response.realms)
-  getRealms (){
+  getRealms (): Observable<Array<Realm>>{
     let url: string = "https://us.api.battle.net/wow/realm/status?locale=en_US&apikey=s7md2yb8vw4fvrmfgwjkpjjyfsvryvqd";
     return this._http.get(url)
       .map((response: Response) => response.json().realms);
   }
 
   //Get character info by passing two parameters
-  getCharacter(realm: string, name: string){
+  getCharacter(realm: string, name: string): Observable<Character>{
     let url = `https://us.api.battle.net/wow/character/${realm}/${name}?fields=stats%2C+items%2C+pvp%2C+guild&locale=en_US&apikey=s7md2yb8vw4fvrmfgwjkpjjyfsvryvqd`;
     return this._http.get(url)
       .map((response: Response) => response.json());
@@ -25,17 +31,17 @@ export class FetchDataService {
 
   /* Get races list, because in the character info the race is and id and not a string
   so i'm using this info to display the name instead of the ID */
-  getRaces(){
+  getRaces(): Observable<Race[]>{
     let url = "https://us.api.battle.net/wow/data/character/races?locale=en_US&apikey=s7md2yb8vw4fvrmfgwjkpjjyfsvryvqd";
     return this._http.get(url)
-      .map((response: Response) => response.json());
+      .map((response: Response) => response.json().races);
   }
 
   //Same as races
-  getClasses(){
+  getClasses(): Observable<ClassType[]>{
     let url = "https://us.api.battle.net/wow/data/character/classes?locale=en_US&apikey=s7md2yb8vw4fvrmfgwjkpjjyfsvryvqd";
     return this._http.get(url)
-      .map((response: Response) => response.json());
+      .map((response: Response) => response.json().classes);
   }
 
   //Get Pvp Leaderboard
@@ -47,7 +53,7 @@ export class FetchDataService {
   }
 
   //Get guild info
-  getGuild(realm: string, name: string){
+  getGuild(realm: string, name: string): Observable<Guild>{
     let url = `https://us.api.battle.net/wow/guild/${realm}/${name}?fields=members&locale=en_US&apikey=s7md2yb8vw4fvrmfgwjkpjjyfsvryvqd`
     return this._http.get(url)
       .map((response: Response) => response.json());

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchDataService } from '../fetch-data.service';
+import { Realm } from '../realm';
 
 @Component({
   selector: 'app-search-character',
@@ -11,8 +12,8 @@ export class SearchCharacterComponent implements OnInit {
 
   name: string;
   realm: string;
-  realmList = [];
-  realmNames = [];
+  realmList: Realm[];
+  realmNames: String[] = [];
   fetched: number = 0;
   manualSearch: boolean = true;
 

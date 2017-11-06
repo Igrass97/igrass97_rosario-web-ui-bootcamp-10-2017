@@ -1,6 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FetchDataService } from '../fetch-data.service';
 import { CharacterInfoComponent } from '../character-info/character-info.component';
+import { Realm } from '../realm';
+import { Guild } from '../guild';
+import { ClassType } from '../class-type';
+import { Race } from '../race';
+import { Character } from '../character';
 
 @Component({
   selector: 'app-search-guild',
@@ -14,14 +19,14 @@ export class SearchGuildComponent implements OnInit {
 
   realm: string;
   guildName: string;
-  guild;
+  guild: Guild;
   fetched: number = 0;
-  members;
-  races;
-  classes;
+  members: Character[];
+  races: Race[];
+  classes: ClassType[];
   realmsFound: number = 0;
-  realmList = [];
-  realmNames = [];
+  realmList: Realm[];
+  realmNames: String[] = [];
 
   constructor(private _fetchData: FetchDataService) { }
 
@@ -36,7 +41,6 @@ export class SearchGuildComponent implements OnInit {
        this._fetchData.getClasses()
        .subscribe(classesResp => {
          this.classes = classesResp;
-         console.log(this.classes);
        });
 
       //Subscribing to the observable and creating a realmNames array for the html select.
