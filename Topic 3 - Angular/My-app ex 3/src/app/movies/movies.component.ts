@@ -26,11 +26,7 @@ export class MoviesComponent implements OnInit {
   }
 
   toggleAdder(){
-    if (this.viewAdder){
-      this.viewAdder = false;
-    } else {
-      this.viewAdder = true;
-    }
+    this.viewAdder = !this.viewAdder;
   }
 
   onAdd(){

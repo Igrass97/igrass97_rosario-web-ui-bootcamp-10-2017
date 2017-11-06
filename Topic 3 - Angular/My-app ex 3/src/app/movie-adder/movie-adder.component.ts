@@ -15,12 +15,8 @@ export class MovieAdderComponent implements OnInit {
   @Output() onAdd = new EventEmitter<any>();
 
   viewAdder: boolean = false;
-  newMovie: Movie = {
-    id: null,
-    title: null,
-    year: null,  
-    duration: null, 
-  };
+
+  newMovie: Movie = new Movie();
 
   constructor(private _dataService: MoviesDataStorageService) { }
 

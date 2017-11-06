@@ -23,11 +23,7 @@ export class MovieEditorComponent implements OnInit {
   }
 
   toggleEditor(): void {
-    if (this.viewEditor){
-      this.viewEditor = false;
-    } else {
-      this.viewEditor = true;
-    }
+    this.viewEditor = !this.viewEditor;
   }
 
 }
