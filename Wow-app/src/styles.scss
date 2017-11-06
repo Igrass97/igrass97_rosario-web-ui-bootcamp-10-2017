@@ -1,2 +1,21 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
+header{
+  h1{
+    margin: 30px auto;
+  }
+}
+
+button{
+  margin: 30px auto;
+  background: rgba(119, 0, 255, 0.57);
+  outline: none;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+button:hover {
+  background: rgba(255, 0, 0, 0.66);
+}

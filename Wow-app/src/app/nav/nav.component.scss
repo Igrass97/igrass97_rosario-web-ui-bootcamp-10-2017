@@ -1,4 +1,12 @@
+.navbar-nav {
+  display: inline-block;
+}
 
+.navbar{
+  background: rgba(255, 0, 0, 0.66);
+}
 
-
-      
+.navbar-nav>li {
+   display: inline-block;
+   margin: 10px;
+}

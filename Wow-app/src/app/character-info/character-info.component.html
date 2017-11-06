@@ -1,105 +1,138 @@
-<!-- Only displaying the button if the search is setted to manual in the parent component -->
-<button *ngIf="manualSearch" (click)="searchCharacter(realm, name)">Search</button>
+<div class="text-center">
+  <!-- Only displaying the button if the search is setted to manual in the parent component -->
+  <button *ngIf="manualSearch" (click)="searchCharacter(realm, name)">SEARCH</button>
 
-<div class="character-info" *ngIf="found">
+  <div *ngIf="found">
 
-  <div class="common-item-info">
-    <h2>Equipped average item level: {{character.items.averageItemLevelEquipped}}</h2>
-    <table>
-      <tr *ngFor="let item of itemValues">
-        <td><strong>{{item.name}}</strong></td> 
-        <td>Item lvl: {{item.itemLevel}}</td>
-        <td><img src="https://wow.zamimg.com/images/wow/icons/large/{{item.icon}}.jpg" alt=""></td>
-      <tr>
-    </table>
-  </div>
-
-  <div class="common-info">
-    <h2>Basic information</h2>
-    <ul>
-      <li><strong>Name:</strong> {{character.name}}</li>
-
-     <!-- Searching the name of the race based on the id -->
-     <div *ngFor="let race of races">
-        <li *ngIf="race.id==character.race"><strong>Race:</strong> {{race.name}}</li> 
-     </div>
-
-      <!-- 0 = male ; 1 = female -->
-      <li *ngIf="character.gender==0"><strong>Gender:</strong> Male</li>
-      <li *ngIf="character.gender==1"><strong>Gender:</strong> Female</li>
-
-      <!-- Searching the name of the class based on the id -->
-      <div *ngFor="let class of classes">
-          <li *ngIf="class.id==character.class"><strong>Class:</strong> {{class.name}}</li> 
-      </div>
-
-      <li><strong>Level:</strong> {{character.level}}</li>
-      <li><strong>Achievements points:</strong> {{character.achievementPoints}}</li>
+    <div class="row info-stats">
+      <div class="common-info col-sm-6 text-center">
+        <h2>Basic information</h2>
+        <ul>
+          <li><strong>Name:</strong> {{character.name}}</li>
       
-      <!-- Displaying Guild only if the character has one -->
-      <li *ngIf="character.guild"><strong>Guild name:</strong> {{character.guild.name}}</li>
-    </ul>
-  </div>
+        <!-- Searching the name of the race based on the id -->
+        <div *ngFor="let race of races">
+            <li *ngIf="race.id==character.race"><strong>Race:</strong> {{race.name}}</li> 
+        </div>
+      
+          <!-- 0 = male ; 1 = female -->
+          <li *ngIf="character.gender==0"><strong>Gender:</strong> Male</li>
+          <li *ngIf="character.gender==1"><strong>Gender:</strong> Female</li>
+      
+          <!-- Searching the name of the class based on the id -->
+          <div *ngFor="let class of classes">
+              <li *ngIf="class.id==character.class"><strong>Class:</strong> {{class.name}}</li> 
+          </div>
+      
+          <li><strong>Level:</strong> {{character.level}}</li>
+          <li><strong>Achievements points:</strong> {{character.achievementPoints}}</li>
+              
+          <!-- Displaying Guild only if the character has one -->
+          <li *ngIf="character.guild"><strong>Guild name:</strong> {{character.guild.name}}</li>
+        </ul>
+      </div>
+      
+      <div class="stats col-sm-6 text-center">
+        <h2>Stats</h2>
+        <ul>
+          <li><strong>Health:</strong> {{character.stats.health}}</li>
+          <li><strong>Power type:</strong> {{character.stats.powerType}}</li>
+          <li><strong>Power:</strong> {{character.stats.power}}</li>
+          <li><strong>STR:</strong> {{character.stats.str}}</li>
+          <li><strong>AGI:</strong> {{character.stats.agi}}</li>
+          <li><strong>INT:</strong> {{character.stats.int}}</li>
+          <li><strong>STA:</strong> {{character.stats.sta}}</li>
+        </ul>
+      </div>
+    </div>
 
-  <div class="stats">
-    <h2>Stats</h2>
-    <ul>
-      <li><strong>Health:</strong> {{character.stats.health}}</li>
-      <li><strong>Power type:</strong> {{character.stats.powerType}}</li>
-      <li><strong>Power:</strong> {{character.stats.power}}</li>
-      <li><strong>STR:</strong> {{character.stats.str}}</li>
-      <li><strong>AGI:</strong> {{character.stats.agi}}</li>
-      <li><strong>INT:</strong> {{character.stats.int}}</li>
-      <li><strong>STA:</strong> {{character.stats.sta}}</li>
-    </ul>
-  </div>
+    <div class="items container">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <h2>Equipped average item level: {{character.items.averageItemLevelEquipped}}</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <table class="text-left">
+            <tr *ngFor="let item of itemColOne">
+              <td><strong>{{item.name}}</strong></td> 
+              <td>iLvl: {{item.itemLevel}}</td>
+              <td><img src="https://wow.zamimg.com/images/wow/icons/large/{{item.icon}}.jpg" alt=""></td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-sm-6">
+          <table class="text-left">
+            <tr *ngFor="let item of itemColTwo">
+              <td><strong>{{item.name}}</strong></td> 
+              <td>iLvl: {{item.itemLevel}}</td>
+              <td><img src="https://wow.zamimg.com/images/wow/icons/large/{{item.icon}}.jpg" alt=""></td>
+            </tr>
+            </table>
+        </div>
+      </div>
+    </div>
 
-  <div class="pvp-info">
-  <h2>Pvp</h2>
-    <h3>2v2</h3>
-    <ul>
-      <li><strong>Rating:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2.rating}}</li>
-      <li><strong>Season lost:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2.seasonLost}}</li>
-      <li><strong>Season played:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2.seasonPlayed}}</li>
-      <li><strong>Season won:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2.seasonWon}}</li> 
-      <li><strong>Weekly lost:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2.weeklyLost}} </li>
-      <li><strong>Weekly played:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2.weeklyPlayed}}</li>
-      <li><strong>Weekly won:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2.weeklyWon}}</li>
-    </ul>
+    <div class="pvp-info container text-center">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2>Pvp</h2>
+        </div>
+      </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <h4>2v2</h4>
+            <ul>
+              <li><strong>Rating:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2.rating}}</li>
+              <li><strong>Season lost:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2.seasonLost}}</li>
+              <li><strong>Season played:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2.seasonPlayed}}</li>
+              <li><strong>Season won:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2.seasonWon}}</li> 
+              <li><strong>Weekly lost:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2.weeklyLost}} </li>
+              <li><strong>Weekly played:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2.weeklyPlayed}}</li>
+              <li><strong>Weekly won:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2.weeklyWon}}</li>
+            </ul>
+          </div>
 
+          <div class="col-sm-3">
+          <h4>2v2 skirimish </h4>
+            <ul>
+              <li><strong>Rating:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2_SKIRMISH.rating}}</li>
+              <li><strong>Season lost:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2_SKIRMISH.seasonLost}}</li>
+              <li><strong>Season played:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2_SKIRMISH.seasonPlayed}}</li>
+              <li><strong>Season won:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2_SKIRMISH.seasonWon}}</li>
+              <li><strong>Weekly lost:</strong>  {{character.pvp.brackets.ARENA_BRACKET_2v2_SKIRMISH.weeklyLost}} </li>
+              <li><strong>Weekly played:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2_SKIRMISH.weeklyPlayed}}</li>
+              <li><strong>Weekly won:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2_SKIRMISH.weeklyWon}}</li>
+            </ul>
+          </div>
 
-    <h3>2v2 skirimish </h3>
-    <ul>
-      <li><strong>Rating:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2_SKIRMISH.rating}}</li>
-      <li><strong>Season lost:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2_SKIRMISH.seasonLost}}</li>
-      <li><strong>Season played:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2_SKIRMISH.seasonPlayed}}</li>
-      <li><strong>Season won:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2_SKIRMISH.seasonWon}}</li>
-      <li><strong>Weekly lost:</strong>  {{character.pvp.brackets.ARENA_BRACKET_2v2_SKIRMISH.weeklyLost}} </li>
-      <li><strong>Weekly played:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2_SKIRMISH.weeklyPlayed}}</li>
-      <li><strong>Weekly won:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2_SKIRMISH.weeklyWon}}</li>
-    </ul>
-
-    <h3>3v3</h3>
-    <ul>
-      <li><strong>Rating:</strong> {{character.pvp.brackets.ARENA_BRACKET_3v3.rating}}</li>
-      <li><strong>Season lost:</strong>  {{character.pvp.brackets.ARENA_BRACKET_3v3.seasonLost}}</li>
-      <li><strong>Season played:</strong>{{character.pvp.brackets.ARENA_BRACKET_3v3.seasonPlayed}}</li>
-      <li><strong>Season won:</strong> {{character.pvp.brackets.ARENA_BRACKET_3v3.seasonWon}}</li> 
-      <li><strong>Weekly lost:</strong> {{character.pvp.brackets.ARENA_BRACKET_3v3.weeklyLost}}</li> 
-      <li><strong>Weekly played:</strong> {{character.pvp.brackets.ARENA_BRACKET_3v3.weeklyPlayed}}</li>
-      <li><strong>Weekly won:</strong> {{character.pvp.brackets.ARENA_BRACKET_3v3.weeklyWon}}</li>
-    </ul>
-   
-    <h3>RGB</h3>
-    <ul>
-      <li><strong>Rating:</strong>{{character.pvp.brackets.ARENA_BRACKET_RBG.rating}}</li>
-      <li><strong>Season lost:</strong> {{character.pvp.brackets.ARENA_BRACKET_RBG.seasonLost}}</li>
-      <li><strong>Season played:</strong>{{character.pvp.brackets.ARENA_BRACKET_RBG.seasonPlayed}}</li>
-      <li><strong>Season won:</strong> {{character.pvp.brackets.ARENA_BRACKET_RBG.seasonWon}}</li>
-      <li><strong>Weekly lost:</strong> {{character.pvp.brackets.ARENA_BRACKET_RBG.weeklyLost}}</li> 
-      <li><strong>Weekly played:</strong> {{character.pvp.brackets.ARENA_BRACKET_RBG.weeklyPlayed}}</li>
-      <li><strong>Weekly won:</strong> {{character.pvp.brackets.ARENA_BRACKET_RBG.weeklyWon}}</li>
-    </ul>  
+          <div class="col-sm-3">
+          <h4>3v3</h4>
+            <ul>
+              <li><strong>Rating:</strong> {{character.pvp.brackets.ARENA_BRACKET_3v3.rating}}</li>
+              <li><strong>Season lost:</strong>  {{character.pvp.brackets.ARENA_BRACKET_3v3.seasonLost}}</li>
+              <li><strong>Season played:</strong>{{character.pvp.brackets.ARENA_BRACKET_3v3.seasonPlayed}}</li>
+              <li><strong>Season won:</strong> {{character.pvp.brackets.ARENA_BRACKET_3v3.seasonWon}}</li> 
+              <li><strong>Weekly lost:</strong> {{character.pvp.brackets.ARENA_BRACKET_3v3.weeklyLost}}</li> 
+              <li><strong>Weekly played:</strong> {{character.pvp.brackets.ARENA_BRACKET_3v3.weeklyPlayed}}</li>
+              <li><strong>Weekly won:</strong> {{character.pvp.brackets.ARENA_BRACKET_3v3.weeklyWon}}</li>
+            </ul>
+          </div>
+        
+          <div class="col-sm-3">
+            <h4>RGB</h4>
+            <ul>
+              <li><strong>Rating:</strong>{{character.pvp.brackets.ARENA_BRACKET_RBG.rating}}</li>
+              <li><strong>Season lost:</strong> {{character.pvp.brackets.ARENA_BRACKET_RBG.seasonLost}}</li>
+              <li><strong>Season played:</strong>{{character.pvp.brackets.ARENA_BRACKET_RBG.seasonPlayed}}</li>
+              <li><strong>Season won:</strong> {{character.pvp.brackets.ARENA_BRACKET_RBG.seasonWon}}</li>
+              <li><strong>Weekly lost:</strong> {{character.pvp.brackets.ARENA_BRACKET_RBG.weeklyLost}}</li> 
+              <li><strong>Weekly played:</strong> {{character.pvp.brackets.ARENA_BRACKET_RBG.weeklyPlayed}}</li>
+              <li><strong>Weekly won:</strong> {{character.pvp.brackets.ARENA_BRACKET_RBG.weeklyWon}}</li>
+            </ul>  
+          </div>
+        </div>
+    </div>
   </div>
 </div>
-

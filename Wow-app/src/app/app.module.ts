@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { routes } from './app.router';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
 import { NavComponent } from './nav/nav.component';
 import { RealmComponent } from './realm/realm.component';
 import { CharacterInfoComponent } from './character-info/character-info.component';
@@ -17,7 +16,6 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     NavComponent,
     RealmComponent,
     CharacterInfoComponent,

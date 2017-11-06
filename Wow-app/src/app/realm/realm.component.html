@@ -1,8 +1,8 @@
 <div class="container">
   <header>
-    <h1>Realm status</h1>
+    <h1 class="text-center">Realm status</h1>
   </header>
-  <div class="realm-list" *ngIf="fetched==1">
+  <div class="realm-list text-center" *ngIf="fetched==1">
     <table>
       <thead>
         <th>Realm name</th>
@@ -10,7 +10,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let realm of realmList">
-          <td>{{realm.name}}</td>
+          <td><strong>{{realm.name}}</strong></td>
           <td>
             <span *ngIf="realm.status==true" class="online">Online</span>
             <span *ngIf="realm.status==false" class="offline">Offline</span>

@@ -21,6 +21,8 @@ export class CharacterInfoComponent implements OnInit {
   races: Race[];
   classes: ClassType[];
   itemValues: Array<any> = [];
+  itemColOne : Array<any> = [];
+  itemColTwo : Array<any> = [];
   found: boolean = false;
 
   constructor(private _fetchData: FetchDataService) { }
@@ -47,6 +49,8 @@ export class CharacterInfoComponent implements OnInit {
 
       //Creating a item list to iterate on it in the view (the 2 first elements aren't items)
       this.itemValues = Object.values(characterResp.items).slice(2);
+      this.itemColOne = this.itemValues.slice(0, 8);
+      this.itemColTwo = this.itemValues.slice(8, this.itemValues.length-1);
       this.found = true; 
     });
   }

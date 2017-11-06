@@ -1,4 +1,4 @@
-<div class="pvp-top" *ngIf="fetched">
+<div class="container" *ngIf="fetched">
   <table>
     <thead>
       <th>Rating</th>
@@ -12,6 +12,6 @@
       </tr>
     </tbody>
   </table>
+  <app-character-info [manualSearch]="manualSearch"></app-character-info>
 </div>
 
-<app-character-info [manualSearch]="manualSearch"></app-character-info>

@@ -1,15 +1,25 @@
 <div class="container">
   <header>
-    <h1>Character Search</h1>
+    <h1 class="text-center">Character Search</h1>
   </header>
-  <div class="input-fields">
-    <label>Select realm</label>
-    <select *ngIf="fetched==1" [(ngModel)]="realm">
-      <option *ngFor="let realm of realmNames" [value]="realm">{{realm}}</option>
-    </select>
-    <label>Character name:</label>
-    <input type="text" [(ngModel)]="name">
-  </div>
+  <div class="row">
+    <div class="col-sm-12 text-center input-fields">
+      <table>
+        <tr>
+          <td><label><strong>Select realm</strong></label></td>
+          <td>
+            <select *ngIf="fetched==1" [(ngModel)]="realm">
+              <option *ngFor="let realm of realmNames" [value]="realm">{{realm}}</option>
+            </select>
+        </td>
+        </tr>
+        <tr>
+          <td><label><strong>Character name</strong></label></td>
+          <td><input type="text" [(ngModel)]="name"></td>
+        </tr>
+      </table>
+    </div> 
+</div>
 
-  <app-character-info [manualSearch]="manualSearch" [realm]="realm" [name]="name">Searching..</app-character-info>
+<app-character-info [manualSearch]="manualSearch" [realm]="realm" [name]="name">Searching..</app-character-info>
 </div>

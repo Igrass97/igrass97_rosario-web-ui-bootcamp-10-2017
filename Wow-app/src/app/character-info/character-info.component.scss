@@ -1,0 +1,29 @@
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+table{
+  width: 50%;
+  margin: 0 auto;
+  tr{
+    td{
+      padding: 10px;
+    }
+  }
+}
+
+.items, .info-stats, .pvp-info{
+  background: rgba(119, 0, 255, 0.57);
+  border-radius: 15px;
+  padding: 50px;
+  margin: 50px auto;
+}
+
+h2{
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.53);
+  padding: 15px;
+}
+
