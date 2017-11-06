@@ -1,0 +1,33 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.clearfix {
+  clear:both;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  color: white;
+}
+
+.container h2 {
+  text-align: center;
+}
+
+button {
+  background: rgba(5, 137, 189, 0.822);
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+}
+
+button:hover {
+  background: rgba(4, 151, 204, 0.986);
+}
