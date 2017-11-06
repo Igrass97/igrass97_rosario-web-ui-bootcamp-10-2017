@@ -1,0 +1,18 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box; }
+
+.clearfix {
+  clear: both; }
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  color: white; }
+
+.container h2 {
+  text-align: center; }
+
+/*# sourceMappingURL=styles.css.map */
