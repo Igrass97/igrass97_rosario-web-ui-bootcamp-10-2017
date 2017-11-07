@@ -16,7 +16,6 @@ export class PvpTopComponent implements AfterViewInit {
   
   pvpLeaderboard;
   fetched: boolean = false;
-  manualSearch: boolean = false;
   clicked: boolean = false;
 
   constructor(private _fetchData: FetchDataService) {}

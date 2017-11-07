@@ -1,8 +1,5 @@
 <div class="text-center">
-  <!-- Only displaying the button if the search is setted to manual in the parent component -->
-  <button *ngIf="manualSearch" (click)="searchCharacter(realm, name)">SEARCH</button>
-
-  <div *ngIf="found && clicked">
+  <div *ngIf="found==2 && clicked">
     <header>
       <h1>{{character.name}} information</h1>
     </header>
@@ -136,5 +133,13 @@
           </div>
         </div>
     </div>
+  </div>
+
+  <div *ngIf="found==3 && clicked" class="error">
+    <p>{{error}}</p>
+  </div>
+
+  <div *ngIf="found==1 && clicked" class="error">
+      <p>Loading..</p>
   </div>
 </div>

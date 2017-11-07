@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FetchDataService } from '../fetch-data.service';
 import { Realm } from '../realm';
+import { CharacterInfoComponent } from '../character-info/character-info.component';
 
 @Component({
   selector: 'app-search-character',
@@ -10,12 +11,13 @@ import { Realm } from '../realm';
 
 export class SearchCharacterComponent implements OnInit {
 
+  @ViewChild(CharacterInfoComponent) child: CharacterInfoComponent;
+  
   name: string;
   realm: string;
   realmList: Realm[];
   realmNames: String[] = [];
   fetched: number = 0;
-  manualSearch: boolean = true;
   clicked: boolean = false;
 
   constructor(private _fetchData: FetchDataService ) { }
@@ -29,5 +31,14 @@ export class SearchCharacterComponent implements OnInit {
       });
       this.fetched = 1;
     });
+  }
+
+  searchCharacter(){
+    this.child.searchCharacter(this.realm, this.name);
+    this.clicked = true;
+  }
+
+  goBack(){
+    this.clicked = false;
   }
 }
