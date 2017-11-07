@@ -16,6 +16,7 @@ export class CharacterInfoComponent implements OnInit {
   @Input() name: string;
   @Input() realm: string;
   @Input() manualSearch: string;
+  @Input() clicked: boolean;
   
   character: Character;
   races: Race[];

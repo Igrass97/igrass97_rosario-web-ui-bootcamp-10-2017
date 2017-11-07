@@ -1,17 +1,25 @@
-<div class="container" *ngIf="fetched">
-  <table>
-    <thead>
-      <th>Rating</th>
-      <th>Name</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let row of pvpLeaderboard" (click)="selectCharacter(row)">
-        <td>{{row.rating}}</td>
-        <td>{{row.name}}</td>
-        <td>{{row.realmName}}</td>
-      </tr>
-    </tbody>
-  </table>
-  <app-character-info [manualSearch]="manualSearch"></app-character-info>
+<div class="container">  
+  <div *ngIf="!clicked" class="pvp">
+    <header>
+        <h1 class="text-center">Top Pvp mode</h1>
+    </header>
+    <div *ngIf="fetched">
+      <table>
+        <thead>
+          <th>Rating</th>
+          <th>Name</th>
+          <th>Realm</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of pvpLeaderboard" (click)="selectCharacter(row)">
+            <td>{{row.rating}}</td>
+            <td>{{row.name}}</td>
+            <td>{{row.realmName}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <button *ngIf="clicked" (click)="goBack()">BACK</button>
+    <app-character-info [clicked]="clicked" [manualSearch]="manualSearch"></app-character-info>
 </div>
-

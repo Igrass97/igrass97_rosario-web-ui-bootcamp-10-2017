@@ -5,11 +5,13 @@ ul{
 }
 
 table{
-  width: 50%;
   margin: 0 auto;
+  border-collapse: collapse;
   tr{
+    width: 50%;
     td{
       padding: 10px;
+      box-shadow: 0px 0px 5px black;
     }
   }
 }
@@ -17,13 +19,12 @@ table{
 .items, .info-stats, .pvp-info{
   background: rgba(119, 0, 255, 0.57);
   border-radius: 15px;
-  padding: 50px;
+  padding: 20px;
   margin: 50px auto;
 }
 
 h2{
   margin-bottom: 15px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.53);
   padding: 15px;
 }
 
@@ -32,6 +33,6 @@ h2{
 }
 
 .title{
-  color: rgba(76, 0, 255, 0.904); ;
+  color: rgba(76, 0, 255, 0.90); ;
 }
 

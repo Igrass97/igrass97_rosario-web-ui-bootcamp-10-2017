@@ -1,0 +1,23 @@
+table{
+  width: 100%;
+  text-align: center;
+  margin: 30px;
+  thead{
+    th{
+      border-bottom: 1px solid black;
+    }
+  }
+  tr{
+    border-bottom: 1px solid black;
+    cursor: pointer;
+    td{
+      padding: 15px;
+    }
+  }
+  tr:hover{
+    background: rgba(255, 4, 25, 0.67);
+  }
+  tr:last-child{
+    border: none;
+  }
+}

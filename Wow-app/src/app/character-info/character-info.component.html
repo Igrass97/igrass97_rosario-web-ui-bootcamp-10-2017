@@ -2,8 +2,10 @@
   <!-- Only displaying the button if the search is setted to manual in the parent component -->
   <button *ngIf="manualSearch" (click)="searchCharacter(realm, name)">SEARCH</button>
 
-  <div *ngIf="found">
-
+  <div *ngIf="found && clicked">
+    <header>
+      <h1>{{character.name}} information</h1>
+    </header>
     <div class="row info-stats">
       <div class="common-info col-sm-6 text-center">
         <h2 class="title">Basic information</h2>
@@ -46,7 +48,7 @@
       </div>
     </div>
 
-    <div class="items container">
+    <div class="items">
       <div class="row">
         <div class="col-sm-12 text-center">
           <h2 class="title">Equipped average item level: {{character.items.averageItemLevelEquipped}}</h2>
@@ -57,7 +59,7 @@
           <table class="text-left">
             <tr *ngFor="let item of itemColOne">
               <td><strong>{{item.name}}</strong></td> 
-              <td>iLvl: {{item.itemLevel}}</td>
+              <td>iLvl {{item.itemLevel}}</td>
               <td><img src="https://wow.zamimg.com/images/wow/icons/large/{{item.icon}}.jpg" alt=""></td>
             </tr>
           </table>
@@ -66,7 +68,7 @@
           <table class="text-left">
             <tr *ngFor="let item of itemColTwo">
               <td><strong>{{item.name}}</strong></td> 
-              <td>iLvl: {{item.itemLevel}}</td>
+              <td>iLvl {{item.itemLevel}}</td>
               <td><img src="https://wow.zamimg.com/images/wow/icons/large/{{item.icon}}.jpg" alt=""></td>
             </tr>
             </table>
@@ -74,7 +76,7 @@
       </div>
     </div>
 
-    <div class="pvp-info container text-center">
+    <div class="pvp-info text-center">
       <div class="row">
         <div class="col-sm-12">
           <h2 class="title">Pvp</h2>
@@ -120,7 +122,7 @@
             </ul>
           </div>
         
-          <div class="col-sm-3">
+          <div class="col-sm-3 bracket">
             <h4 class="title">RGB</h4>
             <ul>
               <li><strong>Rating:</strong>{{character.pvp.brackets.ARENA_BRACKET_RBG.rating}}</li>

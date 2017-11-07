@@ -17,6 +17,7 @@ export class PvpTopComponent implements AfterViewInit {
   pvpLeaderboard;
   fetched: boolean = false;
   manualSearch: boolean = false;
+  clicked: boolean = false;
 
   constructor(private _fetchData: FetchDataService) {}
 
@@ -30,7 +31,12 @@ export class PvpTopComponent implements AfterViewInit {
   }
 
   selectCharacter(row){
+    this.clicked = true;
     //Calling child method
     this.child.searchCharacter(row.realmSlug, row.name);
+  }
+
+  goBack(){
+    this.clicked = false;
   }
 }

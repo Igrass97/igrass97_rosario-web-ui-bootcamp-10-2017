@@ -16,6 +16,7 @@ export class SearchCharacterComponent implements OnInit {
   realmNames: String[] = [];
   fetched: number = 0;
   manualSearch: boolean = true;
+  clicked: boolean = false;
 
   constructor(private _fetchData: FetchDataService ) { }
 
