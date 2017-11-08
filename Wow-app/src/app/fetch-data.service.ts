@@ -20,7 +20,8 @@ export class FetchDataService {
     let url: string = "https://us.api.battle.net/wow/realm/status?locale=en_US&apikey=s7md2yb8vw4fvrmfgwjkpjjyfsvryvqd";
     var headers = new Headers({'Content-Type': 'application/json'});
     return this._http
-      .get(url, { headers: headers });
+      .get(url, { headers: headers })
+        .map((response: Response) => response.json().realms);
   }
 
   //Get character info by passing two parameters
