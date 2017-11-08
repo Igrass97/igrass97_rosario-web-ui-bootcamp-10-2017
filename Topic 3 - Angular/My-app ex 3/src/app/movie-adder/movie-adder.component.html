@@ -2,24 +2,31 @@
   <button *ngIf="!viewAdder" (click)="toggleAdder()">ADD NEW</button>
 
   <div *ngIf="viewAdder" id="addForm">
-    <table>
-      <tr>
-        <td><label>Id:</label></td>
-        <td><input type="number" [(ngModel)]="newMovie.id"></td>
-      </tr>
-      <tr>
-        <td><label>Title:</label></td>
-        <td><input type="text" [(ngModel)]="newMovie.title"></td>
-      </tr>
-      <tr>
-        <td><label>Year:</label></td>
-        <td><input type="number" [(ngModel)]="newMovie.year"></td>
-      </tr>
-      <tr>
-        <td><label>Duration:</label></td>
-        <td><input type="number" [(ngModel)]="newMovie.duration"></td>
-      </tr>
-    </table>    
+
+    <div class="inputgroup">
+      <label>Id:</label>
+      <br>
+      <input type="number" [(ngModel)]="newMovie.id">
+    </div>  
+    
+    <div class="inputgroup">
+      <label>Title:</label>
+      <br>
+      <input type="text" [(ngModel)]="newMovie.title">
+    </div>  
+
+    <div class="inputgroup">  
+      <label>Year:</label>
+      <br>
+      <input type="number" [(ngModel)]="newMovie.year">
+    </div>   
+
+    <div class="inputgroup">   
+      <label>Duration:</label>
+      <br>
+      <input type="number" [(ngModel)]="newMovie.duration">
+    </div>  
+
     <button (click)="toggleAdder()" (click)="submitAdd()">SUBMIT</button>
   </div>
 </div>
