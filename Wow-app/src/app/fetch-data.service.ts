@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Realm } from './realm';
 import { Character } from './character';
 import { ClassType } from './class-type';
 import { Race } from './race';
 import { Guild } from './guild';
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 
 
 @Injectable()
@@ -16,10 +16,12 @@ export class FetchDataService {
 
 
   //Get realm list (response.realms)
-  getRealms (): Observable<Array<Realm>>{
+  getRealms (): Observable<any>{
     let url: string = "https://us.api.battle.net/wow/realm/status?locale=en_US&apikey=s7md2yb8vw4fvrmfgwjkpjjyfsvryvqd";
-    return this._http.get(url)
-      .map((response: Response) => response.json().realms);
+    const header = new Headers();
+    header.append('Accept', 'application/json');
+    return this._http
+      .get(url, { headers: header });
   }
 
   //Get character info by passing two parameters
