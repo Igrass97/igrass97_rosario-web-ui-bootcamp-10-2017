@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Movie } from '../classes/movie';
+import { Movie } from '../movie';
 
 @Injectable()
 
@@ -10,12 +10,28 @@ export class MoviesDataStorageService{
       console.log("List already exists");
     } else {
 
-      const arrayList: Movie[] = [
-        new Movie(1, "Star Wars: A new Hope", 121, 1977),
-        new Movie(2, "Pulp Fiction", 152, 1994),
-        new Movie(3, "Fear and Loathing in Las Vegas", 118, 1998),
-        new Movie(4, "The Wall", 95, 1982),
-      ];
+      let arrayList: Movie[];
+      
+      arrayList = [
+        {
+          id: 1,
+          title: "Star Wars ep V",
+          year: 1980,
+          duration: 124
+        },
+        {
+          id: 2,
+          title: "Pulp Fiction",
+          year: 1994,
+          duration: 152
+        },
+        {
+          id: 3,
+          title: "Fear and Loathing in Las Vegas",
+          year: 1998,
+          duration: 118
+        }
+      ]
 
       const stringList = JSON.stringify(arrayList);
 
