@@ -18,10 +18,9 @@ export class FetchDataService {
   //Get realm list (response.realms)
   getRealms (): Observable<any>{
     let url: string = "https://us.api.battle.net/wow/realm/status?locale=en_US&apikey=s7md2yb8vw4fvrmfgwjkpjjyfsvryvqd";
-    const header = new Headers();
-    header.append('Accept', 'application/json');
+    var headers = new Headers({'Content-Type': 'application/json'});
     return this._http
-      .get(url, { headers: header });
+      .get(url, { headers: headers });
   }
 
   //Get character info by passing two parameters

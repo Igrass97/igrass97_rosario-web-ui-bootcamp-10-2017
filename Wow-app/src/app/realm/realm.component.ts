@@ -18,7 +18,8 @@ export class RealmComponent implements OnInit {
 
   ngOnInit() {
     this._fetchData.getRealms().subscribe((response) =>  {
-      this.realmList = response.realms;
+      this.realmList = response;
+      console.log(response);
       this.fetched = 1;
     });
   }
