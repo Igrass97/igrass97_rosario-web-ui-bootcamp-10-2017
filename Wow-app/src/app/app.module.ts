@@ -11,6 +11,7 @@ import { SearchCharacterComponent } from './search-character/search-character.co
 import { HttpModule } from '@angular/http';
 import { FetchDataService } from './fetch-data.service';
 import { FormsModule } from '@angular/forms';
+import { ApiConfigService } from './api-config.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { FormsModule } from '@angular/forms';
     HttpModule,
     FormsModule
   ],
-  providers: [FetchDataService],
+  providers: [FetchDataService, ApiConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
