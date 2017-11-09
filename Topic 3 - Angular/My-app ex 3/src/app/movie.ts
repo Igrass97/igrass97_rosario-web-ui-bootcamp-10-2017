@@ -5,10 +5,10 @@ export class Movie {
   duration: number;
   title: string;
 
-  constructor(id, title,year, duration){
-    this.id = id;
-    this.year = year;
-    this.duration = duration;
-    this.title = title;
+  constructor(obj){
+    this.id = obj.id;
+    this.year = obj.year;
+    this.duration = obj.duration;
+    this.title = obj.title;
   }
 }

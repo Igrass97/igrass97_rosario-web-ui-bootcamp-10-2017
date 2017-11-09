@@ -14,9 +14,9 @@ export class MoviesDataStorageService{
 
       let arrayList: Movie[];
       
-      arrayList = [ new Movie(1, "Star Wars ep V", 1980, 124),
-                    new Movie(2, "Pulp Fiction", 1994, 152),
-                    new Movie(3, "Fear and Loathing in Las Vegas", 1998, 1118),
+      arrayList = [ new Movie({id: 1, title: "Star Wars ep V", year: 1980, duration: 124}),
+                    new Movie({id: 2, title: "Pulp Fiction", year: 1994, duration: 152}),
+                    new Movie({id: 3, title: "Fear and Loathing in Las Vegas", year: 1998, duration: 118}),
                   ];
 
       const stringList = JSON.stringify(arrayList);
