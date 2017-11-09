@@ -3,7 +3,7 @@
     <header>
         <h1 class="text-center">Top Pvp mode</h1>
     </header>
-    <div *ngIf="fetched">
+    <div *ngIf="found==2">
       <table class="interactivetable">
         <thead>
           <th>Rating</th>
@@ -19,6 +19,8 @@
         </tbody>
       </table>
     </div>
+    <div *ngIf="found==1">Loading..</div>
+    <div *ngIf="found==2">{{error}}</div>
   </div>
 </div>
 

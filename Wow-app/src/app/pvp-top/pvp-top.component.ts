@@ -15,18 +15,28 @@ export class PvpTopComponent implements AfterViewInit {
   @ViewChild(CharacterInfoComponent) child: CharacterInfoComponent;
   
   pvpLeaderboard;
-  fetched: boolean = false;
+  found: number = 0;
   clicked: boolean = false;
+  error: string;
 
   constructor(private _fetchData: FetchDataService) {}
 
   ngAfterViewInit() {
+    this.found = 1;
     this._fetchData.getPvpLeaderboard()
-      .subscribe(leaderboardResponse => {
+      .subscribe(
+        leaderboardResponse => {
         this.pvpLeaderboard = leaderboardResponse;
-        this.fetched = true;
+        this.found = 2;
         console.log(this.pvpLeaderboard);
-      });
+        },
+        error => {
+          let body = JSON.parse(error._body);
+          this.error = body.reason;
+          this.found = 3;
+        }
+      );
+
   }
 
   selectCharacter(row){

@@ -1,8 +1,12 @@
 <div class="container">
-  <header *ngIf = "!searched">
-    <h1 class="text-center">Guild Search</h1>
+  <button *ngIf="clicked" (click)="goBack()">BACK</button>
+  <button *ngIf="searched" (click)="goBackToSearch()">BACK</button>
+
+  <header *ngIf = "!searched && !clicked">
+      <h1 class="text-center">Guild Search</h1>
   </header>
-  <div class="input-fields" *ngIf = "!searched">
+
+  <div class="input-fields" *ngIf = "!searched && !clicked">
     <div class="row">
       <div class="col-sm-4"></div>
       <div class="col-sm-2">
@@ -27,7 +31,7 @@
     <button (click)="searchGuild(realm, guildName)">Search</button>    
   </div>
 
-  <div *ngIf="fetched && !clicked">
+  <div *ngIf="found==2 && !clicked && searched">
     <div class="headers container text-center">
       <h1>Guild name: {{guild.name}}</h1>
       <h2>Level: {{guild.level}}</h2>
@@ -37,7 +41,7 @@
 
     <h2>Members</h2>
     <table class="interactivetable">
-      <tr *ngFor="let member of members" (click)="searchMember(member.character.realm, member.character.name)">
+      <tr *ngFor="let member of members | paginate: {itemsPerPage: 10, currentPage: p} " (click)="searchMember(member.character.realm, member.character.name)">
         <td>{{member.character.name}}</td>
 
         <td>
@@ -53,6 +57,9 @@
         </td>
       </tr>
     </table>
+    <pagination-controls (pageChange)="p =$event"></pagination-controls>
   </div>
+  <div *ngIf="found==1">Loading</div>
+  <div *ngIf="found==3"></div>
   <app-character-info [clicked]="clicked"></app-character-info>
 </div>

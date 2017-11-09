@@ -12,6 +12,7 @@ import { HttpModule } from '@angular/http';
 import { FetchDataService } from './fetch-data.service';
 import { FormsModule } from '@angular/forms';
 import { ApiConfigService } from './api-config.service';
+import { NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ApiConfigService } from './api-config.service';
     BrowserModule,
     routes,
     HttpModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   providers: [FetchDataService, ApiConfigService],
   bootstrap: [AppComponent]

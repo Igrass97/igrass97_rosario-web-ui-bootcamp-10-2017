@@ -20,7 +20,7 @@ export class SearchGuildComponent implements OnInit {
   realm: string;
   guildName: string;
   guild: Guild;
-  fetched: number = 0;
+  found: number = 0;
   members: Character[];
   races: Race[];
   classes: ClassType[];
@@ -29,6 +29,7 @@ export class SearchGuildComponent implements OnInit {
   realmNames: String[] = [];
   clicked: boolean = false;
   searched: boolean = false;
+  error: string;
 
   constructor(private _fetchData: FetchDataService) { }
 
@@ -59,17 +60,33 @@ export class SearchGuildComponent implements OnInit {
     this._fetchData.getGuild(realm, guildName)
       .subscribe(response =>{
         this.guild = response;
-        this.fetched = 1;
+        this.found = 2;
         this.members = Object.values(this.guild.members);
         console.log(this.members);
         this.searched = true;
-      });
+      },
+      error => {
+        let body = JSON.parse(error._body);
+        this.error = body.reason;
+        this.found = 3;
+        console.log(body.reason); 
+      }  
+    );
   }
 
   searchMember(realm: string, name: string){
     console.log('Searching');
     this.child.searchCharacter(realm, name);
     this.clicked = true;
+    this.searched = false;
   }
 
+  goBack(){
+    this.clicked = false;
+    this.searched = true;
+  }
+
+  goBackToSearch(){
+    this.searched = false;
+  }
 }
