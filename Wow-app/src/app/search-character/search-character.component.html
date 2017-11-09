@@ -1,25 +1,34 @@
 <div class="container">
   <button *ngIf="clicked" (click)="goBack()">BACK</button>
-  <div class="searcher" *ngIf="!clicked">
+  <div *ngIf="!clicked">
     <header>
       <h1 class="text-center">Character Search</h1>
     </header>
     <div class="row">
       <div class="col-sm-12 text-center input-fields">
-        <table>
-          <tr>
-            <td><label><strong>Select realm</strong></label></td>
-            <td>
-              <select *ngIf="fetched==1" [(ngModel)]="realm">
+        <div class="row">
+          <div class="col-sm-4"></div>
+          <div class="col-sm-2">
+            <label><strong>Select realm</strong></label>
+          </div>
+          <div class="col-sm-2">
+            <select *ngIf="fetched==1" [(ngModel)]="realm">
                 <option *ngFor="let realm of realmNames" [value]="realm">{{realm}}</option>
-              </select>
-          </td>
-          </tr>
-          <tr>
-            <td><label><strong>Character name</strong></label></td>
-            <td><input type="text" [(ngModel)]="name"></td>
-          </tr>
-        </table>
+            </select>
+          </div>
+          <div class="col-sm-4"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-4"></div>
+          <div class="col-sm-2">
+            <label><strong>Character name</strong></label>
+          </div>
+          <div class="col-sm-2">
+            <input type="text" [(ngModel)]="name">
+          </div>
+          <div class="col-sm-4"></div>
+        </div>
         <button (click)="searchCharacter()">SEARCH</button>
       </div> 
     </div>

@@ -1,21 +1,42 @@
 <div class="container">
-  <label>Select realm</label>
-  <select *ngIf="realmsFound==1" [(ngModel)]="realm">
-    <option *ngFor="let realm of realmNames" [value]="realm">{{realm}}</option>
-  </select>
-  <br>
-  <label>Name</label>
-  <input type="text" [(ngModel)]="guildName">
-
-  <button (click)="searchGuild(realm, guildName)">Search</button>
-
-  <div *ngIf="fetched">
-    <h1>{{guild.name}}</h1>
-    <h2>Level: {{guild.level}}</h2>
+  <header *ngIf = "!searched">
+    <h1 class="text-center">Guild Search</h1>
+  </header>
+  <div class="input-fields" *ngIf = "!searched">
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-2">
+        <label>Select realm</label>
+      </div>
+      <div class="col-sm-2">
+        <select *ngIf="realmsFound==1" [(ngModel)]="realm">
+          <option *ngFor="let realm of realmNames" [value]="realm">{{realm}}</option>
+        </select>
+      </div>
+    </div>
     
-    <h2>Members</h2>
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-2">
+        <label>Name</label>
+      </div>
+      <div class="col-sm-2">
+        <input type="text" [(ngModel)]="guildName">
+      </div>
+    </div>
+    <button (click)="searchGuild(realm, guildName)">Search</button>    
+  </div>
 
-    <table>
+  <div *ngIf="fetched && !clicked">
+    <div class="headers container text-center">
+      <h1>Guild name: {{guild.name}}</h1>
+      <h2>Level: {{guild.level}}</h2>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <h2>Members</h2>
+    <table class="interactivetable">
       <tr *ngFor="let member of members" (click)="searchMember(member.character.realm, member.character.name)">
         <td>{{member.character.name}}</td>
 
@@ -30,9 +51,8 @@
               <span *ngIf="race.id==member.character.race">{{race.name}}</span>
           </div>
         </td>
-        <td><img src="https://render-us.worldofwarcraft.com/character/{{member.character.thumbnail}}" alt="thumbnail not found"></td>
       </tr>
     </table>
   </div>
-  <app-character-info></app-character-info>
+  <app-character-info [clicked]="clicked"></app-character-info>
 </div>

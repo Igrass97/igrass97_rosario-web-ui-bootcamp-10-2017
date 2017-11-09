@@ -3,10 +3,23 @@
 }
 
 .navbar{
-  background: rgba(255, 0, 0, 0.66);
+  background: #458b00;
+  border-radius: 30px;
+  margin-top: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  box-shadow: 0px 0px 30px black;
 }
 
 .navbar-nav>li {
    display: inline-block;
    margin: 10px;
+}
+
+.navbar-nav li a {
+  color: black;
+}
+
+.navbar-nav li:hover a{
+  color: white;
 }

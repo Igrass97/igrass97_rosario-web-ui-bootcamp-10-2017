@@ -27,6 +27,8 @@ export class SearchGuildComponent implements OnInit {
   realmsFound: number = 0;
   realmList: Realm[];
   realmNames: String[] = [];
+  clicked: boolean = false;
+  searched: boolean = false;
 
   constructor(private _fetchData: FetchDataService) { }
 
@@ -60,11 +62,14 @@ export class SearchGuildComponent implements OnInit {
         this.fetched = 1;
         this.members = Object.values(this.guild.members);
         console.log(this.members);
+        this.searched = true;
       });
   }
 
   searchMember(realm: string, name: string){
+    console.log('Searching');
     this.child.searchCharacter(realm, name);
+    this.clicked = true;
   }
 
 }

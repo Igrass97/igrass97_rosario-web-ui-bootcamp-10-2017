@@ -3,15 +3,17 @@
 *{
   box-sizing: border-box;
 }
+
 header{
   h1{
     margin: 30px auto;
+    color: #458b00;
   }
 }
 
 button{
   margin: 30px auto;
-  background: rgba(119, 0, 255, 0.57);
+  background: #458b00;
   outline: none;
   border: none;
   padding: 10px;
@@ -24,5 +26,40 @@ button:hover {
 }
 
 body{
-  background: rgba(0, 0, 0, 0);
+  background-image: url("./assets/images/dirtblue.jpg");
+  background-repeat: repeat;
+}
+
+.input-fields{
+  background: rgba(0, 0, 0, 0.33);
+  padding: 50px;
+  border-radius: 15px;
+  color: white;
+  .row {
+    margin: 10px;
+  }
+}
+
+.interactivetable{
+  width: 100%;
+  text-align: center;
+  margin: 20px auto;
+  thead{
+    th{
+      border-bottom: 1px solid black;
+    }
+  }
+  tr{
+    border-bottom: 1px solid black;
+    cursor: pointer;
+    td{
+      padding: 15px;
+    }
+  }
+  tr:hover{
+    background: #458b00;
+  }
+  tr:last-child{
+    border: none;
+  }
 }

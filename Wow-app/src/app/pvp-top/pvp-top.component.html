@@ -1,10 +1,10 @@
-<div class="container">  
+<div class="container pvptop">  
   <div *ngIf="!clicked" class="pvp container">
     <header>
         <h1 class="text-center">Top Pvp mode</h1>
     </header>
     <div *ngIf="fetched">
-      <table>
+      <table class="interactivetable">
         <thead>
           <th>Rating</th>
           <th>Name</th>
@@ -20,6 +20,9 @@
       </table>
     </div>
   </div>
+</div>
+
+<div class="container">
   <button *ngIf="clicked" (click)="goBack()">BACK</button>
-    <app-character-info [clicked]="clicked"></app-character-info>
+  <app-character-info [clicked]="clicked"></app-character-info>
 </div>

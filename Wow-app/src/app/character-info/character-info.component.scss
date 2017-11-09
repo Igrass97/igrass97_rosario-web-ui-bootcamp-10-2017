@@ -17,7 +17,8 @@ table{
 }
 
 .items, .info-stats, .pvp-info{
-  background: rgba(119, 0, 255, 0.57);
+  background: rgba(0, 0, 0, 0.33);
+  color: white;
   border-radius: 15px;
   padding: 20px;
   margin: 50px auto;
@@ -33,7 +34,8 @@ h2{
 }
 
 .title{
-  color: rgba(76, 0, 255, 0.90); ;
+  text-shadow: 0px 0px 50px #0CEB43;
+  color: #000000;  
 }
 
 .error{
