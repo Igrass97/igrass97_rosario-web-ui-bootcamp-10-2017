@@ -22,21 +22,7 @@ export class PvpTopComponent implements AfterViewInit {
   constructor(private _fetchData: FetchDataService) {}
 
   ngAfterViewInit() {
-    this.found = 1;
-    this._fetchData.getPvpLeaderboard()
-      .subscribe(
-        leaderboardResponse => {
-        this.pvpLeaderboard = leaderboardResponse;
-        this.found = 2;
-        console.log(this.pvpLeaderboard);
-        },
-        error => {
-          let body = JSON.parse(error._body);
-          this.error = body.reason;
-          this.found = 3;
-        }
-      );
-
+  
   }
 
   selectCharacter(row){
@@ -47,5 +33,22 @@ export class PvpTopComponent implements AfterViewInit {
 
   goBack(){
     this.clicked = false;
+  }
+
+  getLeaderboard(mode: string){
+    this.found = 1;
+    this._fetchData.getPvpLeaderboard(mode)
+    .subscribe(
+      leaderboardResponse => {
+      this.pvpLeaderboard = leaderboardResponse;
+      this.found = 2;
+      console.log(this.pvpLeaderboard);
+      },
+      error => {
+        let body = JSON.parse(error._body);
+        this.error = body.reason;
+        this.found = 3;
+      }
+    );
   }
 }

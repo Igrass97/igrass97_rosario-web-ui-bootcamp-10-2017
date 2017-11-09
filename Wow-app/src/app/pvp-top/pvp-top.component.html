@@ -1,8 +1,14 @@
-<div class="container pvptop">  
+
+<div class="container" *ngIf="!clicked">
+  <button (click)="getLeaderboard('2v2')">2v2</button>
+  <button (click)="getLeaderboard('3v3')">3v3</button> 
+  <header>
+    <h1 class="text-center">Top Pvp mode</h1>
+  </header> 
+</div>  
+<div class="container pvptop"> 
   <div *ngIf="!clicked" class="pvp container">
-    <header>
-        <h1 class="text-center">Top Pvp mode</h1>
-    </header>
+    
     <div *ngIf="found==2">
       <table class="interactivetable">
         <thead>

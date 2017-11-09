@@ -50,8 +50,8 @@ export class FetchDataService {
   }
 
   //Get Pvp Leaderboard
-  getPvpLeaderboard(){
-    let url = `${this.config.host}leaderboard/2v2?locale=en_US&apikey=s7md2yb8vw4fvrmfgwjkpjjyfsvryvqd`;
+  getPvpLeaderboard(mode: string){
+    let url = `${this.config.host}leaderboard/${mode}?locale=en_US&apikey=s7md2yb8vw4fvrmfgwjkpjjyfsvryvqd`;
     return this._http
       .get(url, {headers: this.config.headers})
     //Get only the 10 first elements
