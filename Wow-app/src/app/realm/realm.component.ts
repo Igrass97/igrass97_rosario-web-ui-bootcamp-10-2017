@@ -11,7 +11,6 @@ import { Realm } from '../realm';
 export class RealmComponent implements OnInit {
 
   realmList : Realm[];
-  error: string;
   found: number = 0;
 
   constructor(private _fetchData: FetchDataService) { }
@@ -24,7 +23,6 @@ export class RealmComponent implements OnInit {
         this.found = 2;
       },
       (error) => {
-        this.error = error;
         this.found = 3;
       }
     );
