@@ -16,7 +16,7 @@
           <th>Realm</th>
         </thead>
         <tbody>
-          <tr *ngFor="let character of pvpLeaderboard" (click)="selectCharacter(character)">
+          <tr *ngFor="let character of pvpLeaderboard" [routerLink]="['/Character', character.realmName, character.name]">
             <td>{{character.rating}}</td>
             <td>{{character.name}}</td>
             <td>{{character.realmName}}</td>

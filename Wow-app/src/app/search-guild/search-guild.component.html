@@ -41,7 +41,7 @@
 
     <h2>Members</h2>
     <table class="interactivetable">
-      <tr *ngFor="let member of members | paginate: {itemsPerPage: 10, currentPage: p} " (click)="searchMember(member.character.realm, member.character.name)">
+      <tr *ngFor="let member of members | paginate: {itemsPerPage: 10, currentPage: p} " [routerLink]="['/Character', member.character.realm, member.character.name]">
         <td>{{member.character.name}}</td>
 
         <td>

@@ -16,7 +16,6 @@ export class PvpTopComponent implements AfterViewInit {
   
   pvpLeaderboard;
   found: number = 0;
-  clicked: boolean = false;
   error: string;
 
   constructor(private _fetchData: FetchDataService) {}
@@ -24,17 +23,7 @@ export class PvpTopComponent implements AfterViewInit {
   ngAfterViewInit() {
   
   }
-
-  selectCharacter(row){
-    this.clicked = true;
-    //Calling child method
-    this.child.searchCharacter(row.realmSlug, row.name);
-  }
-
-  goBack(){
-    this.clicked = false;
-  }
-
+  
   getLeaderboard(mode: string){
     this.found = 1;
     this._fetchData.getPvpLeaderboard(mode)

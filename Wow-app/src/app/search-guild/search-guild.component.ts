@@ -74,13 +74,6 @@ export class SearchGuildComponent implements OnInit {
     );
   }
 
-  searchMember(realm: string, name: string){
-    console.log('Searching');
-    this.child.searchCharacter(realm, name);
-    this.clicked = true;
-    this.searched = false;
-  }
-
   goBack(){
     this.clicked = false;
     this.searched = true;
