@@ -12,15 +12,21 @@ export class RealmComponent implements OnInit {
 
   realmList : Realm[];
   error: string;
-  fetched: number = 0;
+  found: number = 0;
 
   constructor(private _fetchData: FetchDataService) { }
 
   ngOnInit() {
-    this._fetchData.getRealms().subscribe((response) =>  {
-      this.realmList = response;
-      console.log(this.realmList);
-      this.fetched = 1;
-    });
+    this.found = 1;
+    this._fetchData.getRealms().subscribe(
+      (response) =>  {
+        this.realmList = response;
+        this.found = 2;
+      },
+      (error) => {
+        this.error = error;
+        this.found = 3;
+      }
+    );
   }
 }

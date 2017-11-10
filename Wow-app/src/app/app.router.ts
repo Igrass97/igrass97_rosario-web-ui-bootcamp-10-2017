@@ -11,7 +11,7 @@ export const router : Routes = [
   { path: "", redirectTo: "realm", pathMatch: "full"},
   { path: "realm", component: RealmComponent },
   { path: "pvp", component: PvpTopComponent },
-  { path: "search-character", component: SearchCharacterComponent },
+  { path: "Character", component: SearchCharacterComponent },
   { path: "Character/:realm/:name", component: CharacterInfoComponent },
   { path: "search-guild", component: SearchGuildComponent }
 ];
