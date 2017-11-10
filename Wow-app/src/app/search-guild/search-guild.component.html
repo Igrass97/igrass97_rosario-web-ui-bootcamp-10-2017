@@ -1,12 +1,9 @@
 <div class="container">
-  <button (click)="goBack()">BACK</button>
-  <button *ngIf="searched" (click)="goBackToSearch()">BACK</button>
-
-  <header *ngIf = "!searched">
+  <header>
       <h1 class="text-center">Guild Search</h1>
   </header>
 
-  <div class="input-fields" *ngIf = "!searched">
+  <div class="input-fields">
     <div class="row">
       <div class="col-sm-4"></div>
       <div class="col-sm-2">
@@ -28,10 +25,10 @@
         <input type="text" [(ngModel)]="guildName">
       </div>
     </div>
-    <button (click)="searchGuild(realm, guildName)">Search</button>    
+    <button>Search</button>    
   </div>
 
-  <div *ngIf="found==2 && searched">
+  <div *ngIf="found==2">
     <div class="headers container text-center">
       <h1>Guild name: {{guild.name}}</h1>
       <h2>Level: {{guild.level}}</h2>

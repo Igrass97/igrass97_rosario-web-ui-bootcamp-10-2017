@@ -13,7 +13,7 @@ export const router : Routes = [
   { path: "Pvp/:mode", component: PvpTopComponent },
   { path: "Character", component: SearchCharacterComponent },
   { path: "Character/:realm/:name", component: CharacterInfoComponent },
-  { path: "search-guild", component: SearchGuildComponent }
+  { path: "Guild", component: SearchGuildComponent }
 ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);

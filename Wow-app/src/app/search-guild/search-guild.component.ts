@@ -15,8 +15,6 @@ import { Character } from '../character';
 
 export class SearchGuildComponent implements OnInit {
 
-  @ViewChild(CharacterInfoComponent) child: CharacterInfoComponent;
-
   realm: string;
   guildName: string;
   guild: Guild;
@@ -27,8 +25,6 @@ export class SearchGuildComponent implements OnInit {
   realmsFound: number = 0;
   realmList: Realm[];
   realmNames: String[] = [];
-  clicked: boolean = false;
-  searched: boolean = false;
   error: string;
 
   constructor(private _fetchData: FetchDataService) { }
@@ -63,7 +59,6 @@ export class SearchGuildComponent implements OnInit {
         this.found = 2;
         this.members = Object.values(this.guild.members);
         console.log(this.members);
-        this.searched = true;
       },
       error => {
         let body = JSON.parse(error._body);
@@ -72,14 +67,5 @@ export class SearchGuildComponent implements OnInit {
         console.log(body.reason); 
       }  
     );
-  }
-
-  goBack(){
-    this.clicked = false;
-    this.searched = true;
-  }
-
-  goBackToSearch(){
-    this.searched = false;
   }
 }
