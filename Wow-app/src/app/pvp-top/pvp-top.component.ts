@@ -1,6 +1,10 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { FetchDataService } from '../fetch-data.service';
 import { CharacterInfoComponent } from '../character-info/character-info.component';
+
+//Imports for the query params in the route
+import { ActivatedRoute, Params } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
 
 @Component({
@@ -9,21 +13,37 @@ import { CharacterInfoComponent } from '../character-info/character-info.compone
   styleUrls: ['./pvp-top.component.scss']
 })
 
-export class PvpTopComponent implements OnInit{
+export class PvpTopComponent implements OnInit, OnDestroy{
+  //Router
+  routeSubscription: Subscription;
 
   pvpLeaderboard;
   found: number = 0;
   error: string;
+  mode: string;
+  show: boolean;
+  
 
-  constructor(private _fetchData: FetchDataService) {}
+  constructor(private _fetchData: FetchDataService, private _aRoute: ActivatedRoute) {}
 
   ngOnInit(){
-    this.getLeaderboard("2v2");
+
+    //Query params
+    this.routeSubscription = this._aRoute.params.subscribe(
+      params => {
+        this.mode = params['mode'];
+        this.getLeaderboard();
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    if(this.routeSubscription) this.routeSubscription.unsubscribe();
   }
   
-  getLeaderboard(mode: string){
+  getLeaderboard(){
     this.found = 1;
-    this._fetchData.getPvpLeaderboard(mode)
+    this._fetchData.getPvpLeaderboard(this.mode)
     .subscribe(
       response => {
       this.pvpLeaderboard = response;

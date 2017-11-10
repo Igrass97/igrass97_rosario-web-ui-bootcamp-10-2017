@@ -1,8 +1,8 @@
 <div class="container">
-  <button (click)="getLeaderboard('2v2')">2v2</button>
-  <button (click)="getLeaderboard('3v3')">3v3</button> 
+  <button [routerLink]="['/Pvp', '2v2']">2v2</button>
+  <button [routerLink]="['/Pvp', '3v3']">3v3</button> 
   <header>
-    <h1 class="text-center">Top Pvp mode</h1>
+    <h1 class="text-center">Top {{mode}}</h1>
   </header> 
 </div>  
 
@@ -24,6 +24,6 @@
       </tbody>
     </table>
   </div>
-  <div *ngIf="found==1">Loading..</div>
-  <div *ngIf="found==2">{{error}}</div>
+  <p *ngIf="found==1">Loading..</p>
+  <p *ngIf="found==2">{{error}}</p>
 </div>

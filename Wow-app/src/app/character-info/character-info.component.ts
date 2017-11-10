@@ -18,6 +18,7 @@ import { Subscription } from 'rxjs/Subscription';
 export class CharacterInfoComponent implements OnInit {
   //Router
   routeSubscription: Subscription;
+
   character: Character;
 
   //Data resources (class and race list)
@@ -54,7 +55,7 @@ export class CharacterInfoComponent implements OnInit {
 
       //Query params
       this.routeSubscription = this._route.params.subscribe(
-        (params) => {
+        params => {
           this.name = params['name'];
           this.realm = params['realm'];
         }
