@@ -9,29 +9,25 @@ import { CharacterInfoComponent } from '../character-info/character-info.compone
   styleUrls: ['./pvp-top.component.scss']
 })
 
-export class PvpTopComponent implements AfterViewInit {
+export class PvpTopComponent implements OnInit{
 
-  //Viewing child for calling the SearchCharacter method
-  @ViewChild(CharacterInfoComponent) child: CharacterInfoComponent;
-  
   pvpLeaderboard;
   found: number = 0;
   error: string;
 
   constructor(private _fetchData: FetchDataService) {}
 
-  ngAfterViewInit() {
-  
+  ngOnInit(){
+    this.getLeaderboard("2v2");
   }
   
   getLeaderboard(mode: string){
     this.found = 1;
     this._fetchData.getPvpLeaderboard(mode)
     .subscribe(
-      leaderboardResponse => {
-      this.pvpLeaderboard = leaderboardResponse;
+      response => {
+      this.pvpLeaderboard = response;
       this.found = 2;
-      console.log(this.pvpLeaderboard);
       },
       error => {
         let body = JSON.parse(error._body);

@@ -1,4 +1,4 @@
-<div class="text-center">
+<div class="text-center container">
   <div *ngIf="found==2">
     <header>
       <h1>{{character.name}} information</h1>
@@ -26,7 +26,7 @@
           <li><strong>Level:</strong> {{character.level}}</li>
           <li><strong>Achievements points:</strong> {{character.achievementPoints}}</li>
               
-          <!-- Displaying Guild only if the character has one -->
+          <!-- Displaying Guild only if the character belongs to one -->
           <li *ngIf="character.guild"><strong>Guild name:</strong> {{character.guild.name}}</li>
         </ul>
       </div>
@@ -134,12 +134,6 @@
         </div>
     </div>
   </div>
-
-  <div *ngIf="found==3" class="error">
-    <p>{{error}}</p>
-  </div>
-
-  <div *ngIf="found==1" class="error">
-      <p>Loading..</p>
-  </div>
+    <p *ngIf="found==3">{{error}}</p>
+    <p *ngIf="found==1">Loading..</p>
 </div>

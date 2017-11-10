@@ -4,6 +4,8 @@ import { Character } from '../character';
 import { Race } from '../race';
 import { ClassType } from '../class-type';
 import { Item } from '../item';
+
+//Imports for the query params in the route
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -14,16 +16,24 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./character-info.component.scss']
 })
 export class CharacterInfoComponent implements OnInit {
-
+  //Router
   routeSubscription: Subscription;
   character: Character;
+
+  //Data resources (class and race list)
   races: Race[];
   classes: ClassType[];
+
+  //Item names
   itemValues: Array<any> = [];
   itemColOne : Array<any> = [];
   itemColTwo : Array<any> = [];
+
+  //Character info (passed as query params)
   name : string;
   realm : string;
+
+  //Control variables
   found: number = 0;
   error: string;
 
@@ -42,6 +52,7 @@ export class CharacterInfoComponent implements OnInit {
         this.classes = classesResp;  
       });
 
+      //Query params
       this.routeSubscription = this._route.params.subscribe(
         (params) => {
           this.name = params['name'];
@@ -49,6 +60,7 @@ export class CharacterInfoComponent implements OnInit {
         }
       );
 
+      //Calls the search with the query params
       this.searchCharacter(this.realm, this.name);
   }
 
@@ -57,7 +69,6 @@ export class CharacterInfoComponent implements OnInit {
     //Storing the character info
     this._fetchData.getCharacter(realm, name)
     .subscribe(
-      
       characterResp => {
       this.character = characterResp;
       //Creating a item list to iterate on it in the view (the 2 first elements aren't items)

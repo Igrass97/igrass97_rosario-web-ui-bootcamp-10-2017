@@ -5,26 +5,25 @@
     <h1 class="text-center">Top Pvp mode</h1>
   </header> 
 </div>  
-<div class="container pvptop"> 
-  <div class="pvp container">
-    
-    <div *ngIf="found==2">
-      <table class="interactivetable">
-        <thead>
-          <th>Rating</th>
-          <th>Name</th>
-          <th>Realm</th>
-        </thead>
-        <tbody>
-          <tr *ngFor="let character of pvpLeaderboard" [routerLink]="['/Character', character.realmName, character.name]">
-            <td>{{character.rating}}</td>
-            <td>{{character.name}}</td>
-            <td>{{character.realmName}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div *ngIf="found==1">Loading..</div>
-    <div *ngIf="found==2">{{error}}</div>
+
+<div class="pvp container">
+  <div *ngIf="found==2" class="pvptop">
+    <table class="interactivetable">
+      <thead>
+        <th>Rating</th>
+        <th>Name</th>
+        <th>Realm</th>
+      </thead>
+      <tbody>
+        <!-- Clicking in a row of the table, calls the Character route with the query parameters -->
+        <tr *ngFor="let character of pvpLeaderboard" [routerLink]="['/Character', character.realmName, character.name]">
+          <td>{{character.rating}}</td>
+          <td>{{character.name}}</td>
+          <td>{{character.realmName}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+  <div *ngIf="found==1">Loading..</div>
+  <div *ngIf="found==2">{{error}}</div>
 </div>
