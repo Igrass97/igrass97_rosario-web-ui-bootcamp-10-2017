@@ -15,6 +15,7 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './character-info.component.html',
   styleUrls: ['./character-info.component.scss']
 })
+
 export class CharacterInfoComponent implements OnInit {
   //Router
   routeSubscription: Subscription;
@@ -56,8 +57,8 @@ export class CharacterInfoComponent implements OnInit {
       //Query params
       this.routeSubscription = this._route.params.subscribe(
         params => {
-          this.name = params['name'];
-          this.realm = params['realm'];
+          this.name = params.name;
+          this.realm = params.realm;
         }
       );
 
@@ -82,8 +83,7 @@ export class CharacterInfoComponent implements OnInit {
       error => {
         let body = JSON.parse(error._body);
         this.error = body.reason;
-        this.found = 3;
-        console.log(body.reason);     
+        this.found = 3;    
       }
     );
   }

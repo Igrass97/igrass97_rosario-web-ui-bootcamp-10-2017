@@ -47,8 +47,8 @@ export class GuildInfoComponent implements OnInit {
     //Query params
     this.routeSubscription = this._route.params.subscribe(
       params => {
-        this.guildName = params['guildName'];
-        this.realm = params['realm'];
+        this.guildName = params.guildName;
+        this.realm = params.realm;
         this.searchGuild();
       }
     );
@@ -67,7 +67,6 @@ export class GuildInfoComponent implements OnInit {
         let body = JSON.parse(error._body);
         this.error = body.reason;
         this.found = 3;
-        console.log(body.reason); 
       }  
     );
   }

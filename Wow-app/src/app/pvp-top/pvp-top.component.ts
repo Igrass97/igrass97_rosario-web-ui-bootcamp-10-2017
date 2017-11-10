@@ -31,7 +31,7 @@ export class PvpTopComponent implements OnInit, OnDestroy{
     //Query params
     this.routeSubscription = this._aRoute.params.subscribe(
       params => {
-        this.mode = params['mode'];
+        this.mode = params.mode;
         this.getLeaderboard();
       }
     );
