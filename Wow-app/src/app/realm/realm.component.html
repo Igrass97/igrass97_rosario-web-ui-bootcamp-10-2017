@@ -12,8 +12,8 @@
         <tr *ngFor="let realm of realmList">
           <td><strong>{{realm.name}}</strong></td>
           <td>
-            <span *ngIf="realm.status==true" class="online">Online</span>
-            <span *ngIf="realm.status==false" class="offline">Offline</span>
+            <span *ngIf="realm.status" class="online">Online</span>
+            <span *ngIf="!realm.status" class="offline">Offline</span>
           </td>
         </tr>
       </tbody>

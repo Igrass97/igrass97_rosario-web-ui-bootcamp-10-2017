@@ -16,10 +16,10 @@
           <th>Realm</th>
         </thead>
         <tbody>
-          <tr *ngFor="let row of pvpLeaderboard" (click)="selectCharacter(row)">
-            <td>{{row.rating}}</td>
-            <td>{{row.name}}</td>
-            <td>{{row.realmName}}</td>
+          <tr *ngFor="let character of pvpLeaderboard" (click)="selectCharacter(character)">
+            <td>{{character.rating}}</td>
+            <td>{{character.name}}</td>
+            <td>{{character.realmName}}</td>
           </tr>
         </tbody>
       </table>
