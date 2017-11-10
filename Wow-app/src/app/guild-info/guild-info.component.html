@@ -1,0 +1,30 @@
+<div *ngIf="found==2" class="container">
+    <div class="headers container text-center">
+      <h1>Guild name: {{guild.name}}</h1>
+      <h2>Level: {{guild.level}}</h2>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <h2>Members</h2>
+    <table class="interactivetable">
+      <tr *ngFor="let member of members | paginate: {itemsPerPage: 10, currentPage: p} " [routerLink]="['/Character', member.character.realm, member.character.name]">
+        <td>{{member.character.name}}</td>
+
+        <td>
+          <div *ngFor="let class of classes">
+              <span *ngIf="class.id==member.character.class">{{class.name}}</span>
+          </div>
+        </td>
+
+        <td>
+          <div *ngFor="let race of races">
+              <span *ngIf="race.id==member.character.race">{{race.name}}</span>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <pagination-controls (pageChange)="p =$event"></pagination-controls>
+  </div>
+  <div *ngIf="found==1">Loading</div>
+  <div *ngIf="found==3"></div>

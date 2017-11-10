@@ -13,6 +13,7 @@ import { FetchDataService } from './fetch-data.service';
 import { FormsModule } from '@angular/forms';
 import { ApiConfigService } from './api-config.service';
 import { NgxPaginationModule} from 'ngx-pagination';
+import { GuildInfoComponent } from './guild-info/guild-info.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NgxPaginationModule} from 'ngx-pagination';
     CharacterInfoComponent,
     PvpTopComponent,
     SearchGuildComponent,
-    SearchCharacterComponent
+    SearchCharacterComponent,
+    GuildInfoComponent
   ],
   imports: [
     BrowserModule,

@@ -17,31 +17,14 @@ export class SearchGuildComponent implements OnInit {
 
   realm: string;
   guildName: string;
-  guild: Guild;
   found: number = 0;
-  members: Character[];
-  races: Race[];
-  classes: ClassType[];
   realmsFound: number = 0;
   realmList: Realm[];
   realmNames: String[] = [];
-  error: string;
 
   constructor(private _fetchData: FetchDataService) { }
 
   ngOnInit() {
-       //Storing the races
-       this._fetchData.getRaces()
-       .subscribe(racesResp => {
-         this.races = racesResp;
-       });
- 
-       //Storing the classes
-       this._fetchData.getClasses()
-       .subscribe(classesResp => {
-         this.classes = classesResp;
-       });
-
       //Subscribing to the observable and creating a realmNames array for the html select.
       this._fetchData.getRealms().subscribe(response =>{
       this.realmList = response;
@@ -50,22 +33,5 @@ export class SearchGuildComponent implements OnInit {
       });
       this.realmsFound = 1;
     });
-  }
-
-  searchGuild(realm: string, guildName: string){
-    this._fetchData.getGuild(realm, guildName)
-      .subscribe(response =>{
-        this.guild = response;
-        this.found = 2;
-        this.members = Object.values(this.guild.members);
-        console.log(this.members);
-      },
-      error => {
-        let body = JSON.parse(error._body);
-        this.error = body.reason;
-        this.found = 3;
-        console.log(body.reason); 
-      }  
-    );
   }
 }
