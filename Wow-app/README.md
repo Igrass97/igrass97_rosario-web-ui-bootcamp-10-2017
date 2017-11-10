@@ -13,10 +13,9 @@
 
 <p>Sometimes, when you click a Guild member, the Character API can't get his information.</p>
 <p>
+  <h2>Blizzard says:</h2> 
   <ul>
-  Blizzard says: 
   <br>
-  Posibles razones:
     <li>El personaje lleva un tiempo inactivo. Si este es tu perfil, accede al juego con el personaje un momento y vuelve a intentarlo.</li>
     <li>El nombre del personaje o del reino no está escrito correctamente.</li>
     <li>El personaje se encuentra en un proceso de cambio de reino o de facción.</li>
