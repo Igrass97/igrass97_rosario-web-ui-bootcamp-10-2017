@@ -9,6 +9,18 @@
     <li>3 = error</li>
   </ul>
 
+- Router scheme
+
+  <ul>
+    <li>../Realm ---> <strong>Realm status<strong></li>
+    <li>../Character ---> <strong>Character search fields<strong></li>
+    <li>../Character/:realm/:name ---> <strong>Information of :name from realm :realm<strong></li>
+    <li>../Guild ---> <strong>Search guild fields<strong></li>
+    <li>../Guild/:realm/:name ---> <strong>Information of guild :name from realm :realm<strong></li>
+    <li>../Pvp/2v2 ---> <strong>2v2 Pvp leaderboard<strong></li>
+    <li>../Pvp/3v3 ---> <strong>3v3 Pvp leaderboard<strong></li>
+  </ul>
+
 <h1>Known issues:</h1>
 
 <p>Sometimes, when you click a Guild member, the Character API can't get his information.</p>
