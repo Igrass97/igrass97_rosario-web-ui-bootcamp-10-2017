@@ -1,6 +1,5 @@
 <div class="container">
-  <button *ngIf="clicked" (click)="goBack()">BACK</button>
-  <div *ngIf="!clicked">
+  <div>
     <header>
       <h1 class="text-center">Character Search</h1>
     </header>
@@ -29,10 +28,9 @@
           </div>
           <div class="col-sm-4"></div>
         </div>
-        <button (click)="searchCharacter()">SEARCH</button>
+        <button [routerLink]="['/Character', realm, name]">SEARCH</button>
       </div> 
     </div>
   </div>
-  <app-character-info [clicked]="clicked" [realm]="realm" [name]="name">Searching..</app-character-info>
 </div>
 

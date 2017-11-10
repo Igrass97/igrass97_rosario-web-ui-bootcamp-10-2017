@@ -11,14 +11,11 @@ import { CharacterInfoComponent } from '../character-info/character-info.compone
 
 export class SearchCharacterComponent implements OnInit {
 
-  @ViewChild(CharacterInfoComponent) child: CharacterInfoComponent;
-  
   name: string;
   realm: string;
   realmList: Realm[];
   realmNames: String[] = [];
   fetched: number = 0;
-  clicked: boolean = false;
 
   constructor(private _fetchData: FetchDataService ) { }
 
@@ -31,14 +28,5 @@ export class SearchCharacterComponent implements OnInit {
       });
       this.fetched = 1;
     });
-  }
-
-  searchCharacter(){
-    this.child.searchCharacter(this.realm, this.name);
-    this.clicked = true;
-  }
-
-  goBack(){
-    this.clicked = false;
   }
 }

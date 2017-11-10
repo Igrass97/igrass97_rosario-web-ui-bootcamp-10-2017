@@ -4,6 +4,8 @@ import { Character } from '../character';
 import { Race } from '../race';
 import { ClassType } from '../class-type';
 import { Item } from '../item';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
 
 @Component({
@@ -13,20 +15,19 @@ import { Item } from '../item';
 })
 export class CharacterInfoComponent implements OnInit {
 
-  @Input() name: string;
-  @Input() realm: string;
-  @Input() clicked: boolean;
-  
+  routeSubscription: Subscription;
   character: Character;
   races: Race[];
   classes: ClassType[];
   itemValues: Array<any> = [];
   itemColOne : Array<any> = [];
   itemColTwo : Array<any> = [];
+  name : string;
+  realm : string;
   found: number = 0;
   error: string;
 
-  constructor(private _fetchData: FetchDataService) { }
+  constructor(private _fetchData: FetchDataService, private _route: ActivatedRoute) { }
 
   ngOnInit() {
       //Storing the races
@@ -40,6 +41,15 @@ export class CharacterInfoComponent implements OnInit {
       .subscribe(classesResp => {
         this.classes = classesResp;  
       });
+
+      this.routeSubscription = this._route.params.subscribe(
+        (params) => {
+          this.name = params['name'];
+          this.realm = params['realm'];
+        }
+      );
+
+      this.searchCharacter(this.realm, this.name);
   }
 
   searchCharacter(realm: string, name: string){

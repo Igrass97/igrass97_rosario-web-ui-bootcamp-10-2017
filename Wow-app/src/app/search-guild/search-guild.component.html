@@ -1,12 +1,12 @@
 <div class="container">
-  <button *ngIf="clicked" (click)="goBack()">BACK</button>
+  <button (click)="goBack()">BACK</button>
   <button *ngIf="searched" (click)="goBackToSearch()">BACK</button>
 
-  <header *ngIf = "!searched && !clicked">
+  <header *ngIf = "!searched">
       <h1 class="text-center">Guild Search</h1>
   </header>
 
-  <div class="input-fields" *ngIf = "!searched && !clicked">
+  <div class="input-fields" *ngIf = "!searched">
     <div class="row">
       <div class="col-sm-4"></div>
       <div class="col-sm-2">
@@ -31,7 +31,7 @@
     <button (click)="searchGuild(realm, guildName)">Search</button>    
   </div>
 
-  <div *ngIf="found==2 && !clicked && searched">
+  <div *ngIf="found==2 && searched">
     <div class="headers container text-center">
       <h1>Guild name: {{guild.name}}</h1>
       <h2>Level: {{guild.level}}</h2>
@@ -61,5 +61,4 @@
   </div>
   <div *ngIf="found==1">Loading</div>
   <div *ngIf="found==3"></div>
-  <app-character-info [clicked]="clicked"></app-character-info>
 </div>

@@ -5,12 +5,14 @@ import { PvpTopComponent } from './pvp-top/pvp-top.component';
 import { RealmComponent } from './realm/realm.component';
 import { SearchCharacterComponent } from './search-character/search-character.component';
 import { SearchGuildComponent } from './search-guild/search-guild.component';
+import { CharacterInfoComponent } from './character-info/character-info.component';
 
 export const router : Routes = [
   { path: "", redirectTo: "realm", pathMatch: "full"},
   { path: "realm", component: RealmComponent },
   { path: "pvp", component: PvpTopComponent },
   { path: "search-character", component: SearchCharacterComponent },
+  { path: "Character/:realm/:name", component: CharacterInfoComponent },
   { path: "search-guild", component: SearchGuildComponent }
 ];
 

@@ -1,4 +1,4 @@
-<div class="container" *ngIf="!clicked">
+<div class="container">
   <button (click)="getLeaderboard('2v2')">2v2</button>
   <button (click)="getLeaderboard('3v3')">3v3</button> 
   <header>
@@ -6,7 +6,7 @@
   </header> 
 </div>  
 <div class="container pvptop"> 
-  <div *ngIf="!clicked" class="pvp container">
+  <div class="pvp container">
     
     <div *ngIf="found==2">
       <table class="interactivetable">
@@ -27,9 +27,4 @@
     <div *ngIf="found==1">Loading..</div>
     <div *ngIf="found==2">{{error}}</div>
   </div>
-</div>
-
-<div class="container">
-  <button *ngIf="clicked" (click)="goBack()">BACK</button>
-  <app-character-info [clicked]="clicked"></app-character-info>
 </div>

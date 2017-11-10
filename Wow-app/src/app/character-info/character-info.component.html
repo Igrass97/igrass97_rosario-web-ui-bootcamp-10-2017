@@ -1,5 +1,5 @@
 <div class="text-center">
-  <div *ngIf="found==2 && clicked">
+  <div *ngIf="found==2">
     <header>
       <h1>{{character.name}} information</h1>
     </header>
@@ -135,11 +135,11 @@
     </div>
   </div>
 
-  <div *ngIf="found==3 && clicked" class="error">
+  <div *ngIf="found==3" class="error">
     <p>{{error}}</p>
   </div>
 
-  <div *ngIf="found==1 && clicked" class="error">
+  <div *ngIf="found==1" class="error">
       <p>Loading..</p>
   </div>
 </div>
