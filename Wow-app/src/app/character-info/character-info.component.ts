@@ -4,6 +4,7 @@ import { Character } from '../character';
 import { Race } from '../race';
 import { ClassType } from '../class-type';
 import { Item } from '../item';
+import { Location } from '@angular/common';
 
 //Imports for the query params in the route
 import { ActivatedRoute } from '@angular/router';
@@ -39,7 +40,7 @@ export class CharacterInfoComponent implements OnInit {
   found: number = 0;
   error: string;
 
-  constructor(private _fetchData: FetchDataService, private _route: ActivatedRoute) { }
+  constructor(private _fetchData: FetchDataService, private _route: ActivatedRoute, private _location: Location) { }
 
   ngOnInit() {
       //Storing the races
@@ -86,5 +87,9 @@ export class CharacterInfoComponent implements OnInit {
         this.found = 3;    
       }
     );
+  }
+
+  navigateBack(){
+    this._location.back();
   }
 }

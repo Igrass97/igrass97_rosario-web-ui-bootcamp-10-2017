@@ -1,12 +1,12 @@
 <div *ngIf="found==2" class="container">
     <div class="headers container text-center">
-      <h1>Guild name: {{guild.name}}</h1>
-      <h2>Level: {{guild.level}}</h2>
+      <h1>Guild name: <span class="resalted">{{guild.name}}</span></h1>
+      <h2>Level: <span class="resalted">{{guild.level}}</span></h2>
     </div>
 
     <div class="clearfix"></div>
 
-    <h2>Members</h2>
+    <h3 class="text-center">Members</h3>
     <table class="interactivetable">
       <tr *ngFor="let member of members | paginate: {itemsPerPage: 10, currentPage: p} " [routerLink]="['/Character', member.character.realm, member.character.name]">
         <td>{{member.character.name}}</td>
