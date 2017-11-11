@@ -9,7 +9,7 @@ import { CharacterInfoComponent } from './character-info/character-info.componen
 import { GuildInfoComponent } from './guild-info/guild-info.component';
 
 export const router : Routes = [
-  { path: "", redirectTo: "realm", pathMatch: "full"},
+  { path: "", redirectTo: "Realm", pathMatch: "full"},
   { path: "Realm", component: RealmComponent },
   { path: "Pvp/:mode", component: PvpTopComponent },
   { path: "Character", component: SearchCharacterComponent },
