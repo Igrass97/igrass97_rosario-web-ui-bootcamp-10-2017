@@ -1,30 +1,49 @@
-.navbar-nav {
-  display: inline-block;
-}
-
-.navbar{
+/* nav{
   background: #458b00;
   //border-radius: 30px;
   margin-top: 20px;
   margin-right: 10px;
   margin-left: 10px;
+  
+  position: absolute;
+} */
+
+nav {
+  background: #458b00;
   box-shadow: 0px 0px 30px black;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  z-index: 100;
+  width: 200px;
 }
 
-.navbar-nav>li {
-   display: inline-block;
-   margin: 10px;
+.container {
+  position: relative;
 }
 
-.navbar-nav li a {
-  color: black;
+.bars {
+  margin-top: 30px;
+  color: #458b00;
+  width: 30px;
+  display: inline-block;
+  i {
+    cursor: pointer;
+    text-align: center;
+  }
 }
 
-.navbar-nav li:hover a{
-  color: white;
+ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  li {
+    a {
+      color: black; 
+    }
+  }
+  li:hover{
+    background: rgb(1, 95, 5);
+  }
 }
 
-img{
-  margin: 0;
-  padding: 0;
-}

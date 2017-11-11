@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
+  viewNav: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toggleNav(){
+    this.viewNav = !this.viewNav;
+  }
+
+  hideNav(){
+    this.viewNav = false;
   }
 
 }
