@@ -26,5 +26,8 @@
     </table>
     <pagination-controls (pageChange)="p =$event"></pagination-controls>
   </div>
+
+<div class="container text-center">
   <div *ngIf="found==1">Loading</div>
-  <div *ngIf="found==3"></div>
+  <div *ngIf="found==3">{{error}}</div>
+</div>

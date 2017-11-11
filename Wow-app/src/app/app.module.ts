@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { ApiConfigService } from './api-config.service';
 import { NgxPaginationModule} from 'ngx-pagination';
 import { GuildInfoComponent } from './guild-info/guild-info.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { GuildInfoComponent } from './guild-info/guild-info.component';
     PvpTopComponent,
     SearchGuildComponent,
     SearchCharacterComponent,
-    GuildInfoComponent
+    GuildInfoComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

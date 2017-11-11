@@ -57,6 +57,7 @@ export class GuildInfoComponent implements OnInit {
   }
 
   searchGuild(){
+    this.found = 1;
     this._fetchData.getGuild(this.realm, this.guildName)
       .subscribe(response =>{
         this.guild = response;
