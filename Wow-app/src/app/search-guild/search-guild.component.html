@@ -1,30 +1,39 @@
 <div class="container">
-  <header>
-      <h1 class="text-center">Guild Search</h1>
-  </header>
-
-  <div class="input-fields">
-    <div class="row">
-      <div class="col-sm-4"></div>
-      <div class="col-sm-2">
-        <label>Select realm</label>
-      </div>
-      <div class="col-sm-2">
-        <select *ngIf="realmsFound==1" [(ngModel)]="realm">
-          <option *ngFor="let realm of realmNames" [value]="realm">{{realm}}</option>
-        </select>
+    <div>
+      <header>
+        <h1 class="text-center">Guild Search</h1>
+      </header>
+      <div class="row">
+        <div class="col-sm-12 text-center input-fields">
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-2">
+              <label><strong>Select realm</strong></label>
+            </div>
+            <div class="col-sm-2">
+              <p *ngIf="realmsFound==1">Loading</p>
+              <p *ngIf="realmsFound==3">Server error</p>
+              <select *ngIf="realmsFound==2" [(ngModel)]="realm">
+                  <option *ngFor="let realm of realmNames" [value]="realm">{{realm}}</option>
+              </select>
+            </div>
+            <div class="col-sm-4"></div>
+          </div>
+  
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-2">
+              <label><strong>Guild name</strong></label>
+            </div>
+            <div class="col-sm-2">
+              <input type="text" [(ngModel)]="guildName">
+            </div>
+            <div class="col-sm-4"></div>
+          </div>
+          <!-- Calls the Character path with realm and name parameters -->
+          <button [routerLink]="['/Character', realm, guildName]">SEARCH</button>
+        </div> 
       </div>
     </div>
-    
-    <div class="row">
-      <div class="col-sm-4"></div>
-      <div class="col-sm-2">
-        <label>Name</label>
-      </div>
-      <div class="col-sm-2">
-        <input type="text" [(ngModel)]="guildName">
-      </div>
-    </div>
-    <button [routerLink]="['/Guild', realm, guildName]">Search</button>    
   </div>
-</div>
+  

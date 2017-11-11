@@ -25,13 +25,19 @@ export class SearchGuildComponent implements OnInit {
   constructor(private _fetchData: FetchDataService) { }
 
   ngOnInit() {
-      //Subscribing to the observable and creating a realmNames array for the html select.
-      this._fetchData.getRealms().subscribe(response =>{
+    this.realmsFound = 1;
+    //Subscribing to the observable and creating a realmNames array for the html select.
+    this._fetchData.getRealms().subscribe(
+      response => {
       this.realmList = response;
       this.realmList.forEach(realm =>{
       this.realmNames.push(realm.name);
       });
-      this.realmsFound = 1;
-    });
+      this.realmsFound = 2;
+      },
+      error => {
+        this.realmsFound = 3;
+      }
+    );
   }
 }
