@@ -5,16 +5,18 @@
   <div class="realm-list text-center" *ngIf="found==2">
     <table>
       <thead>
-        <th>Realm name</th>
         <th>Realm status</th>
+        <th>Realm name</th>
+        <th>Realm population</th>
       </thead>
       <tbody>
         <tr *ngFor="let realm of realmList">
+            <td>
+              <span *ngIf="realm.status" class="online">Online</span>
+              <span *ngIf="!realm.status" class="offline">Offline</span>
+            </td>
           <td><strong>{{realm.name}}</strong></td>
-          <td>
-            <span *ngIf="realm.status" class="online">Online</span>
-            <span *ngIf="!realm.status" class="offline">Offline</span>
-          </td>
+          <td>{{realm.population}}</td>
         </tr>
       </tbody>
     </table>
