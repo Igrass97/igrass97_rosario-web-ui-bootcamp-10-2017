@@ -1,5 +1,4 @@
 <h1>General concepts:</h1>
-
 - Variable "found": used to display data, error or loading message
 
   <ul>
@@ -22,8 +21,7 @@
   </ul>
 
 <h1>Known issues:</h1>
-
-<p>Sometimes, when you click a Guild member, the Character API can't get his information.</p>
+- Sometimes, when you click a Guild member, the Character API can't get his information.
 <p>
   <h2>Blizzard says:</h2> 
   <ul>
@@ -37,3 +35,18 @@
   </ul>
 </p>
 
+- In Philips Smart TV and my brother's PS4, sometimes the API Calls don't work. (I think is some browser compatibility).
+
+
+<h1>Two of my WOW characters that you can search in the app:</h1>
+Realm: Ragnaros
+<ul>
+  <li>Kinen</li>
+  <li>Lognik</li>
+</ul>
+
+<h1>Two guilds:</h1>
+<ul>
+ <li>From realm Ragnaros: CSI Orgrimmar<li>
+ <li>From realm Daggerspine: pupper club</li>
+</ul>
