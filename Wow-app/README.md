@@ -7,7 +7,7 @@
 </ul>
 
 <h1>General concepts:</h1>
-- Variable "found": used to display data, error or loading message
+Variable "found": used to display data, error or loading message:
 
   <ul>
     <li>0 = none</li>
@@ -16,7 +16,7 @@
     <li>3 = error</li>
   </ul>
 
-- Router scheme
+Router scheme:
 
   <ul>
     <li>../Realm ---> <strong>Realm status</strong></li>
