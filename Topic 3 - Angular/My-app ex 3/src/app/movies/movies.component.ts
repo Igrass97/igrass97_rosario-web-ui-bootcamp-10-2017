@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie } from '../classes/movie';
+import { Movie } from '../movie';
 import { MoviesDataStorageService } from '../services/movies-data-storage.services';
 
 @Component({
@@ -19,6 +19,7 @@ export class MoviesComponent implements OnInit {
   ngOnInit() {
     this._moviesDataService.writeMoviesOnce();
     this.movies = this._moviesDataService.getMovies();
+    console.log(this.movies);
   }
 
   onSelect(movie: Movie) : void {
