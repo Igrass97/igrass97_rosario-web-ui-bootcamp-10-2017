@@ -30,7 +30,7 @@ export class MovieAdderComponent implements OnInit {
 
   submitAdd(): void{
    this._dataService.addNew(this.newMovie);
-   this.newMovie = new Movie({});
+   this.newMovie = new Movie();
    this.onAdd.emit();
   }
 
