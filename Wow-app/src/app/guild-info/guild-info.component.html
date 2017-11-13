@@ -8,7 +8,7 @@
 
     <h3 class="text-center">Members</h3>
     <table class="interactivetable">
-      <tr *ngFor="let member of members | paginate: {itemsPerPage: 10, currentPage: p} " [routerLink]="['/Character', member.character.realm, member.character.name]">
+      <tr *ngFor="let member of members | paginate: {itemsPerPage: 10, currentPage: currentP} " [routerLink]="['/Character', member.character.realm, member.character.name]">
         <td>{{member.character.name}}</td>
 
         <td>
@@ -24,7 +24,7 @@
         </td>
       </tr>
     </table>
-    <pagination-controls (pageChange)="p =$event"></pagination-controls>
+    <pagination-controls (pageChange)="currentP =$event"></pagination-controls>
   </div>
 
 <div class="container text-center">
