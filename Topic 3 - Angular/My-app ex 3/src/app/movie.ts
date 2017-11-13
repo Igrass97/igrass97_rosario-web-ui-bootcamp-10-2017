@@ -1,9 +1,9 @@
 export class Movie {
   
-  id: number;
-  year: number;
-  duration: number;
-  title: string;
+  id: number = null;
+  year: number = null;
+  duration: number = null;
+  title: string = null;
 
   constructor(obj){
     this.id = obj.id;
