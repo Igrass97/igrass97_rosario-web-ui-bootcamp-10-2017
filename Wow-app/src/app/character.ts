@@ -1,6 +1,7 @@
 import { Guild } from './guild';
-import { Item } from './item';
 import { Pvp } from './pvp';
+import { Items } from './items';
+import { Stats } from './stats';
 
 export interface Character {
   lastModified: number;
@@ -17,36 +18,7 @@ export interface Character {
   faction: number;
   totalHonorableKills: number;
   guild: Guild;
-  items: {
-    averageItemLevelEquipped: number;
-    head: Item;
-    neck: Item;
-    shoulder: Item;
-    back: Item;
-    chest: Item;
-    shirt: Item;
-    tabard: Item;
-    wrist: Item;
-    hands: Item;
-    waist: Item;
-    legs: Item;
-    feet: Item;
-    finger1: Item;
-    finger2: Item;
-    trinket1: Item;
-    trinket2: Item;
-    mainHand: Item;
-    offHand: Item;
-    relics: any[];
-  }
+  items: Items;
   pvp: Pvp;
-  stats: {
-    health: number;
-    powerType: string;
-    power: number;
-    str: number;
-    agi: number;
-    int: number;
-    sta: number;
-  }
+  stats: Stats;
 }
