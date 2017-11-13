@@ -1,5 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
-import { Movie } from '../classes/movie';
+import { Movie } from '../movie';
 import { MoviesDataStorageService } from '../services/movies-data-storage.services';
 
 
