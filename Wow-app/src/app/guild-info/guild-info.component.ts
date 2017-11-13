@@ -24,6 +24,7 @@ export class GuildInfoComponent implements OnInit {
   classes: ClassType[];
   found: number = 0;
   error: string;
+  p: number = 1;
 
   //Guild info (query parameters)
   realm: string;
