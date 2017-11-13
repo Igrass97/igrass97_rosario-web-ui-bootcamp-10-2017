@@ -21,7 +21,7 @@
       <br>
       <input type="number" [(ngModel)]="movie.duration">
     </div>
-    <button (click)="_dataService.writeMovies(movies)" (click)="toggleEditor()">SUBMIT</button>
+    <button type="submit" (click)="_dataService.writeMovies(movies)" (click)="toggleEditor()">SUBMIT</button>
   </div>
 </div>
 <div class="clearfix"></div>
