@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FetchDataService } from '../fetch-data.service';
 import { Realm } from '../realm';
 import { CharacterInfoComponent } from '../character-info/character-info.component';
+import { GetService } from '../get.service';
 
 @Component({
   selector: 'app-search-character',
@@ -17,21 +17,22 @@ export class SearchCharacterComponent implements OnInit {
   realmNames: String[] = [];
   found: number = 0;
 
-
-  constructor(private _fetchData: FetchDataService ) { }
+  constructor(private _fetchData: GetService) { }
 
   ngOnInit() {
     this.found = 1;
-    //Subscribing to the observable and creating a realmNames array for the html select.
-    this._fetchData.getRealms().subscribe(
-      response => {
-      this.realmList = response;
-      this.realmList.forEach(realm =>{
-        this.realmNames.push(realm.name);
-      });
-      this.found = 2;
+    this._fetchData.getApi("/realm/status").subscribe(
+      resp => {
+        this.realmList = resp.realms;
+        this.realmList.forEach(
+          realm => {
+            this.realmNames.push(realm.name);
+          }
+        );
+        this.found = 2;
       },
-      error => {
+
+      err => {
         this.found = 3;
       }
     );

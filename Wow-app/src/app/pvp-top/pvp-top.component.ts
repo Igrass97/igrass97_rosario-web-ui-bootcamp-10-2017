@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { FetchDataService } from '../fetch-data.service';
 import { CharacterInfoComponent } from '../character-info/character-info.component';
+import { GetService } from '../get.service';
 
 //Imports for the query params in the route
 import { ActivatedRoute, Params } from '@angular/router';
@@ -18,13 +18,12 @@ export class PvpTopComponent implements OnInit, OnDestroy{
   routeSubscription: Subscription;
 
   pvpLeaderboard;
-  found: number = 0;
   error: string;
   mode: string;
-  show: boolean;
+  found: number = 0;
   
 
-  constructor(private _fetchData: FetchDataService, private _aRoute: ActivatedRoute) {}
+  constructor(private _aRoute: ActivatedRoute, private _getService: GetService) {}
 
   ngOnInit(){
 
@@ -32,6 +31,7 @@ export class PvpTopComponent implements OnInit, OnDestroy{
     this.routeSubscription = this._aRoute.params.subscribe(
       params => {
         this.mode = params.mode;
+        this.found = 1;
         this.getLeaderboard();
       }
     );
@@ -42,18 +42,15 @@ export class PvpTopComponent implements OnInit, OnDestroy{
   }
   
   getLeaderboard(){
-    this.found = 1;
-    this._fetchData.getPvpLeaderboard(this.mode)
-    .subscribe(
-      response => {
-      this.pvpLeaderboard = response;
-      this.found = 2;
+    this._getService.getApi(`leaderboard/${this.mode}`).subscribe(
+      resp => {
+        this.pvpLeaderboard = resp.rows;
+        this.found = 2;
       },
-      error => {
-        let body = JSON.parse(error._body);
-        this.error = body.reason;
+
+      err => {
         this.found = 3;
       }
     );
-  }
+  }  
 }

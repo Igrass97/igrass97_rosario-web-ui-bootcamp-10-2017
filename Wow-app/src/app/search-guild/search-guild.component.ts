@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FetchDataService } from '../fetch-data.service';
 import { CharacterInfoComponent } from '../character-info/character-info.component';
 import { Realm } from '../realm';
 import { Guild } from '../guild';
 import { ClassType } from '../class-type';
 import { Race } from '../race';
 import { Character } from '../character';
+import { GetService } from '../get.service';
 
 @Component({
   selector: 'app-search-guild',
@@ -17,26 +17,27 @@ export class SearchGuildComponent implements OnInit {
 
   realm: string;
   guildName: string;
-  found: number = 0;
-  realmsFound: number = 0;
   realmList: Realm[];
   realmNames: String[] = [];
+  found: number = 0;
 
-  constructor(private _fetchData: FetchDataService) { }
+  constructor(private _getService: GetService) { }
 
   ngOnInit() {
-    this.realmsFound = 1;
-    //Subscribing to the observable and creating a realmNames array for the html select.
-    this._fetchData.getRealms().subscribe(
-      response => {
-      this.realmList = response;
-      this.realmList.forEach(realm =>{
-      this.realmNames.push(realm.name);
-      });
-      this.realmsFound = 2;
+    this.found = 1;
+    this._getService.getApi("/realm/status").subscribe(
+      resp => {
+        this.realmList = resp.realms;
+        this.realmList.forEach(
+          realm => {
+            this.realmNames.push(realm.name);
+          }
+        );
+        this.found = 2;
       },
-      error => {
-        this.realmsFound = 3;
+
+      err => {
+        this.found = 3;
       }
     );
   }

@@ -3,7 +3,7 @@ import { Guild } from '../guild';
 import { ClassType } from '../class-type';
 import { Race } from '../race';
 import { Character } from '../character';
-import { FetchDataService } from '../fetch-data.service';
+import { GetService } from '../get.service';
 
 //Imports for the query params in the route
 import { ActivatedRoute } from '@angular/router';
@@ -22,27 +22,27 @@ export class GuildInfoComponent implements OnInit {
   members: Character[];
   races: Race[];
   classes: ClassType[];
-  found: number = 0;
   error: string;
-  p: number = 1;
+  found: number = 0;
 
   //Guild info (query parameters)
   realm: string;
   guildName: string;
 
-  constructor(private _fetchData: FetchDataService, private _route: ActivatedRoute) { }
+  constructor(private _route: ActivatedRoute, private _getService: GetService) { }
 
   ngOnInit() {
+
     //Storing the races
-    this._fetchData.getRaces()
+    this._getService.getApi("data/character/races")
     .subscribe(racesResp => {
-      this.races = racesResp;
+      this.races = racesResp.races;
     });
 
     //Storing the classes
-    this._fetchData.getClasses()
+    this._getService.getApi("data/character/classes")
     .subscribe(classesResp => {
-      this.classes = classesResp;
+      this.classes = classesResp.classes;
     });
 
     //Query params
@@ -53,13 +53,11 @@ export class GuildInfoComponent implements OnInit {
         this.searchGuild();
       }
     );
-
-    
   }
 
   searchGuild(){
     this.found = 1;
-    this._fetchData.getGuild(this.realm, this.guildName)
+    this._getService.getApi(`guild/${this.realm}/${this.guildName}`, "members")
       .subscribe(response =>{
         this.guild = response;
         this.found = 2;

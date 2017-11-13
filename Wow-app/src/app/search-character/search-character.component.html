@@ -11,9 +11,9 @@
             <label><strong>Select realm</strong></label>
           </div>
           <div class="col-sm-2">
-            <p *ngIf="found==1">Loading</p>
-            <p *ngIf="found==3">Server error</p>
-            <select *ngIf="found==2" [(ngModel)]="realm">
+            <p *ngIf="found===1">Loading</p>
+            <p *ngIf="found===3">Server error</p>
+            <select *ngIf="found===2" [(ngModel)]="realm">
                 <option *ngFor="let realm of realmNames" [value]="realm">{{realm}}</option>
             </select>
           </div>

@@ -1,6 +1,6 @@
 <div class="text-center container">
   <button type="button" (click)="navigateBack()">GO BACK</button>
-  <div *ngIf="found==2">
+  <div *ngIf="found===2">
     <header>
       <h1>{{character.name}} information</h1>
     </header>
@@ -135,6 +135,6 @@
         </div>
     </div>
   </div>
-    <p *ngIf="found==3">{{error}}</p>
-    <p *ngIf="found==1">Loading..</p>
+    <p *ngIf="found===3">{{error}}</p>
+    <p *ngIf="found===1">Loading..</p>
 </div>

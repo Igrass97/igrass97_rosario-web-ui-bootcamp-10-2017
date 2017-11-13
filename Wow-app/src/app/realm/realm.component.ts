@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FetchDataService } from '../fetch-data.service';
+import { GetService } from '../get.service';
 import { Realm } from '../realm';
 
 @Component({
@@ -13,16 +13,16 @@ export class RealmComponent implements OnInit {
   realmList : Realm[];
   found: number = 0;
 
-  constructor(private _fetchData: FetchDataService) { }
+  constructor(private _fetchData: GetService) { }
 
   ngOnInit() {
     this.found = 1;
-    this._fetchData.getRealms().subscribe(
-      response =>  {
-        this.realmList = response;
+    this._fetchData.getApi("/realm/status").subscribe(
+      resp => {
+        this.realmList = resp.realms;
         this.found = 2;
       },
-      error => {
+      err => {
         this.found = 3;
       }
     );

@@ -9,9 +9,8 @@ import { PvpTopComponent } from './pvp-top/pvp-top.component';
 import { SearchGuildComponent } from './search-guild/search-guild.component';
 import { SearchCharacterComponent } from './search-character/search-character.component';
 import { HttpModule } from '@angular/http';
-import { FetchDataService } from './fetch-data.service';
+import { GetService } from './get.service';
 import { FormsModule } from '@angular/forms';
-import { ApiConfigService } from './api-config.service';
 import { NgxPaginationModule} from 'ngx-pagination';
 import { GuildInfoComponent } from './guild-info/guild-info.component';
 import { FooterComponent } from './footer/footer.component';
@@ -35,7 +34,7 @@ import { FooterComponent } from './footer/footer.component';
     FormsModule,
     NgxPaginationModule
   ],
-  providers: [FetchDataService, ApiConfigService],
+  providers: [GetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
