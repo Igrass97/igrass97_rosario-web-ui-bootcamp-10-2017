@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Movie } from '../classes/movie';
+import { Movie } from '../movie';
 import { MoviesDataStorageService } from '../services/movies-data-storage.services';
 
 
@@ -16,30 +16,22 @@ export class MovieAdderComponent implements OnInit {
 
   viewAdder: boolean = false;
 
-  newMovie: Movie = new Movie();
+  newMovie: Movie = <Movie>{};
 
   constructor(private _dataService: MoviesDataStorageService) { }
 
   ngOnInit() {
+    console.log(this.newMovie);
   }
 
   toggleAdder(){
-    if (this.viewAdder){
-      this.viewAdder = false;
-    } else {
-      this.viewAdder = true;
-    }
+    this.viewAdder = !this.viewAdder;
   }
 
   submitAdd(): void{
    this._dataService.addNew(this.newMovie);
-   this.newMovie = {
-    id: null,
-    title: null,
-    year: null,  
-    duration: null, 
-    };
-    this.onAdd.emit();
+   this.newMovie = <Movie>{};
+   this.onAdd.emit();
   }
 
 }
