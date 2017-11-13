@@ -16,7 +16,7 @@ export class MovieAdderComponent implements OnInit {
 
   viewAdder: boolean = false;
 
-  newMovie: Movie = new Movie();
+  newMovie: Movie = new Movie({});
 
   constructor(private _dataService: MoviesDataStorageService) { }
 
