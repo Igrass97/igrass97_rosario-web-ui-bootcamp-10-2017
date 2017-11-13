@@ -7,7 +7,7 @@
 </ul>
 
 <h1>General concepts:</h1>
-Variable "found": used to display data, error or loading message:
+Variable "found" used to display data, error or loading message:
 
   <ul>
     <li>0 = none</li>
