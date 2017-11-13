@@ -1,3 +1,11 @@
+<h1>Tech stack</h1>
+<ul>
+  <li>Angular and Angular CLI</li>
+  <li>Bootstrap</li>
+  <li>Font awesome</li>
+  <li>Ngx pagination module</li>
+</ul>
+
 <h1>General concepts:</h1>
 - Variable "found": used to display data, error or loading message
 
