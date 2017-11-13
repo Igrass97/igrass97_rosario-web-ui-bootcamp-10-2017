@@ -31,7 +31,7 @@ Router scheme:
 <h1>Known issues:</h1>
 Sometimes, when you click a Guild member, the Character API can't get his information.
 <p>
-  <h2>Blizzard says:</h2> 
+  Blizzard says: 
   <ul>
   <br>
     <li>El personaje lleva un tiempo inactivo. Si este es tu perfil, accede al juego con el personaje un momento y vuelve a intentarlo.</li>
