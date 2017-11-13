@@ -5,7 +5,7 @@ export class Movie {
   duration: number = null;
   title: string = null;
 
-  constructor(obj){
+  constructor(obj = { id: null, year: null, duration: null, title: null}){
     this.id = obj.id;
     this.year = obj.year;
     this.duration = obj.duration;
