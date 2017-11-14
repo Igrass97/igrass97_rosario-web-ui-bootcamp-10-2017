@@ -7,7 +7,7 @@
 </div>  
 
 <div class="pvp container">
-  <div class="pvptop" *ngIf="found==2">
+  <div class="pvptop" *ngIf="!error && !loading">
     <table class="interactivetable">
       <thead>
         <th>Rating</th>
@@ -24,6 +24,6 @@
       </tbody>
     </table>
   </div>
-  <p *ngIf="found==1">Loading..</p>
-  <p *ngIf="found==3">{{error}}</p>
+  <p *ngIf="loading">Loading..</p>
+  <p *ngIf="isError">{{error}}</p>
 </div>

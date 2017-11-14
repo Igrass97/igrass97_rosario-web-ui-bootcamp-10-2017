@@ -20,7 +20,9 @@ export class PvpTopComponent implements OnInit, OnDestroy{
   pvpLeaderboard;
   error: string;
   mode: string;
-  found: number = 0;
+  isError: boolean = false;
+  loading: boolean = true;
+
   
 
   constructor(private _aRoute: ActivatedRoute, private _getService: GetService) {}
@@ -31,7 +33,6 @@ export class PvpTopComponent implements OnInit, OnDestroy{
     this.routeSubscription = this._aRoute.params.subscribe(
       params => {
         this.mode = params.mode;
-        this.found = 1;
         this.getLeaderboard();
       }
     );
@@ -45,11 +46,13 @@ export class PvpTopComponent implements OnInit, OnDestroy{
     this._getService.getApi(`leaderboard/${this.mode}`).subscribe(
       resp => {
         this.pvpLeaderboard = resp.rows;
-        this.found = 2;
+        this.pvpLeaderboard = this.pvpLeaderboard.slice(0, 10);
+        this.loading = false;
       },
 
       err => {
-        this.found = 3;
+        this.isError = true;
+        this.loading = false;
       }
     );
   }  
