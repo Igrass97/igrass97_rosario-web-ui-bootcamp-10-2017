@@ -5,7 +5,7 @@
       <h1>{{character.name}} information</h1>
     </header>
     <div class="row info-stats">
-      <div class="common-info col-sm-6 text-center">
+      <div class="common-info col-sm-4 text-center">
         <h2 class="title">Basic information</h2>
         <ul>
           <li><strong>Name:</strong> {{character.name}}</li>
@@ -28,8 +28,10 @@
           <li *ngIf="character.guild"><strong>Guild name:</strong> <a [routerLink]="['/Guild', character.guild.realm, character.guild.name]">{{character.guild.name}}</a></li>
         </ul>
       </div>
-      
-      <div class="stats col-sm-6 text-center">
+      <div class="col-sm-4">
+        <img src="http://render-us.worldofwarcraft.com/character/{{character.thumbnail}}" onerror="this.src='./assets/images/thumbnail.jpg'" alt="Character Thumbnail">
+      </div>
+      <div class="stats col-sm-4 text-center">
         <h2 class="title">Stats</h2>
         <ul>
           <li><strong>Health:</strong> {{character.stats.health}}</li>
