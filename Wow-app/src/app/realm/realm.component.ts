@@ -17,7 +17,7 @@ export class RealmComponent implements OnInit {
 
   ngOnInit() {
     this.found = 1;
-    this._fetchData.getApi("/realm/status").subscribe(
+    this._fetchData.getApi("realm/status").subscribe(
       resp => {
         this.realmList = resp.realms;
         this.found = 2;

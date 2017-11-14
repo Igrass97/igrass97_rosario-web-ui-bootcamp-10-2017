@@ -68,7 +68,7 @@ export class CharacterInfoComponent implements OnInit {
 
   searchCharacter(realm: string, name: string){
     this.found = 1;
-    this._getService.getApi(`character/${realm}/${name}`, "items", "stats", "guild", "pvp").subscribe(
+    this._getService.getApi(`character/${realm}/${name}`, "stats", "guild", "pvp", "items").subscribe(
       resp => {
         this.character = resp;
         //Creating a item list to iterate on it in the view (the 2 first elements aren't items)
@@ -76,7 +76,7 @@ export class CharacterInfoComponent implements OnInit {
         //Two cols to display
         this.itemColOne = this.itemValues.slice(0, 8);
         this.itemColTwo = this.itemValues.slice(8, this.itemValues.length-1);
-        this.found = 2; 
+        this.found = 2;
       },
 
       error => {

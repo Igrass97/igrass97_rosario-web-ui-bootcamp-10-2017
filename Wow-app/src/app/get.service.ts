@@ -1,32 +1,37 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Http, Response} from '@angular/http';
+import { Http, Response, RequestOptions, URLSearchParams} from '@angular/http';
+
+
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class GetService {
 
   host: string = "https://us.api.battle.net/wow/";
-  constInfo: string = "locale=en_US&apikey=s7md2yb8vw4fvrmfgwjkpjjyfsvryvqd";
-
+  locale: string = "en_US";
+  apiKey: string = "s7md2yb8vw4fvrmfgwjkpjjyfsvryvqd";
   constructor(private _http: Http) { }
   
   getApi(endpoint, ...fields){
     
-    let url = this.host + endpoint + "?" + this.constInfo;
+    let url = this.host + endpoint;
 
-    url = url + "&fields=";
+    let params = new URLSearchParams();
+    //all fields are in ?fields=, so I join the rest parameters and use that string
     let fieldsArray = Array.from(fields);
-    fieldsArray.forEach(
-      field => {
-        if (field !== fieldsArray[fieldsArray.length-1]){
-          url = url + field + "%2C+";
-        } else {
-          url = url + field;
-        }
-      }
-    );
-    return this._http.get(url)
+    let fieldsString = fieldsArray.join("+");
+    
+    //building parameters
+    params.set('locale', this.locale);
+    params.set('apikey', this.apiKey);
+    params.set('fields', fieldsString);
+
+
+    let requestOptions = new RequestOptions();
+    requestOptions.search = params;
+
+    return this._http.get(url, requestOptions)
       .map(res => res.json());
   }
 }
