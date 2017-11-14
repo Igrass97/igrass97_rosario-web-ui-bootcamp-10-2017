@@ -87,7 +87,6 @@ export class CharacterInfoComponent implements OnInit {
         //Creating a item list to iterate on it in the view (the 2 first elements aren't items)
         this.itemValues = Object.values(resp.items).slice(2);
         this.keyValues = Object.keys(resp.items).slice(2);
-
         //Capitalize first letter of each key
         this.keyValues = this.keyValues.map(
           key => {
@@ -96,7 +95,7 @@ export class CharacterInfoComponent implements OnInit {
         );
     
         //Two cols to display
-        this.itemColOne = this.itemValues.slice(0, 9)
+        this.itemColOne = this.itemValues.slice(0, 9);
         this.itemColTwo = this.itemValues.slice(9, this.itemValues.length);
         this.keyColOne = this.keyValues.slice(0, 9);
         this.keyColTwo = this.keyValues.slice(9, this.keyValues.length);
