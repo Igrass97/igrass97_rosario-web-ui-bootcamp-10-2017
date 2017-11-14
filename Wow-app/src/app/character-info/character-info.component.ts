@@ -43,6 +43,8 @@ export class CharacterInfoComponent implements OnInit {
   loading: boolean = true;
   isError: boolean = false;
   error: string;
+  raceFound: boolean = false;
+  classFound: boolean = false;
 
   constructor(private _route: ActivatedRoute, private _location: Location, private _characterService: CharacterService, private _racesService: RacesService
   , private _classesService: ClassesService) { }
@@ -53,12 +55,14 @@ export class CharacterInfoComponent implements OnInit {
     this._racesService.getRaces()
     .subscribe(racesResp => {
       this.races = racesResp.races;
+      this.raceFound = true;
     });
 
     //Storing the classes
     this._classesService.getClasses()
     .subscribe(classesResp => {
       this.classes = classesResp.classes;
+      this.classFound = true;
     });
 
     //Query params
@@ -90,6 +94,34 @@ export class CharacterInfoComponent implements OnInit {
         this.loading = false;    
       }
     );
+  }
+
+  raceCheck(id: number): string {
+    let raceName = "Race not found";
+      if (this.raceFound){
+      this.races.forEach(
+        race => {
+          if (race.id == id){
+            raceName = race.name;
+          }
+        }
+      );
+    }
+    return raceName;
+  }
+
+  classCheck(id: number): string {
+    let className = "Class not found";
+      if (this.classFound){
+      this.classes.forEach(
+        classType => {
+          if (classType.id == id){
+            className = classType.name;
+          }
+        }
+      );
+    }
+    return className;
   }
 
   navigateBack(){

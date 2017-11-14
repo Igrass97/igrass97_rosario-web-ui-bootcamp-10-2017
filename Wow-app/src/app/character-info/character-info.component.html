@@ -10,18 +10,19 @@
         <ul>
           <li><strong>Name:</strong> {{character.name}}</li>
       
-        <!-- Searching the name of the race based on the id -->
-        <div *ngFor="let race of races">
-            <li *ngIf="race.id==character.race"><strong>Race:</strong> {{race.name}}</li> 
-        </div>
+          <!-- Searching the name of the race based on the id -->
+       
+          <li *ngIf="raceFound"><strong>Race: </strong> {{raceCheck(character.race)}}</li> 
+        
+          <!-- Searching the name of the class based on the id -->
+          
+         <li *ngIf="classFound"><strong>Class: </strong> {{classCheck(character.class)}}</li> 
       
           <!-- 0 = male ; 1 = female -->
           <li><strong>Gender: </strong>{{character.gender==0 ? 'Male' : 'Female' }}</li>
       
-          <!-- Searching the name of the class based on the id -->
-          <div *ngFor="let class of classes">
-              <li *ngIf="class.id==character.class"><strong>Class:</strong> {{class.name}}</li> 
-          </div>
+          
+          
       
           <li><strong>Level:</strong> {{character.level}}</li>
           <li><strong>Achievements points:</strong> {{character.achievementPoints}}</li>
