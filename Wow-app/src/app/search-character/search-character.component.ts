@@ -15,12 +15,12 @@ export class SearchCharacterComponent implements OnInit {
   realm: string;
   realmList: Realm[];
   realmNames: String[] = [];
-  found: number = 0;
+  error: boolean = false;
+  loading: boolean = true;
 
   constructor(private _fetchData: GetService) { }
 
   ngOnInit() {
-    this.found = 1;
     this._fetchData.getApi("/realm/status").subscribe(
       resp => {
         this.realmList = resp.realms;
@@ -29,11 +29,12 @@ export class SearchCharacterComponent implements OnInit {
             this.realmNames.push(realm.name);
           }
         );
-        this.found = 2;
+        this.loading = false;
       },
 
       err => {
-        this.found = 3;
+        this.error = true;
+        this.loading = false;
       }
     );
   }

@@ -19,12 +19,12 @@ export class SearchGuildComponent implements OnInit {
   guildName: string;
   realmList: Realm[];
   realmNames: String[] = [];
-  found: number = 0;
+  loading: boolean = true;
+  error: boolean = false;
 
   constructor(private _getService: GetService) { }
 
   ngOnInit() {
-    this.found = 1;
     this._getService.getApi("/realm/status").subscribe(
       resp => {
         this.realmList = resp.realms;
@@ -33,11 +33,12 @@ export class SearchGuildComponent implements OnInit {
             this.realmNames.push(realm.name);
           }
         );
-        this.found = 2;
+        this.loading = false;
       },
 
       err => {
-        this.found = 3;
+        this.error = true;
+        this.loading = false;
       }
     );
   }

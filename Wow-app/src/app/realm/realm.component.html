@@ -2,7 +2,7 @@
   <header>
     <h1 class="text-center">Realm status</h1>
   </header>
-  <div class="realm-list text-center" *ngIf="found==2">
+  <div class="realm-list text-center" *ngIf="!error && !loading">
     <table>
       <thead>
         <th>Realm status</th>
@@ -21,7 +21,7 @@
       </tbody>
     </table>
   </div>
-  <h1 *ngIf="found==3">Server Error</h1>
-  <p *ngIf="found==1">Loading..</p>
+  <h1 *ngIf="error">Server Error</h1>
+  <p *ngIf="loading">Loading..</p>
 </div>
 

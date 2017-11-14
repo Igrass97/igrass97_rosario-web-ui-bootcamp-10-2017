@@ -11,19 +11,20 @@ import { Realm } from '../realm';
 export class RealmComponent implements OnInit {
 
   realmList : Realm[];
-  found: number = 0;
+  error: boolean = false;
+  loading: boolean = true;
 
   constructor(private _fetchData: GetService) { }
 
   ngOnInit() {
-    this.found = 1;
     this._fetchData.getApi("realm/status").subscribe(
       resp => {
         this.realmList = resp.realms;
-        this.found = 2;
+        this.loading = false;
       },
       err => {
-        this.found = 3;
+        this.error = true;
+        this.loading = false;
       }
     );
   }

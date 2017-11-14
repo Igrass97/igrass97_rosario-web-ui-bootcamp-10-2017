@@ -37,7 +37,8 @@ export class CharacterInfoComponent implements OnInit {
   realm : string;
 
   //Control variables
-  found: number = 0;
+  loading: boolean = true;
+  isError: boolean = false;
   error: string;
 
   constructor(private _route: ActivatedRoute, private _location: Location, private _getService: GetService) { }
@@ -67,7 +68,6 @@ export class CharacterInfoComponent implements OnInit {
   }
 
   searchCharacter(realm: string, name: string){
-    this.found = 1;
     this._getService.getApi(`character/${realm}/${name}`, "stats", "guild", "pvp", "items").subscribe(
       resp => {
         this.character = resp;
@@ -76,13 +76,14 @@ export class CharacterInfoComponent implements OnInit {
         //Two cols to display
         this.itemColOne = this.itemValues.slice(0, 8);
         this.itemColTwo = this.itemValues.slice(8, this.itemValues.length-1);
-        this.found = 2;
+        this.loading = false;
       },
 
       error => {
         let body = JSON.parse(error._body);
         this.error = body.reason;
-        this.found = 3;    
+        this.isError = true;
+        this.loading = false;    
       }
     );
   }
