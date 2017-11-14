@@ -5,6 +5,7 @@ import { GetService } from '../get.service';
 //Imports for the query params in the route
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
+import { PvpService } from '../pvp.service';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class PvpTopComponent implements OnInit, OnDestroy{
 
   
 
-  constructor(private _aRoute: ActivatedRoute, private _getService: GetService) {}
+  constructor(private _aRoute: ActivatedRoute, private _pvpService: PvpService) {}
 
   ngOnInit(){
 
@@ -43,7 +44,8 @@ export class PvpTopComponent implements OnInit, OnDestroy{
   }
   
   getLeaderboard(){
-    this._getService.getApi(`leaderboard/${this.mode}`).subscribe(
+    this.loading = true;
+    this._pvpService.getPvp(this.mode).subscribe(
       resp => {
         this.pvpLeaderboard = resp.rows;
         this.pvpLeaderboard = this.pvpLeaderboard.slice(0, 10);

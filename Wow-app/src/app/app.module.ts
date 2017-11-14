@@ -14,6 +14,12 @@ import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule} from 'ngx-pagination';
 import { GuildInfoComponent } from './guild-info/guild-info.component';
 import { FooterComponent } from './footer/footer.component';
+import { RacesService } from './races.service';
+import { ClassesService } from './classes.service';
+import { CharacterService } from './character.service';
+import { GuildService } from './guild.service';
+import { RealmService } from './realm.service';
+import { PvpService } from './pvp.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +40,7 @@ import { FooterComponent } from './footer/footer.component';
     FormsModule,
     NgxPaginationModule
   ],
-  providers: [GetService],
+  providers: [GetService, RacesService, ClassesService, CharacterService, GuildService, RealmService, PvpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

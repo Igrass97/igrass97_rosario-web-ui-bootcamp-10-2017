@@ -1,4 +1,4 @@
-<div class="container" *ngIf="found==2">
+<div class="container" *ngIf="!error && !loading">
     <div class="headers container text-center">
       <h1>Guild name: <span class="resalted">{{guild.name}}</span></h1>
       <h2>Level: <span class="resalted">{{guild.level}}</span></h2>
@@ -28,6 +28,6 @@
   </div>
 
 <div class="container text-center">
-  <div *ngIf="found==1">Loading</div>
-  <div *ngIf="found==3">{{error}}</div>
+  <div *ngIf="loading">Loading</div>
+  <div *ngIf="error">{{error}}</div>
 </div>

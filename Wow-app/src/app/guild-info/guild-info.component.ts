@@ -8,6 +8,9 @@ import { GetService } from '../get.service';
 //Imports for the query params in the route
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
+import { ClassesService } from '../classes.service';
+import { RacesService } from '../races.service';
+import { GuildService } from '../guild.service';
 
 @Component({
   selector: 'app-guild-info',
@@ -23,27 +26,29 @@ export class GuildInfoComponent implements OnInit {
   races: Race[];
   classes: ClassType[];
   error: string;
-  found: number = 0;
+  isError: boolean = false;
+  loading: boolean = true;
 
   //Guild info (query parameters)
   realm: string;
   guildName: string;
 
-  constructor(private _route: ActivatedRoute, private _getService: GetService) { }
+  constructor(private _route: ActivatedRoute, private _getService: GetService, private _classesService: ClassesService, private _racesService: RacesService
+  , private _guildService: GuildService) { }
 
   ngOnInit() {
 
-    //Storing the races
-    this._getService.getApi("data/character/races")
-    .subscribe(racesResp => {
-      this.races = racesResp.races;
-    });
+   //Storing the races
+   this._racesService.getRaces()
+   .subscribe(racesResp => {
+     this.races = racesResp.races;
+   });
 
-    //Storing the classes
-    this._getService.getApi("data/character/classes")
-    .subscribe(classesResp => {
-      this.classes = classesResp.classes;
-    });
+   //Storing the classes
+   this._classesService.getClasses()
+   .subscribe(classesResp => {
+     this.classes = classesResp.classes;
+   });
 
     //Query params
     this.routeSubscription = this._route.params.subscribe(
@@ -56,17 +61,17 @@ export class GuildInfoComponent implements OnInit {
   }
 
   searchGuild(){
-    this.found = 1;
-    this._getService.getApi(`guild/${this.realm}/${this.guildName}`, "members")
+    this._guildService.getGuild(this.realm, this.guildName)
       .subscribe(response =>{
         this.guild = response;
-        this.found = 2;
+        this.loading = false;
         this.members = Object.values(this.guild.members);
       },
       error => {
         let body = JSON.parse(error._body);
         this.error = body.reason;
-        this.found = 3;
+        this.isError = true;
+        this.loading = false;
       }  
     );
   }

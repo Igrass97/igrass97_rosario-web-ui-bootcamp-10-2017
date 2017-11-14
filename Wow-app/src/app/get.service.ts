@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Http, Response, RequestOptions, URLSearchParams} from '@angular/http';
-
-
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -26,7 +24,6 @@ export class GetService {
     params.set('locale', this.locale);
     params.set('apikey', this.apiKey);
     params.set('fields', fieldsString);
-
 
     let requestOptions = new RequestOptions();
     requestOptions.search = params;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GetService } from '../get.service';
+import { RealmService } from '../realm.service';
+
 import { Realm } from '../realm';
 
 @Component({
@@ -14,10 +15,10 @@ export class RealmComponent implements OnInit {
   error: boolean = false;
   loading: boolean = true;
 
-  constructor(private _fetchData: GetService) { }
+  constructor(private _realmService: RealmService) { }
 
   ngOnInit() {
-    this._fetchData.getApi("realm/status").subscribe(
+    this._realmService.getRealms().subscribe(
       resp => {
         this.realmList = resp.realms;
         this.loading = false;

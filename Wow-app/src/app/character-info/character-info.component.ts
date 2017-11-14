@@ -5,10 +5,13 @@ import { ClassType } from '../class-type';
 import { Item } from '../item';
 import { Location } from '@angular/common';
 import { GetService } from '../get.service';
+import { CharacterService } from '../character.service';
 
 //Imports for the query params in the route
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
+import { RacesService } from '../races.service';
+import { ClassesService } from '../classes.service';
 
 
 @Component({
@@ -41,18 +44,19 @@ export class CharacterInfoComponent implements OnInit {
   isError: boolean = false;
   error: string;
 
-  constructor(private _route: ActivatedRoute, private _location: Location, private _getService: GetService) { }
+  constructor(private _route: ActivatedRoute, private _location: Location, private _characterService: CharacterService, private _racesService: RacesService
+  , private _classesService: ClassesService) { }
 
   ngOnInit() {
 
     //Storing the races
-    this._getService.getApi("data/character/races")
+    this._racesService.getRaces()
     .subscribe(racesResp => {
       this.races = racesResp.races;
     });
 
     //Storing the classes
-    this._getService.getApi("data/character/classes")
+    this._classesService.getClasses()
     .subscribe(classesResp => {
       this.classes = classesResp.classes;
     });
@@ -68,7 +72,7 @@ export class CharacterInfoComponent implements OnInit {
   }
 
   searchCharacter(realm: string, name: string){
-    this._getService.getApi(`character/${realm}/${name}`, "stats", "guild", "pvp", "items").subscribe(
+    this._characterService.getCharacter(realm, name).subscribe(
       resp => {
         this.character = resp;
         //Creating a item list to iterate on it in the view (the 2 first elements aren't items)
