@@ -1,25 +1,27 @@
 <div class="editor">
   <button (click)="toggleEditor()">EDIT</button>
-
   <div *ngIf="viewEditor">
-    <table>
-      <tr>
-        <td><label>Id:</label></td>
-        <td><input type="number" [(ngModel)]="movie.id"></td>
-      </tr>
-      <tr>
-        <td><label>Title:</label></td>
-        <td><input type="text" [(ngModel)]="movie.title"></td>
-      </tr>
-      <tr>
-        <td><label>Year:</label></td>
-        <td><input type="number" [(ngModel)]="movie.year"></td>
-      </tr>
-      <tr>
-        <td><label>Duration:</label></td>
-        <td><input type="number" [(ngModel)]="movie.duration"></td>
-      </tr>
-    </table>
-    <button (click)="_dataService.writeMovies(movies)" (click)="toggleEditor()">SUBMIT</button>
+    <div class="inputgroup">
+      <label>Id:</label>
+      <br>
+      <input type="number" [(ngModel)]="movie.id">
+    </div>
+    <div class="inputgroup">
+      <label>Title:</label>
+      <br>
+      <input type="text" [(ngModel)]="movie.title">
+    </div>
+    <div class="inputgroup">
+      <label>Year:</label>
+      <br>
+      <input type="number" [(ngModel)]="movie.year">
+    </div>
+    <div class="inputgroup">
+      <label>Duration:</label>
+      <br>
+      <input type="number" [(ngModel)]="movie.duration">
+    </div>
+    <button type="submit" (click)="_dataService.writeMovies(movies)" (click)="toggleEditor()">SUBMIT</button>
   </div>
 </div>
+<div class="clearfix"></div>
