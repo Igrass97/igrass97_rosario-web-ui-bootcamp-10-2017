@@ -1,0 +1,33 @@
+.container{
+  color: white;
+}
+
+.realm-list {
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    thead{
+      th{
+        color: #000000;
+        text-shadow: 0px 0px 15px #0CEB43;
+        font-size: 20px;
+      }
+    }
+    tbody{
+      tr{
+        border-bottom: 1px solid rgba(240, 240, 240, 0.31);
+        td{
+          padding: 15px;
+        }
+      }
+    }
+  }
+}
+
+.online {
+  color: green;
+}
+
+.offline {
+  color: red;
+}

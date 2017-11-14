@@ -1,0 +1,34 @@
+<div class="container" *ngIf="!error && !loading">
+    <div class="headers container text-center">
+      <h1>Guild name: <span class="resalted">{{guild.name}}</span></h1>
+      <h2>Level: <span class="resalted">{{guild.level}}</span></h2>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <h3 class="text-center">Members</h3>
+    <table class="interactivetable">
+      <tr *ngFor="let member of members | paginate: {itemsPerPage: 10, currentPage: currentP} " [routerLink]="['/Character', member.character.realm, member.character.name]">
+        <td><img src="http://render-us.worldofwarcraft.com/character/{{member.character.thumbnail}}" onerror="this.src='./assets/images/thumbnail.jpg'" alt="Thumbnail not found :("></td>
+        <td>{{member.character.name}}</td>
+
+        <td>
+          <div *ngFor="let class of classes">
+              <span *ngIf="class.id==member.character.class">{{class.name}}</span>
+          </div>
+        </td>
+
+        <td>
+          <div *ngFor="let race of races">
+              <span *ngIf="race.id==member.character.race">{{race.name}}</span>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <pagination-controls (pageChange)="currentP =$event"></pagination-controls>
+  </div>
+
+<div class="container text-center">
+  <div *ngIf="loading">Loading</div>
+  <div *ngIf="error">{{error}}</div>
+</div>

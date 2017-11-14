@@ -1,0 +1,31 @@
+<div class="container">
+  <button type="button" [routerLink]="['/Pvp', '2v2']">2v2</button>
+  <button type="button" [routerLink]="['/Pvp', '3v3']">3v3</button> 
+  <header class="header-pvp">
+    <h1 class="text-center">Top {{mode}}</h1>
+  </header> 
+</div>  
+
+<div class="pvp container">
+  <div class="pvptop" *ngIf="!error && !loading">
+    <table class="interactivetable">
+      <thead>
+        <th>Rank</th>
+        <th>Rating</th>
+        <th>Name</th>
+        <th>Realm</th>
+      </thead>
+      <tbody>
+        <!-- Clicking in a row of the table, calls the Character route with the query parameters -->
+        <tr *ngFor="let character of pvpLeaderboard; let i=index" [routerLink]="['/Character', character.realmName, character.name]">
+          <td>{{i+1}}</td>
+          <td>{{character.rating}}</td>
+          <td>{{character.name}}</td>
+          <td>{{character.realmName}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p *ngIf="loading">Loading..</p>
+  <p *ngIf="isError">{{error}}</p>
+</div>

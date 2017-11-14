@@ -1,0 +1,149 @@
+<div class="text-center container">
+  <button type="button" (click)="navigateBack()">GO BACK</button>
+  <div *ngIf="!loading && !isError">
+    <header>
+      <h1>{{character.name}} information</h1>
+    </header>
+    <div class="row info-stats">
+      <div class="common-info col-sm-4 text-center">
+        <h2 class="title">Basic information</h2>
+        <ul>
+          <li><strong>Name:</strong> {{character.name}}</li>
+      
+          <!-- Searching the name of the race based on the id -->
+       
+          <li *ngIf="raceFound"><strong>Race: </strong> {{raceCheck(character.race)}}</li> 
+        
+          <!-- Searching the name of the class based on the id -->
+          
+         <li *ngIf="classFound"><strong>Class: </strong> {{classCheck(character.class)}}</li> 
+      
+          <!-- 0 = male ; 1 = female -->
+          <li><strong>Gender: </strong>{{character.gender==0 ? 'Male' : 'Female' }}</li>
+      
+          <li><strong>Level:</strong> {{character.level}}</li>
+          <li><strong>Achievements points:</strong> {{character.achievementPoints}}</li>
+              
+          <!-- Displaying Guild only if the character belongs to one -->
+          <li *ngIf="character.guild"><strong>Guild name:</strong> <a [routerLink]="['/Guild', character.guild.realm, character.guild.name]">{{character.guild.name}}</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-4">
+        <img src="http://render-us.worldofwarcraft.com/character/{{character.thumbnail}}" onerror="this.src='./assets/images/thumbnail.jpg'" alt="Character Thumbnail">
+      </div>
+      <div class="stats col-sm-4 text-center">
+        <h2 class="title">Stats</h2>
+        <ul>
+          <li><strong>Health:</strong> {{character.stats.health}}</li>
+          <li><strong>Power type:</strong> {{character.stats.powerType}}</li>
+          <li><strong>Power:</strong> {{character.stats.power}}</li>
+          <li><strong>STR:</strong> {{character.stats.str}}</li>
+          <li><strong>AGI:</strong> {{character.stats.agi}}</li>
+          <li><strong>INT:</strong> {{character.stats.int}}</li>
+          <li><strong>STA:</strong> {{character.stats.sta}}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="items">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <h2 class="title">Equipped average item level: {{character.items.averageItemLevelEquipped}}</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <table class="text-left">
+            <tbody>
+              <tr *ngFor="let item of itemColOne; let i=index">
+                <td>{{keyColOne[i]}}</td>
+                <td [ngClass]="{ 'poor': item.quality==0, 'common': item.quality==1, 'uncommon': item.quality==2, 'rare': item.quality==3,
+                'epic': item.quality==4, 'legendary': item.quality==5, 'artifact': item.quality==6, 'heirloom': item.quality==7, 'wowtoken': item.quality==8 }">
+                  {{item.name}}
+                </td> 
+                <td>iLvl {{item.itemLevel}}</td>
+                <td><img src="https://wow.zamimg.com/images/wow/icons/large/{{item.icon}}.jpg" alt=""></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-sm-6">
+          <table class="text-left">
+            <tr *ngFor="let item of itemColTwo; let i=index">
+              <td>{{keyColTwo[i]}}</td>
+              <td [ngClass]="{ 'poor': item.quality==0, 'common': item.quality==1, 'uncommon': item.quality==2, 'rare': item.quality==3,
+              'epic': item.quality==4, 'legendary': item.quality==5, 'artifact': item.quality==6, 'heirloom': item.quality==7, 'wowtoken': item.quality==8 }">
+                {{item.name}}
+              </td> 
+              <td>iLvl {{item.itemLevel}}</td>
+              <td><img src="https://wow.zamimg.com/images/wow/icons/large/{{item.icon}}.jpg" alt=""></td>
+            </tr>
+            </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="pvp-info text-center">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 class="title">Pvp</h2>
+        </div>
+      </div>
+        <div class="row">
+          <div class="col-sm-3 bracket">
+            <h4 class="title">2v2</h4>
+            <ul>
+              <li><strong>Rating:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2.rating}}</li>
+              <li><strong>Season lost:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2.seasonLost}}</li>
+              <li><strong>Season played:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2.seasonPlayed}}</li>
+              <li><strong>Season won:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2.seasonWon}}</li> 
+              <li><strong>Weekly lost:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2.weeklyLost}} </li>
+              <li><strong>Weekly played:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2.weeklyPlayed}}</li>
+              <li><strong>Weekly won:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2.weeklyWon}}</li>
+            </ul>
+          </div>
+
+          <div class="col-sm-3 bracket">
+          <h4 class="title">2v2 skirimish </h4>
+            <ul>
+              <li><strong>Rating:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2_SKIRMISH.rating}}</li>
+              <li><strong>Season lost:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2_SKIRMISH.seasonLost}}</li>
+              <li><strong>Season played:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2_SKIRMISH.seasonPlayed}}</li>
+              <li><strong>Season won:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2_SKIRMISH.seasonWon}}</li>
+              <li><strong>Weekly lost:</strong>  {{character.pvp.brackets.ARENA_BRACKET_2v2_SKIRMISH.weeklyLost}} </li>
+              <li><strong>Weekly played:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2_SKIRMISH.weeklyPlayed}}</li>
+              <li><strong>Weekly won:</strong> {{character.pvp.brackets.ARENA_BRACKET_2v2_SKIRMISH.weeklyWon}}</li>
+            </ul>
+          </div>
+
+          <div class="col-sm-3 bracket">
+          <h4 class="title">3v3</h4>
+            <ul>
+              <li><strong>Rating:</strong> {{character.pvp.brackets.ARENA_BRACKET_3v3.rating}}</li>
+              <li><strong>Season lost:</strong>  {{character.pvp.brackets.ARENA_BRACKET_3v3.seasonLost}}</li>
+              <li><strong>Season played:</strong>{{character.pvp.brackets.ARENA_BRACKET_3v3.seasonPlayed}}</li>
+              <li><strong>Season won:</strong> {{character.pvp.brackets.ARENA_BRACKET_3v3.seasonWon}}</li> 
+              <li><strong>Weekly lost:</strong> {{character.pvp.brackets.ARENA_BRACKET_3v3.weeklyLost}}</li> 
+              <li><strong>Weekly played:</strong> {{character.pvp.brackets.ARENA_BRACKET_3v3.weeklyPlayed}}</li>
+              <li><strong>Weekly won:</strong> {{character.pvp.brackets.ARENA_BRACKET_3v3.weeklyWon}}</li>
+            </ul>
+          </div>
+        
+          <div class="col-sm-3 bracket">
+            <h4 class="title">RGB</h4>
+            <ul>
+              <li><strong>Rating:</strong>{{character.pvp.brackets.ARENA_BRACKET_RBG.rating}}</li>
+              <li><strong>Season lost:</strong> {{character.pvp.brackets.ARENA_BRACKET_RBG.seasonLost}}</li>
+              <li><strong>Season played:</strong>{{character.pvp.brackets.ARENA_BRACKET_RBG.seasonPlayed}}</li>
+              <li><strong>Season won:</strong> {{character.pvp.brackets.ARENA_BRACKET_RBG.seasonWon}}</li>
+              <li><strong>Weekly lost:</strong> {{character.pvp.brackets.ARENA_BRACKET_RBG.weeklyLost}}</li> 
+              <li><strong>Weekly played:</strong> {{character.pvp.brackets.ARENA_BRACKET_RBG.weeklyPlayed}}</li>
+              <li><strong>Weekly won:</strong> {{character.pvp.brackets.ARENA_BRACKET_RBG.weeklyWon}}</li>
+            </ul>  
+          </div>
+        </div>
+    </div>
+  </div>
+    <p *ngIf="isError">{{error}}</p>
+    <p *ngIf="loading">Loading..</p>
+</div>

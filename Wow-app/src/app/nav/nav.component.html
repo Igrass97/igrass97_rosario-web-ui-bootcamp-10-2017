@@ -1,0 +1,26 @@
+
+<header>
+  <img class="container-fluid" src="./assets/images/legion.jpg" alt="Illidian">
+</header>
+
+<div class="container">
+  <div class="bars" (mouseleave)="hideNav()">
+    <a (click)="toggleNav()"><i class="fa fa-bars fa-2x"></i></a>
+    <nav *ngIf="viewNav">
+      <div class="row">
+        <div class="col-sm-12">
+          <ul>
+            <li><a (click)="hideNav()" class="nav-link" routerLink="Realm">REALM STATUS</a></li>
+            <li><a (click)="hideNav()" class="nav-link" routerLink="Character">SEARCH CHARACTER</a></li>
+            <li><a (click)="hideNav()" class="nav-link" routerLink="Pvp/2v2">TOP PVP MODE</a></li>
+            <li><a (click)="hideNav()" class="nav-link" routerLink="Guild">SEARCH GUILD</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+
+

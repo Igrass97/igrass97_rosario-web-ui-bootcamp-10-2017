@@ -1,0 +1,80 @@
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+table{
+  margin: 0 auto;
+  border-collapse: collapse;
+  tr{
+    width: 50%;
+    td{
+      padding: 10px;
+      box-shadow: 0px 0px 5px black;
+      text-align: center;
+    }
+  }
+}
+
+.items, .info-stats, .pvp-info{
+  background: rgba(0, 0, 0, 0.33);
+  color: white;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 50px auto;
+}
+
+h2{
+  margin-bottom: 15px;
+  padding: 15px;
+}
+
+.bracket{
+  margin: 20px auto;
+}
+
+.title{
+  text-shadow: 0px 0px 50px #0CEB43;
+  color: #000000;  
+}
+
+.error{
+  color: red;
+}
+
+.container{
+  color: white;
+}
+
+img {
+  border: 1px solid #0CEB43 ;
+}
+
+.poor{
+  color: #9d9d9d;
+}
+.common{
+  color: #ffffff;
+}
+.uncommon{
+  color: #1eff00;
+}
+.rare{
+  color: #0070dd;
+}
+.epic{
+  color: #a335ee;
+}
+.legendary{
+  color: #ff8000;
+}
+.heirloom{
+  color: #00ccff;
+}
+.artifact{
+  color: #e6cc80;
+}
+.wowtoken{
+  color:#00ccff;
+}

@@ -1,0 +1,39 @@
+<div class="container">
+  <div>
+    <header>
+      <h1 class="text-center">Character Search</h1>
+    </header>
+    <div class="row">
+      <div class="col-sm-12 text-center input-fields">
+        <div class="row">
+          <div class="col-sm-4"></div>
+          <div class="col-sm-2">
+            <label><strong>Select realm</strong></label>
+          </div>
+          <div class="col-sm-2">
+            <p *ngIf="loading">Loading</p>
+            <p *ngIf="error">Server error</p>
+            <select *ngIf="!loading && !error" [(ngModel)]="realm">
+                <option *ngFor="let realm of realmNames" [value]="realm">{{realm}}</option>
+            </select>
+          </div>
+          <div class="col-sm-4"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-4"></div>
+          <div class="col-sm-2">
+            <label><strong>Character name</strong></label>
+          </div>
+          <div class="col-sm-2">
+            <input type="text" [(ngModel)]="name">
+          </div>
+          <div class="col-sm-4"></div>
+        </div>
+        <!-- Calls the Character path with realm and name parameters -->
+        <button type="submit" [routerLink]="['/Character', realm, name]">SEARCH</button>
+      </div> 
+    </div>
+  </div>
+</div>
+
