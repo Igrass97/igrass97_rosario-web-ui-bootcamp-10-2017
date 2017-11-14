@@ -21,14 +21,11 @@
           <!-- 0 = male ; 1 = female -->
           <li><strong>Gender: </strong>{{character.gender==0 ? 'Male' : 'Female' }}</li>
       
-          
-          
-      
           <li><strong>Level:</strong> {{character.level}}</li>
           <li><strong>Achievements points:</strong> {{character.achievementPoints}}</li>
               
           <!-- Displaying Guild only if the character belongs to one -->
-          <li *ngIf="character.guild"><strong>Guild name:</strong> {{character.guild.name}}</li>
+          <li *ngIf="character.guild"><strong>Guild name:</strong> <a [routerLink]="['/Guild', character.guild.realm, character.guild.name]">{{character.guild.name}}</a></li>
         </ul>
       </div>
       
@@ -55,16 +52,20 @@
       <div class="row">
         <div class="col-sm-6">
           <table class="text-left">
-            <tr *ngFor="let item of itemColOne">
-              <td><strong>{{item.name}}</strong></td> 
-              <td>iLvl {{item.itemLevel}}</td>
-              <td><img src="https://wow.zamimg.com/images/wow/icons/large/{{item.icon}}.jpg" alt=""></td>
-            </tr>
+            <tbody>
+              <tr *ngFor="let item of itemColOne; let i=index">
+                <td>{{keyColOne[i]}}</td>
+                <td><strong>{{item.name}}</strong></td> 
+                <td>iLvl {{item.itemLevel}}</td>
+                <td><img src="https://wow.zamimg.com/images/wow/icons/large/{{item.icon}}.jpg" alt=""></td>
+              </tr>
+            </tbody>
           </table>
         </div>
         <div class="col-sm-6">
           <table class="text-left">
-            <tr *ngFor="let item of itemColTwo">
+            <tr *ngFor="let item of itemColTwo; let i=index">
+              <td>{{keyColTwo[i]}}</td>
               <td><strong>{{item.name}}</strong></td> 
               <td>iLvl {{item.itemLevel}}</td>
               <td><img src="https://wow.zamimg.com/images/wow/icons/large/{{item.icon}}.jpg" alt=""></td>

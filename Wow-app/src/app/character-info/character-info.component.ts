@@ -35,6 +35,10 @@ export class CharacterInfoComponent implements OnInit {
   itemColOne : Array<any> = [];
   itemColTwo : Array<any> = [];
 
+  keyValues: string[];
+  keyColOne: string[];
+  keyColTwo: string[];
+
   //Character info (passed as query params)
   name : string;
   realm : string;
@@ -79,11 +83,24 @@ export class CharacterInfoComponent implements OnInit {
     this._characterService.getCharacter(realm, name).subscribe(
       resp => {
         this.character = resp;
+
         //Creating a item list to iterate on it in the view (the 2 first elements aren't items)
         this.itemValues = Object.values(resp.items).slice(2);
+        this.keyValues = Object.keys(resp.items).slice(2);
+
+        //Capitalize first letter of each key
+        this.keyValues = this.keyValues.map(
+          key => {
+            return this.capitalize(key);
+          }
+        );
+    
         //Two cols to display
-        this.itemColOne = this.itemValues.slice(0, 8);
-        this.itemColTwo = this.itemValues.slice(8, this.itemValues.length-1);
+        this.itemColOne = this.itemValues.slice(0, 9)
+        this.itemColTwo = this.itemValues.slice(9, this.itemValues.length);
+        this.keyColOne = this.keyValues.slice(0, 9);
+        this.keyColTwo = this.keyValues.slice(9, this.keyValues.length);
+       
         this.loading = false;
       },
 
@@ -122,6 +139,10 @@ export class CharacterInfoComponent implements OnInit {
       );
     }
     return className;
+  }
+
+  capitalize(str: string) {
+    return str[0].toUpperCase() + str.slice(1);
   }
 
   navigateBack(){
