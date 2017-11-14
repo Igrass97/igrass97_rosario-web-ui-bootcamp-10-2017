@@ -10,13 +10,15 @@
   <div class="pvptop" *ngIf="!error && !loading">
     <table class="interactivetable">
       <thead>
+        <th>Rank</th>
         <th>Rating</th>
         <th>Name</th>
         <th>Realm</th>
       </thead>
       <tbody>
         <!-- Clicking in a row of the table, calls the Character route with the query parameters -->
-        <tr *ngFor="let character of pvpLeaderboard" [routerLink]="['/Character', character.realmName, character.name]">
+        <tr *ngFor="let character of pvpLeaderboard; let i=index" [routerLink]="['/Character', character.realmName, character.name]">
+          <td>{{i+1}}</td>
           <td>{{character.rating}}</td>
           <td>{{character.name}}</td>
           <td>{{character.realmName}}</td>
