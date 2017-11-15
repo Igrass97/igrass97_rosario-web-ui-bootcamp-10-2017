@@ -23,11 +23,12 @@ class App extends Component {
   }
 
   addMovie(movieDetails){
-    const state = this.state;
     const newMovie = new Movie(movieDetails.id, movieDetails.title, movieDetails.duration, movieDetails.year);
-    this.state.movies.push(newMovie);
-    this.state.currentId++;
-    this.setState(state);
+
+    this.setState(oldState => ({
+      movies: [...oldState.movies, newMovie],
+      currentId: oldState.currentId + 1
+    }));
   }
 
   incrementId(){
