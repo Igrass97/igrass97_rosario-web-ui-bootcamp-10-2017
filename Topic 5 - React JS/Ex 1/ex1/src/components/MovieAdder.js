@@ -3,52 +3,79 @@ import { Movie } from '../classes/Movie';
 
 export class MovieAdder extends Component {
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
-      newMovie: {}
+      id: this.props.currentId,
+      title: 'Title',
+      year: 0,
+      duration: 0
     }
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(e){
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
   }
 
   handleSubmit(e){
     e.preventDefault();
-    this.setState({newMovie: new Movie(this.refs.id.value, this.refs.title.value, this.refs.duration.value, this.refs.year.value)},
-    function(){
-      this.props.addMovie(this.state.newMovie);
-      this.refs.id.value = null;
-      this.refs.title.value = null;
-      this.refs.duration.value = null;
-      this.refs.year.value = null;
-    });
+    this.props.addMovie(this.state);
+    this.props.incrementId();
+  }
+
+  componentWillReceiveProps(nextProps){
+    if (nextProps != this.props){
+      this.setState({
+        id: nextProps.currentId
+      });
+    }
   }
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <div>
-            <label>Id</label>
-            <br />
-            <input type="number" ref="id"></input>
-          </div>
-          <div>
-            <label>Title</label>
-            <br />
-            <input type="text" ref="title"></input>
-          </div>
-          <div>
-            <label>Duration</label>
-            <br />
-            <input type="number" ref="duration"></input>
-          </div>
-          <div>
-            <label>Year</label>
-            <br />
-            <input type="number" ref="year"></input>
-          </div>
-          <button type="submit">Submit</button>
-        </form>
-      </div>
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <br />
+          <input
+            name="title"
+            type="text"
+            value={this.state.title}
+            onChange={this.handleChange} />
+        </label>
+        <br />
+        <br />
+        <label>
+          Year:
+          <br />
+          <input
+            name="year"
+            type="number"
+            value={this.state.year}
+            onChange={this.handleChange} />
+        </label>
+        <br />
+        <br />
+        <label>
+          Duration:
+          <br />
+          <input
+            name="duration"
+            type="number"
+            value={this.state.duration}
+            onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="submit" />
+      </form>
     );
   }
 }

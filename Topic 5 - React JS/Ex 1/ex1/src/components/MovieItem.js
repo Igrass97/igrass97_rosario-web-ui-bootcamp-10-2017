@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Movie } from '../classes/Movie';
 
 export class MovieItem extends Component {
 

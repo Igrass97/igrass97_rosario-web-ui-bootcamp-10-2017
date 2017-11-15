@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Movie } from './classes/Movie';
-import { Movies } from './components/Movies';
+import { MovieList } from './components/MovieList';
 import { MovieAdder } from './components/MovieAdder';
 
 import logo from './logo.svg';
@@ -10,25 +10,37 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      movieList: [
+      movies: [
         new Movie(0, "Fear and Loathing in Las Vegas", 118, 1998),
         new Movie(1, "Star Wars ep V", 124, 1980),
         new Movie(2, "Pulp Fiction", 152, 1994),
-      ]
+      ],
+      currentId: 3
     }
+
+    this.addMovie = this.addMovie.bind(this);
+    this.incrementId = this.incrementId.bind(this);
   }
 
-  handleAddMovie(movie){
-    let movies = this.state.movieList;
-    movies.push(movie);
-    this.setState({movieList: movies});
+  addMovie(movieDetails){
+    const state = this.state;
+    const newMovie = new Movie(movieDetails.id, movieDetails.title, movieDetails.duration, movieDetails.year);
+    this.state.movies.push(newMovie);
+    this.state.currentId++;
+    this.setState(state);
+  }
+
+  incrementId(){
+    this.setState(prevState =>{
+      currentId: prevState.currentId + 1;
+    });
   }
 
   render() {
     return (
       <div className="App">
-        <Movies movies={this.state.movieList}/>
-        <MovieAdder addMovie={this.handleAddMovie.bind(this)}/>
+        <MovieList movies={this.state.movies} />
+        <MovieAdder currentId={this.state.currentId} addMovie={this.addMovie} incrementId={this.incrementId} />
       </div>
     );
   }
