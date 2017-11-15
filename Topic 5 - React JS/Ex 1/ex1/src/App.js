@@ -9,7 +9,14 @@ import './App.css';
 class App extends Component {
   constructor(){
     super();
-    this.state = {
+    this.state = this.getInitialState();
+
+    this.addMovie = this.addMovie.bind(this);
+    this.incrementId = this.incrementId.bind(this);
+  }
+
+  getInitialState(){
+    return {
       movies: [
         new Movie(0, "Fear and Loathing in Las Vegas", 118, 1998),
         new Movie(1, "Star Wars ep V", 124, 1980),
@@ -17,9 +24,6 @@ class App extends Component {
       ],
       currentId: 3
     }
-
-    this.addMovie = this.addMovie.bind(this);
-    this.incrementId = this.incrementId.bind(this);
   }
 
   addMovie(movieDetails){
