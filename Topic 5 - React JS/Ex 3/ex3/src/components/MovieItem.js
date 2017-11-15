@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { MovieDeleter } from '../components/MovieDeleter';
+
 
 export class MovieItem extends Component {
 

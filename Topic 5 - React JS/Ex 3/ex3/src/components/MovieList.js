@@ -6,7 +6,11 @@ export class MovieList extends Component {
   render() {
     let movies = this.props.movies;
     let moviesArray = movies.map(movie =>{ 
-      return <MovieItem key={movie.id} movie={movie} />
+      return (
+      <div>
+        <MovieItem key={movie.id} movie={movie} />
+      </div>
+      );
     });
     return (
       <ul>
