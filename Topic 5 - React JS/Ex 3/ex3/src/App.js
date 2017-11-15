@@ -10,8 +10,8 @@ class App extends Component {
   constructor(){
     super();
     this.state = this.getInitialState();
-
     this.addMovie = this.addMovie.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   getInitialState(){
@@ -34,10 +34,23 @@ class App extends Component {
     }));
   }
 
+  deleteMovie(id){
+    const newMovies = this.state.movies;
+    const index = newMovies.findIndex(movie => {
+      return movie.id == id;
+    });
+
+    newMovies.splice(index, 1);
+
+    this.setState({
+      movies: newMovies
+    });
+  }
+
   render() {
     return (
       <div className="App">
-        <MovieList movies={this.state.movies} />
+        <MovieList movies={this.state.movies} deleteMovie={this.deleteMovie} />
         <MovieAdder currentId={this.state.currentId} addMovie={this.addMovie} />
       </div>
     );

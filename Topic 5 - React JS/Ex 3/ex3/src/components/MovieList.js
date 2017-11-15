@@ -7,9 +7,7 @@ export class MovieList extends Component {
     let movies = this.props.movies;
     let moviesArray = movies.map(movie =>{ 
       return (
-      <div>
-        <MovieItem key={movie.id} movie={movie} />
-      </div>
+        <MovieItem key={movie.id} movie={movie} deleteMovie={this.props.deleteMovie} />
       );
     });
     return (
