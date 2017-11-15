@@ -12,7 +12,6 @@ class App extends Component {
     this.state = this.getInitialState();
 
     this.addMovie = this.addMovie.bind(this);
-    this.incrementId = this.incrementId.bind(this);
   }
 
   getInitialState(){
@@ -35,17 +34,11 @@ class App extends Component {
     }));
   }
 
-  incrementId(){
-    this.setState(prevState =>{
-      currentId: prevState.currentId + 1;
-    });
-  }
-
   render() {
     return (
       <div className="App">
         <MovieList movies={this.state.movies} />
-        <MovieAdder currentId={this.state.currentId} addMovie={this.addMovie} incrementId={this.incrementId} />
+        <MovieAdder currentId={this.state.currentId} addMovie={this.addMovie} />
       </div>
     );
   }

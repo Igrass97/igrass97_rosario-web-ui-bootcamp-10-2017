@@ -29,7 +29,6 @@ export class MovieAdder extends Component {
   handleSubmit(e){
     e.preventDefault();
     this.props.addMovie(this.state);
-    this.props.incrementId();
   }
 
   componentWillReceiveProps(nextProps){
