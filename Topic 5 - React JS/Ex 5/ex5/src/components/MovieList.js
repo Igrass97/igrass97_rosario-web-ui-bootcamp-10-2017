@@ -17,6 +17,9 @@ export class MovieList extends Component {
         currentId: store.getState().currentId,
       });
     });
+
+    //Bindings
+    this.renderMovieItems = this.renderMovieItems.bind(this);
   }
 
   //Returns the store full state (movies and currentId)
@@ -24,17 +27,19 @@ export class MovieList extends Component {
     return store.getState();
   }
 
-  render() {
-
-    //Mapping and array of MovieItems with the info from the movies array provided by the store state
+  //Mapping and array of MovieItems with the info from the movies array provided by the store state
+  renderMovieItems(){
     let movies = store.getState().movies;
     let moviesArray = movies.map(movie =>{ 
       return <MovieItem key={movie.id} movie={movie} />
     });
+    return moviesArray;
+  }
 
+  render() {
     return (
       <ul>
-        {moviesArray}
+        {this.renderMovieItems()}
       </ul>
       );
   }
