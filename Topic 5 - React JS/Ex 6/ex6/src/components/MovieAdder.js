@@ -1,21 +1,34 @@
 import React, { Component } from 'react';
 import { Movie } from '../classes/Movie';
+import { Link } from 'react-router-dom';
+import store from '../store';
 
 export class MovieAdder extends Component {
 
   constructor(props){
     super(props);
+
+    //Initial local state of component
     this.state = {
-      id: this.props.currentId,
+      id: store.getState().currentId,
       title: 'Title',
       year: 0,
       duration: 0
     }
 
+    //Bindings
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
+    //Subscribe to update the id
+    store.subscribe(() =>{
+      this.setState({
+        id: store.getState().currentId
+      });
+    });
   }
 
+  //Setting the local state when the inputs change
   handleChange(e){
     const target = e.target;
     const value = target.value;
@@ -26,22 +39,19 @@ export class MovieAdder extends Component {
     });
   }
 
+  //Dispattching ADD_MOVIE action
   handleSubmit(e){
     e.preventDefault();
-    this.props.addMovie(this.state);
-  }
-
-  componentWillReceiveProps(nextProps){
-    if (nextProps != this.props){
-      this.setState({
-        id: nextProps.currentId
-      });
-    }
+    store.dispatch({
+      type: "ADD_MOVIE",
+      payload: this.state
+    })
+    this.props.history.push("/movies");
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} id="movie-form">
         <label>
           Name:
           <br />
@@ -73,7 +83,8 @@ export class MovieAdder extends Component {
             value={this.state.duration}
             onChange={this.handleChange} />
         </label>
-        <input type="submit" value="submit" />
+        <br />
+        <input type="submit" value="Submit" />
       </form>
     );
   }
