@@ -7,11 +7,12 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
   constructor(){
     super();
     this.state = this.getInitialState();
-
     this.addMovie = this.addMovie.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   getInitialState(){
@@ -34,10 +35,21 @@ class App extends Component {
     }));
   }
 
+  deleteMovie(id){
+
+    const index = this.state.movies.findIndex(movie => {
+      return movie.id == id;
+    });
+
+    this.setState((prevState) => ({
+      movies: [...prevState.movies.slice(0,index), ...prevState.movies.slice(index+1)]
+    }));
+  }
+
   render() {
     return (
       <div className="App">
-        <MovieList movies={this.state.movies} />
+        <MovieList movies={this.state.movies} deleteMovie={this.deleteMovie} />
         <MovieAdder currentId={this.state.currentId} addMovie={this.addMovie} />
       </div>
     );
