@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import store from '../store';
 
 export class MovieItem extends Component {
 
@@ -18,7 +19,10 @@ export class MovieItem extends Component {
   }
 
   handleClick(){
-    this.props.deleteMovie(this.props.movie.id);
+    store.dispatch({
+      type: "DELETE_MOVIE",
+      payload: this.props.movie.id
+    })
   }
 }
 
