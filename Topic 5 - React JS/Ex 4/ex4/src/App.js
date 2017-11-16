@@ -35,16 +35,14 @@ class App extends Component {
   }
 
   deleteMovie(id){
-    const newMovies = this.state.movies;
-    const index = newMovies.findIndex(movie => {
+
+    const index = this.state.movies.findIndex(movie => {
       return movie.id == id;
     });
 
-    newMovies.splice(index, 1);
-
-    this.setState({
-      movies: newMovies
-    });
+    this.setState((prevState) => ({
+      movies: [...prevState.movies.slice(0,index), ...prevState.movies.slice(index+1)]
+    }));
   }
 
   render() {
