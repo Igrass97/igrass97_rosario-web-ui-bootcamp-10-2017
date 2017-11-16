@@ -1,15 +1,28 @@
 import React, { Component } from 'react';
-import { MovieItem } from '../components/MovieItem';
 
 export class MovieList extends Component {
+
+  constructor(props){
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e){
+    this.props.deleteMovie(e.target.value);
+  }
 
   render() {
     let movies = this.props.movies;
     let moviesArray = movies.map(movie =>{ 
       return (
-        <MovieItem key={movie.id} movie={movie} deleteMovie={this.props.deleteMovie} />
+        <li>
+          Id: {movie.id} - Title: {movie.title} -
+          Duration: {movie.duration} - Year: {movie.year}
+          <button value={movie.id} onClick={this.handleClick}>Delete movie</button>
+        </li>
       );
     });
+
     return (
       <ul>
         {moviesArray}
