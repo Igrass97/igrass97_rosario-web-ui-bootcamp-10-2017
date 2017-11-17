@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+#movie-form{
+  margin: 10px;
+  background: rgba(0, 0, 0, 0.068);
+  padding: 30px;
+  display: inline-block;
+}
+
+
+#movie-form input[type="submit"]{
+  margin-top: 10px;
+  background: rgb(0, 0, 0);
+  border-radius: 5px;
+  color: white;
+  padding: 5px;
+  outline: none;
+  border: none;
+}
+
+#movie-form input[type="submit"]:hover{
+  background: rgb(52, 125, 243);
+  color: rgb(0, 0, 0);
+}
+
+#movie-list{
+  background: rgba(0, 0, 0, 0.068);
+  list-style: none;
+  margin: 20px;
+  padding: 0;
+  display: inline-block;
+}
+
+#movie-list ul{
+  margin: 0;
+  padding: 0;
+}
+
+.movie-item {
+  margin: 20px;
+}

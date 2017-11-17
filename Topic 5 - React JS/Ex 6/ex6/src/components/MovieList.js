@@ -38,7 +38,7 @@ export class MovieList extends Component {
 
   render() {
     return (
-      <ul>
+      <ul id="movie-list">
         {this.renderMovieItems()}
       </ul>
       );

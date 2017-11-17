@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Movie } from '../classes/Movie';
+import { Link } from 'react-router-dom';
 import store from '../store';
 
 export class MovieAdder extends Component {
@@ -45,11 +46,12 @@ export class MovieAdder extends Component {
       type: "ADD_MOVIE",
       payload: this.state
     })
+    this.props.history.push("/movies");
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} id="movie-form">
         <label>
           Name:
           <br />
@@ -81,7 +83,8 @@ export class MovieAdder extends Component {
             value={this.state.duration}
             onChange={this.handleChange} />
         </label>
-        <input type="submit" value="submit" />
+        <br />
+        <input type="submit" value="Submit" />
       </form>
     );
   }

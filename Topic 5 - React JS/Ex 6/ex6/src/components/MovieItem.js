@@ -10,9 +10,15 @@ export class MovieItem extends Component {
 
   render() {
     return (
-    <li>
-      Id: {this.props.movie.id} - Title: {this.props.movie.title} -
-      Duration: {this.props.movie.duration} - Year: {this.props.movie.year}
+    <li className="movie-item">
+      <strong>Id:</strong> {this.props.movie.id}
+      <br />
+      <strong>Title: </strong>{this.props.movie.title}
+      <br />
+      <strong>Duration: </strong>{this.props.movie.duration}
+      <br />
+      <strong>Year: </strong> {this.props.movie.year}
+      <br />
       <button onClick={this.handleClick}>Delete movie</button>
     </li>
     );
